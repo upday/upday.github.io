@@ -4,7 +4,7 @@ title: "Override Author Byline Test Post"
 excerpt: "An article to test overriding the default site author."
 categories: articles
 tags: [sample-post, readability, test]
-author: billy_rick
+author: peter_krauss
 comments: true
 share: true
 image:
