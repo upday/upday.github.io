@@ -1,29 +1,37 @@
-# So Simple Theme
+# Jekyll
 
-Looking for a simple, responsive, theme for your Jekyll powered blog? Well look no further. Here be **So Simple Theme**, the followup to [**Minimal Mistakes**](http://mmistakes.github.io/minimal-mistakes/) -- by designer slash illustrator [Michael Rose](http://mademistakes.com).
+## Installation
+check [here] (https://jekyllrb.com/docs/installation/)
 
-## Notable features:
+the requirements are:
+* Ruby (including development headers, v1.9.3 or above for Jekyll 2 and v2 or above for Jekyll 3) 
+* RubyGems
+* Linux, Unix, or Mac OS X
+* NodeJS, or another JavaScript runtime (Jekyll 2 and earlier, for CoffeeScript support).
+* Python 2.7 (for Jekyll 2 and earlier)
 
-* Compatible with Jekyll 3 and GitHub Pages.
-* Responsive templates. Looks good on mobile, tablet, and desktop devices.
-* Gracefully degrading in older browsers. Compatible with Internet Explorer 9+ and all modern browsers.
-* Minimal embellishments and subtle animations.
-* Optional large feature images for posts and pages.
-* [Custom 404 page](http://mmistakes.github.io/so-simple-theme/404.html) to get you started.
-* Basic [search capabilities](https://github.com/mathaywarduk/jekyll-search)
-* Support for Disqus Comments
+## branching
 
-![screenshot of So Simple Theme](http://mmistakes.github.io/so-simple-theme/images/so-simple-theme-preview.jpg)
-
+### master
+All changes on the master branch will be deployed automatically to upday.github.io - so please be carefull
+### develop
+Let's use this branch for drafts and pull requests
+### sample
+I've used the [so simple theme] (http://mmistakes.github.io/so-simple-theme/) inside this branch are a lot of samples with different articles and formatting
 See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) hosted on GitHub.
 
 ---
 
-## Getting Started
+## Run locally 
+```bash
+bundle exec jekyll serve
+```
 
-So Simple takes advantage of Sass and data files to make customizing easier. These features require Jekyll 2.x and will not work with older versions of Jekyll.
-
-To learn how to install and use this theme check out the [Setup Guide](http://mmistakes.github.io/so-simple-theme/theme-setup/) for more information.
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mmistakes/so-simple-theme/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+## Add a blog post
+* if this is your first post add your data to `authors.yml` and add your picture to `images` folder
+* add your post in the format 
+```
+YEAR-MONTH-DAY-title.MARKUP
+```
+* check out the sample posts in `samples branch` to get necessary formatting 
 
