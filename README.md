@@ -13,7 +13,8 @@ the requirements are:
 ## branching
 
 ### master
-All changes on the master branch will be deployed automatically to upday.github.io - so please be carefull
+All changes on the master branch will be deployed automatically to upday.github.io - so please be careful
+To make this possible the repo needs to be **public so please be careful what you post here**  
 ### develop
 Let's use this branch for drafts and pull requests
 ### sample
