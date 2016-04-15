@@ -7,3 +7,11 @@ peter_krauss:
   bio: "1337?"
   avatar: peter_krauss.png
   twitter: pkatberlin
+
+tomek_polanski:
+  name: Tomek Polanski
+  web: http://www.upday.com
+  email: tomek.external@upday.com
+  bio: ""
+  avatar:
+  twitter:
