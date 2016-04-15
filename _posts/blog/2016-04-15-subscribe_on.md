@@ -27,23 +27,24 @@ One of most frequent misconceptions is that observeOn also affects upstream, but
 This one only influences the thread that is used when observable is subscribed to and it will stay on it until changed.  
 One important fact is that subscribeOn does not work with Subjects.  About it in another post.  
 
-{% highlight java %}
+``` java
 just("Some String") // Computation
-.subscribeOn(Schedulers.computation()) // the difference
 .map(str -> str.length()) // Computation
 .map(length -> 2 * length) // Computation
+.subscribeOn(Schedulers.computation()) // -- changing the thread
 .subscribe(number -> Log.d("", "Number " + number)); // Computation
-{% endhighlight %}
-Position does not matter
+```
+
+**Position does not matter**
 subscribeOn can be put in any place in the stream because it affects only the time of subscription. For example,  the code from before is equal to this one:
 
-{% highlight java %}
-    just("Some String") // Computation
+``` java
+just("Some String") // Computation
     .subscribeOn(Schedulers.computation()) // the difference
     .map(str -> str.length()) // Computation
     .map(length -> 2 * length) // Computation
     .subscribe(number -> Log.d("", "Number " + number)); // Computation
-{% endhighlight %}
+```
 
 **Methods that work with subscribeOn** 
 
@@ -51,23 +52,25 @@ The most basic example is Observable.create,  all the work specified inside crea
 
 Another example is Observable.just, Observable.from or Observable.range.  One big remark,  all of those methods accepts values,  so do not use bocking methods to create those values as subscribeOn won’t affect it! 
 If you want to use blocking function,  use Observable.defer as it accepts function that will be evaluated lazily:
-{% highlight java %}
+``` java
     Observable.defer(() -> Observable.just(blockingMethod()));
-{% endhighlight %}
+```
 
 **Multiple subscribeOn** 
 
 If there are multiple subscribeOn the stream,  only the first one will be used:
 
-{% highlight java %}
-    just("Some String")
+``` java
+just("Some String")
     .map(str -> str.length())
     .subscribeOn(Schedulers.computation()) // changing to computation
     .subscribeOn(Schedulers.io()) // won’t change the thread to IO
     .subscribe(number -> Log.d("", "Number " + number)); 
-{% endhighlight %}
+```
 
 **Subscribe and subscribeOn** 
 
 People think that subscribeOn has something to do with Observable.subscribe, but really it does not have anything special to do with it.  Remember it only affects subscription phase!
+
+
 Ability to change the execution thread so easily is a great thing to have. Still it needs to be used responsibly as it could cause more harm than good if used irresponsibly.  
