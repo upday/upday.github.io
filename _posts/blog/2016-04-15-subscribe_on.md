@@ -75,4 +75,6 @@ just("Some String")
 People think that ``subscribeOn`` has something to do with ``Observable.subscribe``, but really it does not have anything special to do with it. Remember it only affects subscription phase!
 
 
+
+
 Ability to change the execution thread so easily is a great thing to have. Still it needs to be used responsibly as it could cause more harm than good if used irresponsibly.  
