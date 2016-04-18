@@ -13,20 +13,22 @@ date: 2016-04-14T13:00:55-01:00
 
 ## RxJava: subscribeOn vs observeOn
 
-One of the strongest side of RxJava is seemingly easy way to schedule work on desired thread using ``subscribeOn`` or ``observeOn``. Understanding how each one works is crucial.
+One of the strongest aspects of RxJava is the simple way to schedule work on a desired thread using either ``subscribeOn`` or ``observeOn``. Understanding how each one works is crucial.  
+
 
 ### observeOn:
-This method simply changes the thread of all operators **down** in the **stream** (in the calls that come after), let’s assume code is run from UI thread: 
+This method simply changes the thread of all operators further **downstream** (in the calls that come after). Let’s assume code is run from a UI thread: 
 
 <picture>
 	<img src="/images/ObserveOn.gif" alt="image">
 </picture>
 
-One of most frequent misconceptions is that ``observeOn`` also affects upstream, but really it affects only down stream, things that happen after ``observeOn`` call, not like ``subscribeOn``.  
+One of the most frequent misconceptions is that ``observeOn`` also acts upstream, but really it acts **only** downstream - things that happen after the ``observeOn`` call - unlike ``subscribeOn``.  
 
 ### subscribeOn:
-This one only influences the thread that is used when observable is subscribed to and it will stay on it until changed.  
-One important fact is that ``subscribeOn`` does not work with ``Subject``s.  About it in another post.  
+This only influences the thread that is used when the observable is subscribed to and it will stay on it until changed.  
+One important fact is that ``subscribeOn`` does not work with ``Subject``s.  (We will return to this in a future post).  
+
 
 ``` java
 just("Some String") // Computation
@@ -37,7 +39,7 @@ just("Some String") // Computation
 ```
 <br />
 **Position does not matter**
-``subscribeOn`` can be put in any place in the stream because it affects only the time of subscription. For example, the code from before is equal to this one:
+``subscribeOn`` can be put in any place in the stream because it affects only the time of subscription. For example, the code from above is equal to this one:
 
 ``` java
 just("Some String") // Computation
@@ -49,17 +51,17 @@ just("Some String") // Computation
 <br />
 **Methods that work with subscribeOn** 
 
-The most basic example is ``Observable.create``, all the work specified inside create body will be run on thread specified in ``subscribeOn``. 
+The most basic example is ``Observable.create``. All the work specified inside ``create`` body will be run on the thread specified in ``subscribeOn``. 
 
-Another example is ``Observable.just``, ``Observable.from`` or ``Observable.range``. One big remark, all of those methods accepts values, so do not use bocking methods to create those values as ``subscribeOn`` won’t affect it! 
-If you want to use blocking function, use ``Observable.defer`` as it accepts function that will be evaluated lazily:
+Another example is ``Observable.just``, ``Observable.from`` or ``Observable.range``.  It is important to note that all of those methods accept values, so do not use blocking methods to create those values, as ``subscribeOn`` won’t affect it! 
+If you want to use a blocking function, use ``Observable.defer`` as it accepts functions that will be evaluated lazily:
 ``` java
 Observable.defer(() -> Observable.just(blockingMethod()));
 ```
 <br />
 **Multiple subscribeOn** 
 
-If there are multiple ``subscribeOn`` the stream, only the first one will be used:
+If there are multiple instances of ``subscribeOn`` in the stream,  only the first one will be used:
 
 ``` java
 just("Some String")
@@ -71,9 +73,11 @@ just("Some String")
 <br />
 **``Subscribe`` and ``subscribeOn``** 
 
-People think that ``subscribeOn`` has something to do with ``Observable.subscribe``, but really it does not have anything special to do with it. Remember it only affects subscription phase!
+People think that ``subscribeOn`` has something to do with ``Observable.subscribe``, but really it does not have anything special to do with it.  Remember, it only affects the subscription phase!
 
 <br />
 <br />
 
-Ability to change the execution thread so easily is a great thing to have. Still it needs to be used responsibly as it could cause more harm than good if used irresponsibly.  
+Ability to change the execution thread so easily is a great thing to have. Still it needs to be used responsibly, as it could cause more harm than good if used irresponsibly.  
+
+
