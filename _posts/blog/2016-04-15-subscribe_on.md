@@ -20,7 +20,6 @@ This method simply changes the thread of all operators **down** in the **stream*
 
 <picture>
 	<img src="/images/ObserveOn.gif" alt="image">
-	<figcaption>ObservOn</figcaption>
 </picture>
 
 One of most frequent misconceptions is that ``observeOn`` also affects upstream, but really it affects only down stream, things that happen after ``observeOn`` call, not like ``subscribeOn``.  
