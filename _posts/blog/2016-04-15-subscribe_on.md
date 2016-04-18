@@ -23,7 +23,7 @@ This method simply changes the thread of all operators **down** in the **stream*
 	<figcaption>ObservOn</figcaption>
 </picture>
 
-One of most frequent misconceptions is that ``observeOn`` also affects upstream, but really it affects only down stream, things that happen after ``observeOn`` call, not like ``subscribeOn``.
+One of most frequent misconceptions is that ``observeOn`` also affects upstream, but really it affects only down stream, things that happen after ``observeOn`` call, not like ``subscribeOn``.  
 
 ### subscribeOn:
 This one only influences the thread that is used when observable is subscribed to and it will stay on it until changed.  
@@ -36,7 +36,7 @@ just("Some String") // Computation
 .subscribeOn(Schedulers.computation()) // -- changing the thread
 .subscribe(number -> Log.d("", "Number " + number)); // Computation
 ```
-
+<br />
 **Position does not matter**
 ``subscribeOn`` can be put in any place in the stream because it affects only the time of subscription. For example, the code from before is equal to this one:
 
@@ -47,7 +47,7 @@ just("Some String") // Computation
     .map(length -> 2 * length) // Computation
     .subscribe(number -> Log.d("", "Number " + number)); // Computation
 ```
-
+<br />
 **Methods that work with subscribeOn** 
 
 The most basic example is ``Observable.create``, all the work specified inside create body will be run on thread specified in ``subscribeOn``. 
@@ -57,7 +57,7 @@ If you want to use blocking function, use ``Observable.defer`` as it accepts fun
 ``` java
 Observable.defer(() -> Observable.just(blockingMethod()));
 ```
-
+<br />
 **Multiple subscribeOn** 
 
 If there are multiple ``subscribeOn`` the stream, only the first one will be used:
@@ -69,12 +69,12 @@ just("Some String")
     .subscribeOn(Schedulers.io()) // won’t change the thread to IO
     .subscribe(number -> Log.d("", "Number " + number)); 
 ```
-
+<br />
 **``Subscribe`` and ``subscribeOn``** 
 
 People think that ``subscribeOn`` has something to do with ``Observable.subscribe``, but really it does not have anything special to do with it. Remember it only affects subscription phase!
 
-
-
+<br />
+<br />
 
 Ability to change the execution thread so easily is a great thing to have. Still it needs to be used responsibly as it could cause more harm than good if used irresponsibly.  
