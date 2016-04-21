@@ -13,7 +13,7 @@ date: 2016-04-14T13:00:55-01:00
 
 ## RxJava: subscribeOn vs observeOn
 
-One of the strongest aspects of RxJava is the simple way to schedule work on a desired thread using either ``subscribeOn`` or ``observeOn``. Understanding how each one works is crucial.  
+One of the strongest aspects of RxJava is the simple way to schedule work on a desired thread using either ``subscribeOn`` or ``observeOn``. While they seem simple enough at a glance, understanding how they work is crucial to achieving your desired threading assignment.  
 
 
 ### observeOn:
@@ -23,11 +23,10 @@ This method simply changes the thread of all operators further **downstream** (i
 	<img src="/images/ObserveOn.gif" alt="image">
 </picture>
 
-One of the most frequent misconceptions is that ``observeOn`` also acts upstream, but really it acts **only** downstream - things that happen after the ``observeOn`` call - unlike ``subscribeOn``.  
+One of the most frequent misconceptions is that ``observeOn`` also acts upstream, but really it acts only downstream - things that happen after the ``observeOn`` call - unlike ``subscribeOn``.  
 
 ### subscribeOn:
-This only influences the thread that is used when the observable is subscribed to and it will stay on it until changed.  
-One important fact is that ``subscribeOn`` does not work with ``Subject``s.  (We will return to this in a future post).  
+This only influences the thread that is used when the ``Observable`` is subscribed to and it will stay on it downstream.  
 
 
 ``` java
@@ -43,13 +42,13 @@ just("Some String") // Computation
 
 ``` java
 just("Some String") // Computation
-    .subscribeOn(Schedulers.computation()) // the difference
+    .subscribeOn(Schedulers.computation()) // note the different order
     .map(str -> str.length()) // Computation
     .map(length -> 2 * length) // Computation
     .subscribe(number -> Log.d("", "Number " + number)); // Computation
 ```
 <br />
-**Methods that work with subscribeOn** 
+**Methods that obey the contact with subscribeOn** 
 
 The most basic example is ``Observable.create``. All the work specified inside ``create`` body will be run on the thread specified in ``subscribeOn``. 
 
@@ -58,6 +57,9 @@ If you want to use a blocking function, use ``Observable.defer`` as it accepts f
 ``` java
 Observable.defer(() -> Observable.just(blockingMethod()));
 ```
+
+One important fact is that ``subscribeOn`` does not work with ``Subject``s.  (We will return to this in a future post).  
+
 <br />
 **Multiple subscribeOn** 
 
@@ -76,8 +78,7 @@ just("Some String")
 People think that ``subscribeOn`` has something to do with ``Observable.subscribe``, but really it does not have anything special to do with it.  Remember, it only affects the subscription phase!
 
 <br />
-<br />
 
-Ability to change the execution thread so easily is a great thing to have. Still it needs to be used responsibly, as it could cause more harm than good if used irresponsibly.  
+Knowing how ``subscribeOn`` and ``observeOn`` work, makes the Rx code much more easy to reason with. This understanding will allow you to use it correctly which should give you predictable results in your threading allocations.
 
 
