@@ -38,6 +38,7 @@ just("Some String") // Computation
 ```
 <br />
 **Position does not matter**
+
 ``subscribeOn`` can be put in any place in the stream because it affects only the time of subscription. For example, the code from above is equal to this one:
 
 ``` java
@@ -48,7 +49,7 @@ just("Some String") // Computation
     .subscribe(number -> Log.d("", "Number " + number)); // Computation
 ```
 <br />
-**Methods that obey the contact with subscribeOn** 
+**Methods that obey the contact with ``subscribeOn``** 
 
 The most basic example is ``Observable.create``. All the work specified inside ``create`` body will be run on the thread specified in ``subscribeOn``. 
 
