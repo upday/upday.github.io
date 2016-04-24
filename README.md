@@ -48,7 +48,7 @@ afterwards install jekyll via bundler, open the blog root directory and
 bundle install
 ```
 
-You should be good to go!!!
+*You should be good to go!!!*
 
 ## Ubuntu
 
@@ -77,7 +77,10 @@ afterwards install jekyll via bundler, open the blog root directory and
 bundle install
 ```
 
-You should be good to go!!!
+*You should be good to go!!!*
+
+## Windows
+Well, there are some tutorials but it isn't officially supported and according to the last test it is a massive pain - so easiest way is virtualbox in the moment...
 
 ## branching
 
