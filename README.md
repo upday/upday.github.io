@@ -3,13 +3,6 @@
 ## Installation
 check [here] (https://jekyllrb.com/docs/installation/)
 
-the requirements are:
-* Ruby (including development headers, v1.9.3 or above for Jekyll 2 and v2 or above for Jekyll 3)
-* RubyGems
-* Linux, Unix, or Mac OS X works even with Windows I guess
-* NodeJS, or another JavaScript runtime (Jekyll 2 and earlier, for CoffeeScript support).
-* Python 2.7 (for Jekyll 2 and earlier)
-
 ## Mac
 
 ### Ruby
