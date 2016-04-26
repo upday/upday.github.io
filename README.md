@@ -73,7 +73,16 @@ bundle install
 *You should be good to go!!!*
 
 ## Windows
-Well, there are some tutorials but it isn't officially supported and according to the last test it is a massive pain - so easiest way is virtualbox in the moment...
+
+Install nodejs (https://nodejs.org/en/download/)
+Install ruby (http://rubyinstaller.org/downloads/)
+Install ruby devkit
+- downloaded and extract devkit from http://rubyinstaller.org/downloads/ to c:\rubyx.y\devkit
+- navigate to c:\rubyx.y\devkit fire 'ruby dk.rb init' and 'ruby dk.rb install'
+
+Navigate to blog-clone and invoke 'bundle install' and 'bundle exec jekyll serve'
+Go to http://localhost:4000
+
 
 ## branching
 
