@@ -5,7 +5,7 @@ modified:
 categories: blog
 author: tomek_polanski
 excerpt:
-tags: [RxJava,]
+tags: [RxJava]
 image:
 date: 2016-04-14T13:00:55-01:00
 ---
