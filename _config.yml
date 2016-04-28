@@ -5,8 +5,8 @@ locale: en_US
 description: Welcome! In our blog we share all the stuff that we - the dev dudes of upday - struggeled or had some fun with.
 logo: site-logo.svg
 search: true
-url: http://upday.github.io
-
+url: https://upday.github.io
+#url: http://localhost:4000
 # Jekyll configuration
 
 permalink:   /:categories/:title/
