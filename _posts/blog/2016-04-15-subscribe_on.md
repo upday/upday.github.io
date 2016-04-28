@@ -4,7 +4,7 @@ title: "RxJava: subscribeOn vs observeOn"
 modified:
 categories: blog
 author: tomek_polanski
-excerpt:
+excerpt: Get to know the thread switching operations
 tags: [RxJava]
 image:
 date: 2016-04-14T13:00:55-01:00
