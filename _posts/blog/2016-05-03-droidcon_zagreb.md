@@ -10,7 +10,7 @@ image:
 date: 2016-05-2T15:39:55-04:00
 ---
 
-Going to conferences is great - you get to learn new things and meet new people. But going as a speaker is even better! It feels like you’re doing your duty as a good developer also giving something back to the community. This is something that we want to do more at upday.
+Going to conferences is great - you get to learn new things and meet new people. But going as a speaker is even better! It feels like you’re doing your duty as a good developer by also giving something back to the community. This is something that we want to do more at upday.
 Here’s an overview of some of the most interesting things I’ve learned at Droidcon Zagreb. Make sure you checkout the linked presentations.
 
 ## Latest from Google
