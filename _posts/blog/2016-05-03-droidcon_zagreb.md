@@ -10,7 +10,7 @@ image:
 date: 2016-05-2T15:39:55-04:00
 ---
 
-Going to conferences is great - you get to learn new things and meet new people. But going as a speaker is even better! It feels like you’re doing your duty as a good developer and also give something back to the community. This is something that we want to do more at upday.
+Going to conferences is great - you get to learn new things and meet new people. But going as a speaker is even better! It feels like you’re doing your duty as a good developer also giving something back to the community. This is something that we want to do more at upday.
 Here’s an overview of some of the most interesting things I’ve learned at Droidcon Zagreb. Make sure you checkout the linked presentations.
 
 ## Latest from Google
@@ -33,9 +33,9 @@ The system forcibly resizes the app unless the app declares a fixed orientation,
 One of the most popular topics in this year’s Droidcon Zagreb was RxJava.  The talks targeted different levels of RxJava and showed how to use it also in combination with patterns such as Model-View-Presenter or Model-View-ViewModel, and libraries like Dagger 2.
 Other interesting presentations covered topics like <a href="http://www.slideshare.net/AnaBaotic/safety-first-best-practices-in-app-security">security</a>,
 basic elements that should be dealt with when <a href="http://www.slideshare.net/dpreussler/all-around-the-world-localization-and-internationalization-on-android-droidcon-zagreb">supporting multiple languages</a>
-and building a translation pipeline. Development flow was also discussed from different angles: from tools, to <a href="https://speakerdeck.com/reisub/continuous-integration-and-deployment-on-android-plus-some-sweets">continuous integration</a> and best development practices.
+and building a translation pipeline. Development flow was discussed from different angles: from tools, to <a href="https://speakerdeck.com/reisub/continuous-integration-and-deployment-on-android-plus-some-sweets">continuous integration</a> and best development practices.
 
-It was wonderful representing upday as a speaker and being able to share the main concepts that drive the development of our app: <a href="
+It was wonderful representing upday as a speaker and being able to share the main patterns that drive the development of our app: <a href="
 http://www.slideshare.net/FlorinaMuntenescu/mvvm-and-rxjava-the-perfect-mix-61526418">the Model-View-ViewModel pattern and RxJava</a>.
 
 ## Summary
