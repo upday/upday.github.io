@@ -25,7 +25,7 @@ For anyone that wonders how they should architect their projects, Google has <a 
 
 ### Android N
 Although the preview of Android N was already released and some of its features already made public in the <a href="http://developer.android.com/preview/behavior-changes.html">behavior changes page</a>, it was great hearing more about them. The system activity restrictions brought by **Doze**, now have two stages and are for sure something to keep in mind when developing applications that need to run background tasks and handle Google Cloud Messages.
-<br>Another important feature that developers should to pay attention to is the <a href="http://developer.android.com/preview/features/multi-window.html">**multi-window support**</a>. This was also again strongly emphasized by <a href="http://www.hellsoft.se/">Erik Hellman</a> in his <a href="https://speakerdeck.com/erikhellman/10-common-mistakes-that-android-developers-do">keynote</a> in the 2nd day of the conference.
+<br>Another important feature that developers should pay attention to is the <a href="http://developer.android.com/preview/features/multi-window.html">**multi-window support**</a>. This was also again strongly emphasized by <a href="http://www.hellsoft.se/">Erik Hellman</a> in his <a href="https://speakerdeck.com/erikhellman/10-common-mistakes-that-android-developers-do">keynote</a> in the 2nd day of the conference.
 The system forcibly resizes the app unless the app declares a fixed orientation, meaning that your app needs to look good in both portrait and landscape and the activity lifecycle calls have to be handled properly.
 
 ## Interesting topics and talks
@@ -35,8 +35,10 @@ Other interesting presentations covered topics like <a href="http://www.slidesha
 basic elements that should be dealt with when <a href="http://www.slideshare.net/dpreussler/all-around-the-world-localization-and-internationalization-on-android-droidcon-zagreb">supporting multiple languages</a>
 and building a translation pipeline. Development flow was discussed from different angles: from tools, to <a href="https://speakerdeck.com/reisub/continuous-integration-and-deployment-on-android-plus-some-sweets">continuous integration</a> and best development practices.
 
-It was wonderful representing upday as a speaker and being able to share the main patterns that drive the development of our app: <a href="
-http://www.slideshare.net/FlorinaMuntenescu/mvvm-and-rxjava-the-perfect-mix-61526418">the Model-View-ViewModel pattern and RxJava</a>.
+## upday at Droidcon Zagreb
+
+It was wonderful representing upday as a speaker and being able to share the main patterns that drive the development of our app: the Model-View-ViewModel pattern and RxJava. You can find the presentation slides <a href="
+http://www.slideshare.net/FlorinaMuntenescu/mvvm-and-rxjava-the-perfect-mix-61526418">here</a>. A very simple example of MVVM implementation is available in <a href="https://github.com/florina-muntenescu/DroidconMVVM">this GitHub repository</a>
 
 ## Summary
 
