@@ -80,7 +80,7 @@ Install ruby devkit
 - downloaded and extract devkit from http://rubyinstaller.org/downloads/ to c:\rubyx.y\devkit
 - navigate to c:\rubyx.y\devkit fire 'ruby dk.rb init' and 'ruby dk.rb install'
 
-Navigate to blog-clone and invoke 'bundle install' and 'bundle exec jekyll serve'
+Navigate to blog-clone and invoke 'bundle install' and 'bundle exec jekyll serve --config _config_local.yml'
 Go to http://localhost:4000
 
 
@@ -99,7 +99,7 @@ See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) h
 
 ## Run locally
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --config _config_local.yml
 ```
 
 ## Add a blog post
