@@ -21,9 +21,9 @@ When tapping a ``View``, we need to translate it up by 75% of its height. When t
 
 ##View Animations
 
-**View animations** provide an easy to use API for animating the contents of a ``View`` object. The animations supported are translations, rotations, growing and shrinking of a view. You can define these animations either in XML or programmatically.
+**View animations** provide an easy to use API for animating the contents of a view object. This framework supports translation, rotation, growing and shrinking of a view. You can define these animations either in XML or programmatically.
 
-A view translation animation implemented in **XML** would require defining the animation in the XML file first.
+The implementation of the view translation animation in **XML** contains the following in the animation resource file:
 
 {% highlight XML %}
 <set android:fillAfter="true"
@@ -39,7 +39,7 @@ A view translation animation implemented in **XML** would require defining the a
 </set>
 {% endhighlight %}
 
-Then then animation needs to be loaded from the code.
+Then then animation needs to be loaded in the code.
 {% highlight java %}
 Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate_up);
 view.startAnimation(animation);
