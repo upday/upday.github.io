@@ -1,13 +1,14 @@
 ---
 layout: post
 title: "Animations and Touch Events"
+description: View animations vs property animations and touch events handling
 modified:
 categories: blog
 author: florina_muntenescu
 excerpt: Did you ever had problems with touch events on views after they were animated? Here's why.
 tags: [Android, Animations, Touch Events]
 image:
-date: 2016-05-15T15:39:55-04:00
+date: 2016-05-20T15:39:55-04:00
 ---
 
 Android offers two main animation frameworks: **view animation** and **property animation**. Each of these is fairly easy to implement. However, the main difference can be seen when you need to handle touch events on views that have changed their position after animation. Let’s see how both of these animation frameworks work, how they can be implemented and which one you should use for touch events.
