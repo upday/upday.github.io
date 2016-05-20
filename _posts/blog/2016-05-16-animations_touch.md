@@ -15,9 +15,10 @@ Android offers two main animation frameworks: **view animation** and **property 
 ##Task
 When tapping a ``View``, we need to translate it up by 75% of its height. When tapping on the area where the ``View`` was initially, our ``View`` should slide back down.
 
-<picture>
-	<img src="/images/animations_touch/animations_touch_slide_up_down.gif" alt="image">
-</picture>
+<center>
+<iframe width="250" height="444" src="/videos/animations_touch/slide_animations.mp4"></iframe>
+<figcaption>Translate a view up and down by 75%.</figcaption>
+</center>
 
 ##View Animations
 
@@ -52,47 +53,41 @@ animation.setFillAfter(true);
 animation.setDuration(getResources().getInteger(android.R.integer.config_longAnimTime));
 view.startAnimation(animation);
 {% endhighlight %}
-Where the ``toYDelta`` is the change in Y coordinate that needs to be applied.
+Where the ``toYDelta`` is the change in Y axis that needs to be applied.
 
 ##Property Animations
 
-The **property animation** framework was introduced in Android 3.0 and allows the animation of any object, not just ``View``s. It supports a higher range of aspects that can be animated - for example, the background color of a ``View`` - and has a slightly better performance than the view animations.
+The **property animation** framework was introduced in Android 3.0 and allows the animation of any object, not just ``View``s. It offers a broader function scope - for example, the background color of a ``View`` can also be animated - and has a slightly better performance than the view animations.
 
 Implementing a view translation can be easily done programmatically.
 {% highlight java %}
 view.animate().translationYBy(animateByPx);
 {% endhighlight %}
-Where the ``animateByPx`` is the amount of pixels the view is translated by on the Y coordinate.
+Where the ``animateByPx`` is the amount of pixels the view is translated on the Y axis.
 
 ##Handling Touch Events
 
 The main difference between view and property animations lies in whether the ``View`` is modified or not. With view animations, the ``View`` gets drawn in another position, but the actual ``View`` does not move. So, this means that the view will not react to touch events on the area where it is drawn, but rather in the area where it was before the animation started.
 With property animations, the object actually gets moved. Therefore it will react to touch events on its new location on the screen.
 
-To see better how the touch area changes, we have implemented a selector for our ``View``’s background, allowing us to set two different colors depending on the pressed state of the view: pink for pressed and blue for not pressed.
+For a better understanding on how the touch area changes, we have implemented a selector for our ``View``’s background, allowing us to set two different colors depending on the pressed state of the view: pink for pressed and blue for not pressed.
 
-With the view animations implementation, after the translation, when touching the area that is above the original location of the ``View``, the ``View`` does not react and the touch events are caught by the area outside it.
-<picture>
-	<img src="/images/animations_touch/animations_touch_above.gif" alt="image">
-  <figcaption>Touch events on the new position of the view, after a view animation was applied.</figcaption>
-</picture>
-
-When touching the area containing the initial position of the ``View``, we see that the 25% of the ``View`` - that is still drawn over the original position - reacts to our touch events.
-<picture>
-</picture>
+Here's what happens after translating the ``View`` using view animations: when touching the area that is above the original location of the ``View``, the ``View`` does not react. The touch events are caught by the area outside it.
 <center>
-<picture class="half">
-  <img src="/images/animations_touch/animations_touch_initial_position.gif" alt="image">
-	<figcaption>Touch events on the initial position of the view, after a view animation was applied.</figcaption>
-</picture>
+<iframe width="250" height="444" src="/videos/animations_touch/view_animation_touch_outside.mp4"></iframe>
+<figcaption>Touch events on the new position of the view, after a view animation was applied.</figcaption>
+</center>
+
+When touching the area containing the initial position of the ``View``, we see that the area of the ``View``that is still drawn over the original position reacts to our touch events.
+<center>
+<iframe width="250" height="444" src="/videos/animations_touch/view_animation_touch_old_location.mp4"></iframe>
+<figcaption>Touch events on the initial position of the view, after a view animation was applied.</figcaption>
 </center>
 
 With the property animations implementation we see that the ``View`` reacts to touch events exactly as expected, no matter where the touch events happen.
 <center>
-<picture class="half">
-<img src="/images/animations_touch/animations_touch_property.gif" alt="image">
-	<figcaption>Touch events with property animations.</figcaption>
-</picture>
+<iframe width="250" height="444" src="/videos/animations_touch/property_animation.mp4"></iframe>
+<figcaption>Touch events with property animations.</figcaption>
 </center>
 
 ##Conclusion
