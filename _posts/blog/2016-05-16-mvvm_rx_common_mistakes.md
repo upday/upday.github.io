@@ -25,7 +25,7 @@ After all it wasn't such a great idea to expose two separate streams with events
 
 ## Everything should go through the ViewModel
 
-Sometimes, upday receives breaking news in form of push notifications so the user can know immediately if something important happened in the world. The expected behavior when the user taps on the notification is to open upday in the top news section centered in the first position because breaking news are always the first card in the set. 
+Sometimes, upday receives breaking news in form of push notifications so the user can know immediately if something important happened in the world. The expected behavior when the user taps on the notification is to open upday in the top news section (centered in the first position because breaking news are always the first card in the set). 
 
 As we saw before we have several ViewPagers in the app holding the new's cards so in this case all we need to do is to center the ViewPager in the first position. We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the event of the user opening the breaking news push notification comes the ViewPager should scroll to first position, there is no logic or transformation between that need to be tested.
 
