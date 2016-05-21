@@ -2,9 +2,7 @@
 published: false
 ---
 
-MVVM + RxJava is a great formula for an app architecture, (insert more elaborated introduction here, something about how MVVM sepparates the logic from the views making the app more testable and something about Rx).
-
-In this post I am going to talk about some of the most common mistakes that can be made while using MVVM + RxJava and how to avoid them.
+MVVM + RxJava is a great formula for an app architecture, in upday we recognised this and used it in our app which made it escalable and maintanable. But not all that giltters is gold and this decision also brought us some problems in form of mistakes. In this post I'd like to share a couple of mistakes we made while using this type of architecture and how to avoid them.
 
 ## Expose states and not events
 
@@ -17,12 +15,21 @@ Reading those requirements it seems very natural to have a stream with events fo
 
 // Some code of VM and Fragment
 
-We did exactly this and we started receiving bugs from QA that had to do with wrong end state of the ViewPager. Those bugs would usually have the so feared characteristic of not being 100% reproducible, they happen sometimes and there is no way to reproduce them in a consistent way. We had to face the crude reallity, we had race conditions but why? We have a neat architecture using MVVM, everything is tested, we use RxJava to send events which is what is meant for.
+We did exactly this and we started receiving bugs reports that had to do with wrong end state of the ViewPager. Those bugs would usually have the so feared characteristic of not being 100% reproducible, they happen sometimes and there is no way to reproduce them in a consistent way. We had to face the crude reallity, we had race conditions but why? We have a neat architecture using MVVM, everything is junit tested in the ViewModel and we use RxJava to send events which is what is meant for.
 
-The best way to explain what was happening is with an example. So imagine that we initially have a data set with 10 items in the ViewPager and the actual position is 5. Now, the user performs an action and the final expected state is to have 20 elements in the ViewPager and the position should be 15. All the RxJava asynchronous magic triggers, we don't have any control over it, we just trust that everything is correctly set up and it somehow comes together in the end. But it doesn't. Actually the position stream emits a 15 before the data set stream emits the data set with 20 elements. The position event is captured by the fragment that tells the ViewPager to move to the position 15 but it only has 10 elements, how on earth can it move to position 15? so it simply ignores the command. It does not fail, it doesn't let you know in any way, it ignores you. Right after this the data set event comes, but it is too late already, even though the adapter is going to replace the data set the ViewPager is not going to be centered in the right position. This of course isn't always the case, sometimes the data set event will come first and everything will work as expected. This is due to the nature of RxJava, it is asynchronous, things are executed independently and the order can change from one execution to the next.
+The best way to explain what was happening is with an example. So imagine that we initially have a data set with 10 items in the ViewPager and the actual position is 5. Now, the user performs an action and the final expected state is to have 20 elements in the ViewPager centered in position 15. All the RxJava asynchronous magic triggers, we don't have any control over it, we just trust that everything is correctly set up and it somehow comes together in the end. But it doesn't. Actually the position stream emits a 15 before the data set stream emits the 20 elements. The position event is captured by the fragment that tells the ViewPager to move to the position 15 but it only has 10 elements, how can it move to position 15? so it simply ignores the command. It does not fail, it doesn't let you know in any way, it ignores you. Right after this the data set event comes, but it is too late already, even though the adapter is going to replace the data set the ViewPager is not going to be centered in the right position. This of course isn't always the case, sometimes the data set event will come first and everything will work as expected. This is due to the nature of RxJava, it is asynchronous, things are executed independently and the order can change from one execution to the next.
 
 // Pictures with the events that explains the scenario described above.
 
-After all it wasn't such a great idea to expose two separate streams with events. What should we do then? The answer is simple, expose one stream per view that emits states instead of events. Both the position and the data set should be wrapped up together so the view pager never receives one without the other. This is true for any view, you would never expose two separate streams for a TextView, one that sets the text and another one that emits the position of the letter that should be highlighted in bold, but for some reason it is more easy to make this mistake with ViewPager or lists.
+After all it wasn't such a great idea to expose two separate streams with events. What should we do then? The answer is simple, **expose one stream per view that emits states instead of events**. Both the position and the data set should be wrapped up together so the view pager never receives one without the other. This is true for any view, you would never expose two separate streams for a TextView, one that sets the text and another one that emits the position of the letter that should be highlighted in bold, but for some reason it is more easy to make this mistake with ViewPager or lists.
 
+## Everything should go through the ViewModel
+
+Sometimes, upday receives breaking news in form of push notifications so the user can know immediately if something important happened in the world. The expected behavior when the user taps on the notification is to open upday in the top news section centered in the first position because breaking news are always the first card in the set. 
+
+As we saw before we have several ViewPagers in the app holding the new's cards so in this case all we need to do is to center the ViewPager in the first position. We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the event of the user opening the breaking news push notification comes the ViewPager should scroll to first position, there is no logic or transformation between that need to be tested.
+
+(Example here)
+
+(This is already breaking the previous rule of states and not events but also...)
 
