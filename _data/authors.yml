@@ -5,7 +5,7 @@ peter_krauss:
   web: http://www.upday.com
   email: peter.krauss@upday.com
   bio: "1337?"
-  avatar: peter_krauss.png
+  avatar: authors/peter_krauss.png
   twitter: pkatberlin
 
 tomek_polanski:
@@ -13,7 +13,7 @@ tomek_polanski:
   web: http://www.upday.com
   email: tomek.external@upday.com
   bio: ""
-  avatar: tomek_polanski.png
+  avatar: authors/tomek_polanski.png
   twitter: tpolansk
 
 florina_muntenescu:
@@ -21,5 +21,5 @@ florina_muntenescu:
   web: http://www.upday.com
   email: florina@upday.com
   bio: "Florina passionately works at upday as a Senior Android Developer. She has been writing code for more than 7 years, mostly for Android. Florina keeps a strong focus on clean code and UI/UX. Previous work covered payment solutions at payleven and navigation services at Garmin."
-  avatar: florina_muntenescu.png
+  avatar: authors/florina_muntenescu.png
   twitter: fmuntenescu
