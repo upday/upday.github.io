@@ -13,7 +13,7 @@ date: 2016-05-20T15:39:55-04:00
 
 Android offers two main animation frameworks: **view animation** and **property animation**. Each of these is fairly easy to implement. However, the main difference can be seen when you need to handle touch events on views that have changed their position after animation. Let’s see how both of these animation frameworks work, how they can be implemented and which one you should use for touch events.
 
-##Task
+## Task
 When tapping a ``View``, we need to translate it up by 75% of its height. When tapping on the area where the ``View`` was initially, our ``View`` should slide back down.
 
 <center>
@@ -21,7 +21,7 @@ When tapping a ``View``, we need to translate it up by 75% of its height. When t
 <figcaption>Translate a view up and down by 75%.</figcaption>
 </center>
 
-##View Animations
+## View Animations
 
 **View animations** provide an easy to use API for animating the contents of a view object. This framework supports translation, rotation, growing and shrinking of a view. You can define these animations either in XML or programmatically.
 
@@ -56,7 +56,7 @@ view.startAnimation(animation);
 {% endhighlight %}
 Where the ``toYDelta`` is the change in Y axis that needs to be applied.
 
-##Property Animations
+## Property Animations
 
 The **property animation** framework was introduced in Android 3.0 and allows the animation of any object, not just ``View``s. It offers a broader function scope - for example, the background color of a ``View`` can also be animated - and has a slightly better performance than the view animations.
 
@@ -66,7 +66,7 @@ view.animate().translationYBy(animateByPx);
 {% endhighlight %}
 Where the ``animateByPx`` is the amount of pixels the view is translated on the Y axis.
 
-##Handling Touch Events
+## Handling Touch Events
 
 The main difference between view and property animations lies in whether the ``View`` is modified or not. With view animations, the ``View`` gets drawn in another position, but the actual ``View`` does not move. So, this means that the view will not react to touch events on the area where it is drawn, but rather in the area where it was before the animation started.
 With property animations, the object actually gets moved. Therefore it will react to touch events on its new location on the screen.
@@ -91,7 +91,7 @@ With the property animations implementation we see that the ``View`` reacts to t
 <figcaption>Touch events with property animations.</figcaption>
 </center>
 
-##Conclusion
+## Conclusion
 
 Both view and property animations are easy to implement. Use the one that’s more convenient for you, but when needing to implement touch events on a ``View`` that was already animated, you should use **property animations**.
 
