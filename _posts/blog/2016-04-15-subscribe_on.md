@@ -19,9 +19,11 @@ One of the strongest aspects of RxJava is the simple way to schedule work on a d
 ### observeOn:
 This method simply changes the thread of all operators further **downstream** (in the calls that come after). Let’s assume code is run from a UI thread:
 
+<center>
 <picture>
-	<img src="/images/ObserveOn.gif" alt="image">
+	<img src="/images/blog/subscribe_on/ObserveOn.gif" alt="ObserveOn">
 </picture>
+</center>
 
 One of the most frequent misconceptions is that ``observeOn`` also acts upstream, but really it acts only downstream - things that happen after the ``observeOn`` call - unlike ``subscribeOn``.  
 
@@ -58,7 +60,7 @@ Observable.defer(() -> Observable.just(blockingMethod()));
 
 One important fact is that ``subscribeOn`` does not work with ``Subject``s.  (We will return to this in a future post).  
 
-<br />
+<br/>
 **Multiple subscribeOn**
 
 If there are multiple instances of ``subscribeOn`` in the stream,  only the first one will be used:
@@ -69,7 +71,7 @@ just("Some String")
     .subscribeOn(Schedulers.io()) // won’t change the thread to IO
     .subscribe(number -> Log.d("", "Number " + number));
 {% endhighlight %}
-<br />
+<br/>
 **``Subscribe`` and ``subscribeOn``**
 
 People think that ``subscribeOn`` has something to do with ``Observable.subscribe``, but really it does not have anything special to do with it.  Remember, it only affects the subscription phase!
