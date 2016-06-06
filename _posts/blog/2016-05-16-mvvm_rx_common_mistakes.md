@@ -2,7 +2,7 @@
 published: false
 ---
 
-MVVM + RxJava is a great formula for an app architecture, in upday we recognised this and used it in our app which made it escalable and maintanable. But not all that giltters is gold and this decision also brought us some problems in form of mistakes. In this post I'd like to share a couple of mistakes we made while using this type of architecture and how to avoid them.
+MVVM + RxJava is a great formula for an app architecture, in upday we recognised this and used it in our app making it escalable and maintanable. But not all that giltters is gold and this decision also brought us some problems. In this post I'd like to share a couple of mistakes we made while using this type of architecture and how to avoid them.
 
 ## Expose states and not events
 
@@ -25,11 +25,10 @@ After all it wasn't such a great idea to expose two separate streams with events
 
 ## Everything should go through the ViewModel
 
-Sometimes, upday receives breaking news in form of push notifications so the user can know immediately if something important happened in the world. The expected behavior when the user taps on the notification is to open upday in the top news section (centered in the first position because breaking news are always the first card in the set). 
+Sometimes, upday receives breaking news in form of push notifications so the user can know immediately if something important happened in the world. The expected behavior when the user taps on the notification is to open upday and show the card for the breaking new. Practically this means to open top news fragment and center its ViewPager in the position of the breaking that is typically the first one so for simplicity in the example let's assume all we need to do is to set the position of the ViewPager to 0.
 
-As we saw before we have several ViewPagers in the app holding the new's cards so in this case all we need to do is to center the ViewPager in the first position. We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the event of the user opening the breaking news push notification comes the ViewPager should scroll to first position, there is no logic or transformation between that need to be tested.
+We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the stream emits an event the ViewPager should just scroll to position 0, there is no logic or transformation between that needs to be tested.
 
 (Example here)
 
 (This is already breaking the previous rule of states and not events but also...)
-
