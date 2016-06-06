@@ -27,7 +27,7 @@ After all it wasn't such a great idea to expose two separate streams with events
 
 Sometimes, upday receives breaking news in form of push notifications so the user can know immediately if something important happened in the world. The expected behavior when the user taps on the notification is to open upday and show the card for the breaking new. Practically this means to open top news fragment and center its ViewPager in the position of the breaking that is typically the first one so for simplicity in the example let's assume all we need to do is to set the position of the ViewPager to 0.
 
-We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the stream emits an event the ViewPager should just scroll to position 0, there is no logic or transformation between that needs to be tested.
+We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the stream emits an event the ViewPager should just scroll to position 0, there is no logic or transformation between that needs to be JUnit tested.
 
 {% highlight java %}
 breakingNewStream
@@ -35,5 +35,16 @@ breakingNewStream
     .subscribe(event -> mViewPager.setCurrentItem(0));
 {% endhighlight %}
 
-First of all, this is already breaking the previous rule of states instead of events since it is setting the position only and not determining what is the overall state of the ViewPager at this precise moment but even though we had a stream of ViewPager' states it would still be wrong. The reason is that in MVVM there are many things relying on what the ViewModel says the actual state is. In this case the ViewModel is not aware of what just happened in the ViewPager, it has no idea that the current position is 0.  
-(This is already breaking the previous rule of states and not events but also...)
+First of all, this is already breaking the previous rule of states instead of events since it is setting the position only but even though we had a stream of ViewPager' states it would still be wrong. The reason is that in MVVM there are many things relying on what the ViewModel says the actual state is. In this case the ViewModel is not aware of what just happened in the ViewPager, it has no idea that the current position is 0. So the next natural step here would be notifify the ViewModel about what just happened.
+
+{% highlight java %}
+breakingNewStream
+	.observeOn(AndroidSchedulers.mainThread())
+    .subscribe(event -> {mViewPager.setCurrentItem(0);
+    					 mViewModel.notifyCurrentPosition(0);});
+{% endhighlight %}
+
+Unfortunately this would make things really hard since it introduces potential race conditions. There is a window of time where the ViewModel has been "notified" but the state is still not effective due to the asynchronous nature of Rx. 
+
+The problem here is that we haven't followed the natural steps our MVVM architecture is meant for. The ViewModel transforms the data into something that is easy to use in the Views, this means the View is always the last one to know about the changes that need to be made. In this example the View knows about the changes before the ViewModel making the former unreliable. So basically, it doesn't matter how trivial or easy an operation is, **everything should go through the ViewModel** so other stuff, like side efects, can happen reliably.
+
