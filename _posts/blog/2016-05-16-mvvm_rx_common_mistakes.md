@@ -21,7 +21,7 @@ The best way to explain what was happening is with an example. So imagine that w
 
 // Pictures with the events that explains the scenario described above.
 
-After all it wasn't such a great idea to expose two separate streams with events. What should we do then? The answer is simple, **expose one stream per view that emits states instead of events**. Both the position and the data set should be wrapped up together so the view pager never receives one without the other. This is true for any view, you would never expose two separate streams for a TextView, one that sets the text and another one that emits the position of the letter that should be highlighted in bold, but for some reason it is more easy to make this mistake with ViewPager or lists.
+After all it wasn't such a great idea to expose two separate streams with events. What should we do then? The answer is simple, **expose one stream per view that emits states of the view instead of events on how to modify the view**. Both the position and the data set should be wrapped up together so the view pager never receives one without the other. This is true for any view, you would never expose two separate streams for a TextView, one that sets the text and another one that emits the position of the letter that should be highlighted in bold, but for some reason it is more easy to make this mistake with ViewPager or lists.
 
 ## Everything should go through the ViewModel
 
@@ -29,6 +29,11 @@ Sometimes, upday receives breaking news in form of push notifications so the use
 
 We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the stream emits an event the ViewPager should just scroll to position 0, there is no logic or transformation between that needs to be tested.
 
-(Example here)
+{% highlight java %}
+breakingNewStream
+	.observeOn(AndroidSchedulers.mainThread())
+    .subscribe(event -> mViewPager.setCurrentItem(0));
+{% endhighlight %}
 
+First of all, this is already breaking the previous rule of states instead of events since it is setting the position only and not determining what is the overall state of the ViewPager at this precise moment but even though we had a stream of ViewPager' states it would still be wrong. The reason is that in MVVM there are many things relying on what the ViewModel says the actual state is. In this case the ViewModel is not aware of what just happened in the ViewPager, it has no idea that the current position is 0.  
 (This is already breaking the previous rule of states and not events but also...)
