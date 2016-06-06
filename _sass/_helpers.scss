@@ -95,7 +95,23 @@ figure {
       }
     }
   }
+
+  &.fith {
+    @include media($large) {
+      img {
+        width: 11.0%;
+        float: left;
+        margin-right: 2.5%;
+        margin-bottom: 2.5%;
+      }
+      figcaption {
+        clear: left;
+      }
+    }
+  }
 }
+
+
 
 /*
    No scrollbars
