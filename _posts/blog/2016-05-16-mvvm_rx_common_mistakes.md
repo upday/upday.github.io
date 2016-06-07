@@ -13,7 +13,7 @@ The core feature of upday is to show news to the user in a way that is easy to r
 
 Reading those requirements it seems very natural to have a stream with events for the position and different stream with events for the set of cards, it also feels right since RxJava is event driven. All we need to do is to expose this two streams in the ViewModel so the Fragment can subscribe to them and issue the received events to the adapter and/or ViewPager. In theory this should work, what could go wrong?
 
-{% highlight java %}
+```java
 public class NewsFragment extends Fragment {
 
     private NewsViewModel mViewModel;
@@ -48,7 +48,8 @@ public class NewsFragment extends Fragment {
         super.onPause();
     }
 }
-{% endhighlight %}
+
+```
 
 We did exactly this and we started receiving bugs reports that had to do with wrong end state of the ViewPager. Those bugs would usually have the so feared characteristic of not being 100% reproducible, they happen sometimes and there is no way to reproduce them in a consistent way. We had to face the crude reallity, we had race conditions but why? We have a neat architecture using MVVM, everything is JUnit tested in the ViewModel and we use RxJava to send events which is what is meant for.
 
@@ -64,22 +65,21 @@ Sometimes, upday receives breaking news in form of push notifications so the use
 
 We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial, when the stream emits an event the ViewPager should just scroll to position 0, there is no logic or transformation between that needs to be JUnit tested.
 
-{% highlight java %}
+```java
 breakingNewStream
 	.observeOn(AndroidSchedulers.mainThread())
     .subscribe(event -> mViewPager.setCurrentItem(0));
-{% endhighlight %}
+```
 
 First of all, this is already breaking the previous rule of states instead of events since it is setting the position only. Even though we had a stream of ViewPager' states it would still be wrong. The reason is that in MVVM there are many things relying on what the ViewModel says the actual state is and in this case the ViewModel is not aware of what just happened in the ViewPager, it has no idea that the current position is 0. So the next natural step here would be notifify the ViewModel about what just happened.
 
-{% highlight java %}
+```java
 breakingNewStream
 	.observeOn(AndroidSchedulers.mainThread())
     .subscribe(event -> {mViewPager.setCurrentItem(0);
     					 mViewModel.notifyCurrentPosition(0);});
-{% endhighlight %}
+```
 
 At this point we can think we did a great job, we solved the issue, the ViewModel now knows what is going on and we can handle this state change properly. But the reality is quite different, by doing this we just shot ourselves in the foot. If we have or we are planning to have other  effects based on what the ViewModel thinks the ViewPager's state is what we just did introduced a race condition. There is a window of time where the ViewModel has been "notified" but the state is still not effective due to the asynchronous nature of Rx. (Should I elaborate a bit more here why there is a race condition? I am assuming it is clear that the other stuff relying on the ViewModel's state are also using Rx streams and the position change doesn't have to be propagated immediately).
 
 The problem here is that we haven't followed the natural steps our MVVM architecture is meant for. The ViewModel transforms the data into something that is easy to use in the Views or any other consumer, this means **the View should know about the changes always after the ViewModel.** In this example the View knows about the changes before the ViewModel making the former unreliable. So basically, it doesn't matter how trivial or easy an operation is, **everything should go through the ViewModel**, this way other stuff that is based on the ViewModel's state can happen reliably.
-
