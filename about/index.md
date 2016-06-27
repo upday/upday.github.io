@@ -35,5 +35,10 @@ modified: 2014-08-08T19:44:38.564948-04:00
 	<a href="http://twitter.com/UpdayDevs" title="Peter"><img src="https://github.com/pkrauss-asideas.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Robert"><img src="https://github.com/rbordo.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Artur"><img src="https://github.com/sevos.png" alt="image"></a>
+	<a href="http://twitter.com/UpdayDevs" title="Simone"><img src="https://github.com/SimoneDzapoGarcia.png" alt="image"></a>
+	<a href="http://twitter.com/UpdayDevs" title="Nicola"><img src="https://github.com/sirnicolaz.png" alt="image"></a>
+	<a href="http://twitter.com/UpdayDevs" title="Mike"><img src="https://github.com/suxor42.png" alt="image"></a>
+	<a href="http://twitter.com/UpdayDevs" title="Richard"><img src="https://github.com/sweatyrichard.png" alt="image"></a>
+	<a href="http://twitter.com/UpdayDevs" title="Will"><img src="https://github.com/will-nolan.png" alt="image"></a>
   <figcaption>Our Updudettes & Updudes</figcaption>
 </figure>
