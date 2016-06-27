@@ -28,6 +28,7 @@ modified: 2014-08-08T19:44:38.564948-04:00
 	<a href="http://twitter.com/UpdayDevs" title="Lucia"><img src="https://github.com/luciapayo.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Maciej"><img src="https://github.com/maciejwalkowiak.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Maria"><img src="https://github.com/mfernandezpajares.png" alt="image"></a>
+	<a href="http://twitter.com/UpdayDevs" title="Timo"><img src="https://github.com/ulich.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Tino"><img src="https://github.com/noacktino.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Pablo"><img src="https://github.com/pabloqc.png" alt="image"></a>
 	<a href="http://twitter.com/UpdayDevs" title="Peter"><img src="https://github.com/peter-tackage.png" alt="image"></a>
