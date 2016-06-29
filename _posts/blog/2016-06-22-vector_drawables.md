@@ -1,99 +1,112 @@
 ---
 layout: post
-title: "Animations and Touch Events"
-description: View animations vs property animations and touch events handling
+title: "Vector Drawables"
+description: Here's how vector drawables work and what are their limitations
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: Did you ever had problems with touch events on views after they were animated? Here's why.
-tags: [Android, Animations, Touch Events]
+excerpt: Before you replace all your images with vector drawables, here's how they work and what issues you might have with them.
+tags: [Android, UI, Vector Drawables]
 image:
-date: 2016-05-20T15:39:55-04:00
+date: 2016-06-27T15:39:55-04:00
 ---
 
-Android offers two main animation frameworks: **view animation** and **property animation**. Each of these is fairly easy to implement. However, the main difference can be seen when you need to handle touch events on views that have changed their position after animation. Let’s see how both of these animation frameworks work, how they can be implemented and which one you should use for touch events.
+## Yey, we have vector graphics support!
 
-## Task
-When tapping a ``View``, we need to translate it up by 75% of its height. When tapping on the area where the ``View`` was initially, our ``View`` should slide back down.
+While some mobile platforms have been supporting vector graphics for a while, Android began doing this natively only starting with Lollipop and with the help of the Support Library 23.2.0 for pre-Lollipop devices. Vector drawables allow creating drawables based on XML vector graphics. Like this, the number of drawables added in the project decreases and therefore the APK size also. But, before you decide to replace absolutely every PNG in your app with a vector drawable, understand how they work, what kind of limitations they have and how can you overcome some of them.
 
-<center>
-<iframe width="250" height="444" src="/videos/animations_touch/slide_animations.mp4"></iframe>
-<figcaption>Translate a view up and down by 75%.</figcaption>
-</center>
+## How do vector drawables work
 
-## View Animations
+Vector graphics use geometrical shapes to describe graphical elements. The vector graphics are rendered at runtime. The automatic rendering at pixel density is the one that gives smoothness to the graphics, regardless of the device capabilities. Although the XML file containing the vector drawable is usually smaller than the PNG version, the vector drawables come with a computational overhead at runtime, which may be an issue for more complex graphical elements.
 
-**View animations** provide an easy to use API for animating the contents of a view object. This framework supports translation, rotation, growing and shrinking of a view. You can define these animations either in XML or programmatically.
 
-The implementation of the view translation animation in **XML** contains the following in the animation resource file:
+## Limitations of vector drawables
+
+
+### Size matters
+
+Since the vector graphics are rendered at runtime, the initial loading and drawing of a vector drawable will be slower. This is why Android recommends using them for images of max 200x200dp.
+
+In order to actually check how long the rendering of the vector drawables takes comparing to drawing a PNG image we've created a MeasurableImageView, that overrides the ``onDraw()`` method allowing to compute how long the ``super.onDraw()`` took.
+
+{% highlight java %}
+@Override
+protected void onDraw(final Canvas canvas) {
+    long startTime = System.currentTimeMillis();
+
+    super.onDraw(canvas);
+
+    long endTime = System.currentTimeMillis();
+    notifyDraw(startTime, endTime);
+}
+{% endhighlight %}
+
+Tests were done one a Samsung Galaxy S7 device.
+
+Test 1:
+Image size - 1440px x 1960px
+Duration:
+- vector drawable: 16 ms
+- PNG: 0ms
+
+Test 2:
+Image size - 400px x 400px
+Duration:
+- vector drawable: 2 ms
+- PNG: 0ms
+
+
+
+When vector drawables are drawn for the first time, a cached bitmap is created in order to optimize the re-drawing performance. This cache is re-used as long as the width and the height of the image that needs to be drawn is the same. If a VectorDrawable is used for multiple sizes, a new Bitmap will be created every time and drawn. Therefore, the best approach in this case is to create VectorDrawables for every size needed.
+
+In order to test this, we just allow our app to support both portrait and landscape orientation. Since the size of the view changes when changing the orientation, we can see that when rotating the device, drawing the vector drawable takes 15ms in portrait and 5ms in landscape, where the view is smaller.
+In the same time, when the image is just re-used by different views, we can see that drawing the vector drawable takes 15ms only the first time, afterwards, drawing takes 0ms.  
+
+
+### Supported tags
+
+Not all VectorDrawable XML tags are supported for Android 5.0 and higher, but just a limited set:
+
+// insert image
+
+But, the Support Library 23.2.0 and higher is offering full support for VectorDrawable XML elements.
+
+
+### Resource references in VectorDrawable XML
+
+In case you want to support things like this in the VectorDrawable XML:
 
 {% highlight XML %}
-<set android:fillAfter="true"
-     android:shareInterpolator="false">
-    <translate
-        android:duration="@android:integer/config_longAnimTime"
-        android:fromAlpha="0.0"
-        android:fromXDelta="0%"
-        android:fromYDelta="0%"
-        android:toAlpha="1.0"
-        android:toXDelta="0%"
-        android:toYDelta="-75%" />
-</set>
+android:fillColor="@color/colorPrimary"
 {% endhighlight %}
 
-Then then animation needs to be loaded in the code.
-{% highlight java %}
-Animation animation = AnimationUtils.loadAnimation(getContext(), R.anim.translate_up);
-view.startAnimation(animation);
-{% endhighlight %}
+Be aware that only Android 5.0 and higher supports dynamic attributes.
+Setting this will result in black areas instead of your desired color, on pre-API level 21 devices.
 
-Translating a view **programmatically** requires defining the animation and just calling start on the view that needs to be animated.
-{% highlight java %}
-TranslateAnimation animation = new TranslateAnimation(0, 0, 0, toYDelta);
-animation.setFillAfter(true);
-animation.setDuration(getResources().getInteger(android.R.integer.config_longAnimTime));
-view.startAnimation(animation);
-{% endhighlight %}
-Where the ``toYDelta`` is the change in Y axis that needs to be applied.
-
-## Property Animations
-
-The **property animation** framework was introduced in Android 3.0 and allows the animation of any object, not just ``View``s. It offers a broader function scope - for example, the background color of a ``View`` can also be animated - and has a slightly better performance than the view animations.
-
-Implementing a view translation can be easily done programmatically.
-{% highlight java %}
-view.animate().translationYBy(animateByPx);
-{% endhighlight %}
-Where the ``animateByPx`` is the amount of pixels the view is translated on the Y axis.
-
-## Handling Touch Events
-
-The main difference between view and property animations lies in whether the ``View`` is modified or not. With view animations, the ``View`` gets drawn in another position, but the actual ``View`` does not move. So, this means that the view will not react to touch events on the area where it is drawn, but rather in the area where it was before the animation started.
-With property animations, the object actually gets moved. Therefore it will react to touch events on its new location on the screen.
-
-For a better understanding on how the touch area changes, we have implemented a selector for our ``View``’s background, allowing us to set two different colors depending on the pressed state of the view: pink for pressed and blue for not pressed.
-
-Here's what happens after translating the ``View`` using view animations: when touching the area that is above the original location of the ``View``, the ``View`` does not react. The touch events are caught by the area outside it.
 <center>
-<iframe width="250" height="444" src="/videos/animations_touch/view_animation_touch_outside.mp4"></iframe>
-<figcaption>Touch events on the new position of the view, after a view animation was applied.</figcaption>
+<picture class="half">
+	<img src="/images/blog/vector_drawables/dynamic_res_21.png" alt="Dynamic attributes on API level 21">
+	<figcaption>Dynamic attributes used on API level 21</figcaption>
+</picture>
 </center>
 
-When touching the area containing the initial position of the ``View``, we see that the area of the ``View``that is still drawn over the original position reacts to our touch events.
 <center>
-<iframe width="250" height="444" src="/videos/animations_touch/view_animation_touch_old_location.mp4"></iframe>
-<figcaption>Touch events on the initial position of the view, after a view animation was applied.</figcaption>
+<picture>
+	<img src="/images/blog/vector_drawables/dynamic_res_19.png" alt="Dynamic attributes on API level 19">
+	<figcaption>Dynamic attributes used on API level 19</figcaption>
+</picture>
 </center>
 
-With the property animations implementation we see that the ``View`` reacts to touch events exactly as expected, no matter where the touch events happen.
-<center>
-<iframe width="250" height="444" src="/videos/animations_touch/property_animation.mp4"></iframe>
-<figcaption>Touch events with property animations.</figcaption>
-</center>
+### Vector Drawable preview in Android Studio looks skewed
+
+The Vector Drawable preview either in the import preview or in the file preview might look skewed. But, don't be scared, chances are it might look good when the app is run on the device. So, before panicking or even worse, giving up check it first on the device.
 
 ## Conclusion
 
-Both view and property animations are easy to implement. Use the one that’s more convenient for you, but when needing to implement touch events on a ``View`` that was already animated, you should use **property animations**.
+Vector Drawables are the best way of compressing your images and reducing your APK size. But before you start replacing all your PNGs keep in mind that the first time the image is drawn will be longer. The rest of the possible issues with Vector Drawables are minor and easy to overcome, comparing to the gain of using them.
 
-Check out the implementation of view and property translation animations in this <a href="https://github.com/florina-muntenescu/Playground">GitHub repo</a>.
-See the <a href="https://developer.android.com/guide/topics/graphics/view-animation.html">view animation</a> and <a href="https://developer.android.com/guide/topics/graphics/prop-animation.html">property animation</a> Android API guides for detailed information.    
+If you want to learn more about Vector Drawables here are some really cool resources:
+
+https://developer.android.com/studio/write/vector-asset-studio.html
+https://medium.com/@chrisbanes/appcompat-v23-2-age-of-the-vectors-91cbafa87c88#.ultiul691
+https://www.youtube.com/watch?v=r_LpCi6DQME
