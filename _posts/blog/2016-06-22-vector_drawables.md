@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Vector Drawables"
+title: "Understanding Vector Drawables"
 description: This is how vector drawables work and what their limitations are
 modified:
 categories: blog
