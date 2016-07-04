@@ -71,14 +71,14 @@ We generated two traces: one after setting the vector drawable as image source a
 
 <center>
 <picture>
-	<img src="/images/blog/vector_drawables/trace_png.png" alt="TraceView of a PNG">
+	<a href="/images/blog/vector_drawables/trace_png.png"><img src="/images/blog/vector_drawables/trace_png.png" alt="TraceView of a PNG"></a>
 	<figcaption>Screenshot from TraceView results when using a PNG image</figcaption>
 </picture>
 </center>
 
 <center>
 <picture>
-	<img src="/images/blog/vector_drawables/trace_vector_drawable.png" alt="TraceView of a vector drawable">
+ <a href="/images/blog/vector_drawables/trace_vector_drawable.png"><img src="/images/blog/vector_drawables/trace_vector_drawable.png" alt="TraceView of a vector drawable"></a>
 	<figcaption>Screenshot from TraceView results when using a vector drawable</figcaption>
 </picture>
 </center>
@@ -102,7 +102,7 @@ Not all VectorDrawable XML tags are supported for Android 5.0 and higher, just a
 
 <center>
 <picture>
-	<img src="/images/blog/vector_drawables/tags_support.png" alt="VectorDrawables tags supported">
+  <a href="/images/blog/vector_drawables/tags_support.png"><img src="/images/blog/vector_drawables/tags_support.png" alt="VectorDrawables tags supported"></a>
 	<figcaption>Supported tags. Image from Android developer pages. </figcaption>
 </picture>
 </center>
