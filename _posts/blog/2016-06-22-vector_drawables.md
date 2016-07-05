@@ -13,11 +13,11 @@ date: 2016-06-27T15:39:55-04:00
 
 ## Hurrah, Android Supports Vector Graphics!
 
-While some mobile platforms have been supporting vector graphics for a while, Android only began doing this natively starting with API Level 21 and with the help of the Support Library 23.2.0 for pre-Lollipop devices. Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics. Using vector data instead of raster image data, the number of resources added to the project decreases and therefore also the APK size. But, before you decide to replace absolutely every PNG in your app with a vector drawable, understand how they work, what limitations they have and how can you overcome some of them.
+While some mobile platforms have been supporting vector graphics for a while, Android only began doing this natively starting with API Level 21 and with the help of the Support Library 23.2.0 for pre-Lollipop devices. Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics. Using vector data instead of raster image data, the number of resources added to the project decreases, since now only one resource per resolution is needed, and therefore also the APK size. But, before you decide to replace absolutely every PNG in your app with a vector drawable, understand how they work, what limitations they have and how can you overcome some of them.
 
 ## How Vector Drawables Work
 
-Vector graphics use geometrical shapes to describe graphical elements. The vector graphics are rendered at runtime. The automatic rendering at pixel density gives smoothness to the graphics, regardless of the device capabilities. Although the XML file containing the vector drawable is usually smaller than the PNG version, the vector drawables come with a computational overhead at runtime, which may be an issue for more complex graphical elements.
+Vector graphics use geometrical shapes to describe graphical elements. The vector graphics are rendered at runtime. The automatic rendering at pixel density gives smoothness to the graphics, regardless of the device capabilities. So your images won’t be downscaled or upscaled, looking stretched or pixelated but they will be always perfectly drawn for your screen size. Although the XML file containing the vector drawable is usually smaller than the PNG version, the vector drawables come with a computational overhead at runtime, which may be an issue for more complex graphical elements.
 
 
 ## Limitations Of Vector Drawables
@@ -25,9 +25,9 @@ Vector graphics use geometrical shapes to describe graphical elements. The vecto
 
 ### Maximum VectorDrawable Size Recommended
 
-Since the vector graphics are rendered at runtime, the initial loading and drawing of a vector drawable will be slower. This is why Google recommends using them for images of max 200x200dp.
+Since the vector graphics are rendered at runtime, on the CPU, the initial loading and drawing of a vector drawable will be slower. This is why <a href="https://developer.android.com/studio/write/vector-asset-studio.html">Google recommends<a/> using them for images of max 200x200dp.
 
-What exactly does "slower" mean and what's the difference between drawing a vector drawable and a PNG?  
+We are curious developers here at <a href="https://play.google.com/store/apps/details?id=de.axelspringer.yana">upday<a/> so we wanted to find out what exactly does "slower" mean and what's the difference between drawing a vector drawable and a PNG? Given how much <a href="https://plus.google.com/explore/PERFMATTERS">#PERFMATTERS<a/> we wanted to make sure that we won't end up with a smaller APK but with a slower app.
 In order to actually check how long the rendering takes, we have measured it using several different test methods:
 
 ###### 1. Using System.currentTimeMillis()
@@ -56,7 +56,7 @@ The difference in rendering time is considerable.
 
 ###### 2. Using TraceView
 
-Hoping to get clearer results, we decided to use TraceView. We modified the overriden ``onDraw`` method, calling ``Debug.startMethodTracing`` before the ``super.onDraw`` and stopped the tracing with ``Debug.stopMethodTracing`` immediately after.
+Hoping to get clearer results, we decided to use TraceView. We modified the overridden ``onDraw`` method, calling ``Debug.startMethodTracing`` before the ``super.onDraw`` and stopped the tracing with ``Debug.stopMethodTracing`` immediately after.
 
 {% highlight java %}
 @Override
@@ -71,14 +71,14 @@ We generated two traces: one after setting the vector drawable as image source a
 
 <center>
 <picture>
-	<a href="/images/blog/vector_drawables/trace_png.png"><img src="/images/blog/vector_drawables/trace_png.png" alt="TraceView of a PNG"></a>
+	<img src="/images/blog/vector_drawables/trace_png.png" alt="TraceView of a PNG">
 	<figcaption>Screenshot from TraceView results when using a PNG image</figcaption>
 </picture>
 </center>
 
 <center>
 <picture>
- <a href="/images/blog/vector_drawables/trace_vector_drawable.png"><img src="/images/blog/vector_drawables/trace_vector_drawable.png" alt="TraceView of a vector drawable"></a>
+	<img src="/images/blog/vector_drawables/trace_vector_drawable.png" alt="TraceView of a vector drawable">
 	<figcaption>Screenshot from TraceView results when using a vector drawable</figcaption>
 </picture>
 </center>
@@ -86,6 +86,8 @@ We generated two traces: one after setting the vector drawable as image source a
 ###### 3. Using HierachyViewer
 
 At the beginning, we considered this a valid way of measuring the render time. But, after seeing <a href="https://twitter.com/queencodemonkey">Huyen Tue Dao<a/>'s talk at Droidcon Berlin 2016 about <a href="https://www.youtube.com/watch?v=gwqQT5NrhUg">loving lean layout<a/>, where she mentions several times not to rely on the numbers from the HierarchyViewer, we decided skip this.
+
+
 
 
 ### Multiple Sizes, Multiple Renderings
@@ -98,11 +100,11 @@ At the same time, when the image is just re-used by different views, we can see 
 
 ### Supported Tags
 
-Not all VectorDrawable XML tags are supported for Android 5.0 and higher, just a limited set:
+Another limitation of vector drawables are the tags. Not all VectorDrawable XML tags are supported for Android 5.0 and higher, just a limited set:
 
 <center>
 <picture>
-  <a href="/images/blog/vector_drawables/tags_support.png"><img src="/images/blog/vector_drawables/tags_support.png" alt="VectorDrawables tags supported"></a>
+	<img src="/images/blog/vector_drawables/tags_support.png" alt="VectorDrawables tags supported">
 	<figcaption>Supported tags. Image from Android developer pages. </figcaption>
 </picture>
 </center>
@@ -125,7 +127,7 @@ Setting this will result in black areas instead of your desired color on pre-API
 <picture>
 <img src="/images/blog/vector_drawables/dynamic_res_21.png" alt="Dynamic attributes on API level 21" width="250">
 <img src="/images/blog/vector_drawables/dynamic_res_19.png" alt="Dynamic attributes on API level 19" width="250">
-<figcaption>Dynamic attributes used on API Level 21(left) vs 19(right)</figcaption>
+<figcaption>Dynamic attributes used on API level 21(left) vs 19(right)</figcaption>
 </picture>
 </center>
 
@@ -143,13 +145,15 @@ The vector drawable preview in both the import preview and in the file preview c
 
 ## Conclusion
 
-<a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html">VectorDrawables<a/> are the best way of compressing your images and reducing your APK size. But before you start replacing all your PNGs, keep in mind that the first time the image is drawn, it will take longer. Considerably longer! The rest of the issues to take into account with vector drawables are minor and easy to overcome, compared to the advantages that you get when using them.
+<a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html">VectorDrawables<a/> are the best way of minimizing the number of images resources and reducing your APK size. But before you start replacing all your PNGs, keep in mind that the first time the image is drawn, it will take longer. Considerably longer! The rest of the issues to take into account with vector drawables are minor and easy to overcome, compared to the advantages that you get when using them.
 
 Check out the project used for testing VectorDrawables in this <a href="https://github.com/florina-muntenescu/Playground">GitHub repo</a>.
 
 If you want to learn more about vector drawables, here are some interesting resources:
 
 <a href="https://developer.android.com/studio/write/vector-asset-studio.html">Adding multi-density vector graphics in Android Studio<a/>
+<br/>
+<a href="https://medium.com/@duhroach/how-vectordrawable-works-fed96e110e35#.r8dp2p9lc">How VectorDrawable works</a>
 <br/>
 <a href="https://medium.com/@chrisbanes/appcompat-v23-2-age-of-the-vectors-91cbafa87c88#.ultiul691">Vector drawables and AppCompat</a>
 <br/>
