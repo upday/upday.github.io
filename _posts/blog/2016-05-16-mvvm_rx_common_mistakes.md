@@ -22,11 +22,12 @@ If you’re ready to learn more about the “how and why”, let’s go!
 ## Expose states and not events
 
 The core feature of upday is to show news to the user in a way that is easy to read and fluid. With this specification the ViewPager seemed a good choice, we could present the news in form of cards one after the other. More specifically we need to implement the following behaviors:
+
 1. Scroll to a certain position.
 2. Replace/update the elements in the ViewPager.
 3. Replace/update the elements in the ViewPager AND scroll to a certain position.
 
-Reading those requirements it seems very natural to have an Rx stream with the position and a different Rx stream with the set of cards. All we need to do is to expose these two streams in the ViewModel so the Fragment can subscribe to them and issue the received events to the adapter and/or ViewPager.
+Reading those requirements it seems very natural to have an Rx stream with the position and a different Rx stream with the set of cards. All we need to do is to expose these two streams in the view model so the Fragment can subscribe to them and issue the received events to the adapter and/or ViewPager.
 
 So this is the plan: do the processing of the position and the data set separately in background threads inside the view model, expose these streams and subscribe to them in the Fragment, switch to the main thread only to receive the events and modify the views. In theory this should work, we are separating business logic from framework related logic pretty well, we are making the Fragment very dumb so we can unit test most of the logic via the view model. We are also doing all the processing in background threads, only using the main thread when is necessary. What could go wrong?
 
@@ -101,24 +102,24 @@ Sometimes upday receives breaking news in the form of push notifications so the 
 We have a mechanism to capture the actions of the user in the push notifications that transforms them into a Rx stream so, why not subscribe to it directly in the Fragment? The operation here is trivial: when the stream emits an event the ViewPager should just scroll to position 0, there is no logic or transformation in-between that needs to be unit tested.
 
 {% highlight java %}
-breakingNewStream.observeOn(AndroidSchedulers.mainThread())
-                 .subscribe(event -> mViewPager.setCurrentItem(0),
-                            this::handleError);
+breakingNewsStream().observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(event -> mViewPager.setCurrentItem(0),
+                               this::handleError);
 {% endhighlight %}
 
-First of all, this is already breaking the previous rule of states instead of events since it is setting the position only, but even though we had a stream of ViewPager's states it would still be wrong. The reason for this is that there can be many things relying on what the view model says the current state is. In this case the view model is not aware of what just happened in the ViewPager, it has no idea that the current position is 0. So the next natural step here would be to notify the view model about what just happened.
+First of all, this is already breaking the previous rule of states instead of events since it is setting the position only, but even though we had a stream of ViewPager's states it would still be wrong. The reason is that the view model is not aware of what just happened and we could have other things relying on what the view model says the current state is. So the next natural step here would be to notify the view model about what just happened.
 
 {% highlight java %}
-breakingNewStream.observeOn(AndroidSchedulers.mainThread())
-                 .subscribe(event -> {
-                                mViewPager.setCurrentItem(0);
-                                mViewModel.notifyCurrentPosition(0);
-                            },
-                            this::handleError);
+breakingNewsStream().observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(event -> {
+                                   mViewPager.setCurrentItem(0);
+                                   mViewModel.notifyCurrentPosition(0);
+                               },
+                               this::handleError);
 {% endhighlight %}
 
 At this point we could think we did a great job, we solved the issue. The view model now knows what is going on and we can handle this state change properly. But again the reality is quite different and by doing this we have just shot ourselves in the foot. If we ever were to add other effects based on what the view model thinks the ViewPager's state is, then we have again created a race condition. There is a window of time where the view model has been "notified" but the state has not yet been processed due to the asynchronous nature of the events.
 
-The problem here is that we haven't followed the natural pattern of our MVVM architecture. The view model transforms the data into something that is easy to use in the Views or any other consumer, this means **the view should know about the changes always after the view model.** In this example the View knows about the changes before the view model, making the View’s state unreliable.
+The problem here is that we haven't followed the natural pattern of our MVVM architecture. The view model transforms the data into something that is easy to use in the Views or any other consumer, this means **the view should know about the changes always after the view model.** In this example the View knows about the changes before the view model, making the later unreliable.
 
 So basically, it doesn't matter how trivial or easy an operation is, **everything should go through the view model,** this way other stuff that is based on the view model’s state can happen reliably.
