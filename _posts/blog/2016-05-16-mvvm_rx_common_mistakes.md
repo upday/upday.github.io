@@ -71,7 +71,7 @@ public class NewsFragment extends Fragment {
 
 {% endhighlight %}
 
-We did exactly this and started receiving bug reports indicating a wrong end state in the ViewPager. Those types of bugs usually have the feared characteristic of not being 100% reproducible; sometimes they happen and sometimes they don’t, without any clear way to reproduce them. We had to face the brutal reality: we had race conditions, but why? We have a neat architecture using MVVM, everything is unit tested and we use RxJava to send events.
+We did exactly this and started receiving bug reports indicating a wrong end state in the ViewPager. Those types of bugs usually have the feared characteristic of not being 100% reproducible. We had to face the brutal reality: we had race conditions, but why? We have a neat architecture using MVVM, everything is unit tested and we use RxJava to send events.
 
 The best way to explain what was happening is with an example. So imagine that we initially have a data set with 5 items in the ViewPager and the actual position is 3.
 <center>
