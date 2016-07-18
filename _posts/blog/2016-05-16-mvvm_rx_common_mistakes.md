@@ -7,7 +7,7 @@ author: lucia_payo
 excerpt: Issues to take into account when using MVVM + RxJava architecture
 tags: [RxJava, MVVM]
 image:
-date: 2016-06-2T15:39:55-04:00
+date: 2016-07-17T15:39:55-04:00
 ---
 
 MVVM + RxJava is a great formula for an app architecture. At upday we recognised this and used it in our app, making it scalable and maintainable. Despite this, we’ve had to learn a few lessons the hard way.
