@@ -39,7 +39,7 @@ With every new piece of meat that Donald gets, he first needs to make sure that 
 
 The next step is to make the burger. Donald needs to take the first bun given by Huey, together with the first piece of cooked meat and with the first slice of tomato given by Louie and then "zip" together the first burger.
 
-For the second burger, he will use the second bun from Huey, the second piece of cooked meat and the second slice of tomato.The time took by each of the nephews to do his part is different. Louie will be providing tomato slices faster than Dewey can cook the meat. As a result, Donald has to wait for it to be ready, in order to make the burger. Because he doesn't want to throw away any tomato slices, he will always use the first one on the row, given by Louie.
+For the second burger, he will use the second bun from Huey, the second piece of cooked meat and the second slice of tomato. The processing time took by each of the nephews is different. Louie will be providing tomato slices faster than Dewey can cook the meat. As a result, Donald has to wait for it to be ready, in order to make the burger. Because he doesn't want to throw away any tomato slices, he will always use the first one on the row, given by Louie.
 
 <center>
 <picture>
@@ -50,7 +50,7 @@ For the second burger, he will use the second bun from Huey, the second piece of
 
 ## ReactiveX and Buns, Meat & Tomato Slices
 
-In ReactiveX the buns are streams of data. The meat and the tomato slices are also streams of data, and the burgers also, but created by composing multiple streams of data. The class that emits a stream of data is called ``Observable``. So this means that we will have an Observable of buns, an Observable of meat, an Observable of tomato slices and in the end, an Observable of burgers.
+In ReactiveX the buns, tomato slices and the meat are streams of data. By composing multiple streams we create a new one, composed of burgers. The class that emits a stream of data is called ``Observable``. So this means that we will have an ``Observable`` of buns, an ``Observable`` of meat, an ``Observable`` of tomato slices and in the end, an ``Observable`` of burgers.
 
 <center>
 <picture>
@@ -59,11 +59,11 @@ In ReactiveX the buns are streams of data. The meat and the tomato slices are al
 </picture>
 </center>
 
-Donald Duck's customer, Mickey Mouse, he gets to consume the burger. So, Mickey Mouse is the one that acts upon the emitted items by the burger Observable. In ReactiveX, this is the ``Subscriber`` class.
+Donald Duck's customer, Mickey Mouse, he gets to consume the burger. So, Mickey Mouse is the one that acts upon the emitted items by the burger ``Observable``. In ReactiveX, this is the ``Subscriber`` class.
 
-The actions that we performed on the stream of meat given by Dewey: filtering the meat that has gone bad and cooking the meat - so applying a function to every piece of meat - are called ``operators``.
+The actions performed on the streams: filtering the meat that has gone bad and cooking the meat - so applying a function to every element of the stream - are called ``operators``.
 
-When developing using ReactiveX you have to switch from the pull based approach to a push based one. In this example, Donald Duck does not pull buns from Huey. He does not request buns. Rather, Donald is just waiting for buns that are delivered to him by his nephew.
+When developing using ReactiveX you have to switch from a pull based approach to a push based one. In this example, Donald Duck does not pull buns from Huey. He does not request buns. Rather, Donald is just waiting for buns that are pushed to him by his nephew.
 
 <center>
 <picture>
@@ -72,7 +72,7 @@ When developing using ReactiveX you have to switch from the pull based approach 
 </picture>
 </center>
 
-We don't have an exact set of data that we can operate on, but rather we operate on each emission of a stream. This means that if we want to work only on meat that has not gone bad, we cannot do:
+We don't have an exact set of data that we can operate on, but rather we operate on each emission of a stream. This means that if we want to work only on fresh meat, we cannot do:
 {% highlight java %}
 for(Meat meat: meatList){
     if(isMeatGoneBad(meat)){
@@ -81,7 +81,7 @@ for(Meat meat: meatList){
 }
 
 {% endhighlight %}
-because we don't have that ``meatList``. We have an Observable that emits meat pieces and from those, we are only interested in cooking the pieces that have not gone bad, those are the ones that we need to ``filter`` out.
+because we don't have that ``meatList``. We have an ``Observable`` that emits meat pieces and from those, we are only interested in cooking the pieces that have not gone bad, the others need to be ``filter``ed out.
 {% highlight java %}
 Observable.from(meatSource)
           .filter(meat -> isMeatGoneBad(meat))
@@ -111,11 +111,11 @@ Observable<Burger> burgerObservable =
                   tomatoObservable,
                   (bun, meat, tomato) -> makeBurger(bun, meat, tomato));
 {% endhighlight %}
-The ``zip`` operator is the one that will put together one emission of each Observable: a bun, a meat and a tomato slice. In order to do that, it needs to know how to make the burger using the three ingredients. This is defined in the ``makeBurger`` method.
+The ``zip`` operator is the one that will one that will combine the emissions of each ``Observable``: a bun, a meat and a tomato slice. In order to do that, it needs to know how to make the burger using the three ingredients. This is defined in the ``makeBurger`` method.
 
 ## Mickey Mouse Gets His Burger
 
-If Donald Duck is the one that produces burgers and Mickey Mouse is the one that consumes the burgers, how do the burgers get to Mickey? This is done using the ``subscribe`` method.
+If Donald Duck is the one that produces burgers and Mickey Mouse is the one that consumes it, how do the they get to Mickey?? This is done using the ``subscribe`` method.
 {% highlight java %}
 burgerObservable.subscribe(mickeySubscriber);
 {% endhighlight %}
@@ -146,10 +146,10 @@ Observable.zip(bunObservable, meatObservable, tomatoObservable,
 		    error -> complain(error));
 {% endhighlight %}
 
-Mickey Mouse orders the burger in the dining area of the restaurant. By default, in ReactiveX, the event stream would be processed on the same thread. So, this means that the preparation of the burger would also happen in the dining area. But this should actually happen in the kitchen! This also allows Donald Duck to make more burgers while Mickey Mouse eats his burger.
-ReactiveX provides two methods that allow defining on which thread the operations should happen and on this thread the result should be handled: ``observeOn`` and ``subscribeOn``.
-Donald Duck should make the burger in the kitchen. This will be defined: ``subscribeOn(kitchen)``. Mickey Mouse eats the burger in the dining area: ``observeOn(dining area)``.
-The "kitchen" should be a background thread and the "dining area" should be the main thread.
+Mickey Mouse orders the burger in the dining area of the restaurant. By default, in ReactiveX, the event stream would be processed on the same thread. So, this means that the preparation of the burger would also happen in the dining area. But this should actually happen in the kitchen! This also allows Donald Duck to make more burgers while Mickey Mouse eats his burger - so this happens in parallel.
+ReactiveX provides two methods that allow defining on which thread the operations should be executed and on which thread the result should be handled: ``observeOn`` and ``subscribeOn``.
+Donald Duck prepares the burger in the kitchen: ``subscribeOn(kitchen)``. Mickey Mouse eats the burger in the dining area: ``observeOn(dining area)``.
+The "kitchen" should be a background thread and the "dining area" should be the UI thread.
 
 {% highlight java %}
 Observable.zip(bunObservable, meatObservable, tomatoObservable,
@@ -162,4 +162,4 @@ Observable.zip(bunObservable, meatObservable, tomatoObservable,
 
 ## Reactive Burger Conclusion
 
-Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or .NET work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software.  
+Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or C# work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software.  
