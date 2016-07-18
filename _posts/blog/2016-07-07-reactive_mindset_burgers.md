@@ -63,7 +63,7 @@ Donald Duck's customer, Mickey Mouse, he gets to consume the burger. So, Mickey 
 
 The actions that we performed on the stream of meat given by Dewey: filtering the meat that has gone bad and cooking the meat - so applying a function to every piece of meat - are called ``operators``.
 
-When developing using ReactiveX you have to switch from the pull based approach to a push based one. More precisely, Donald Duck does not pull buns from Huey. He does not request buns. Rather, Donald is just waiting for buns that are delivered to him by his nephew.
+When developing using ReactiveX you have to switch from the pull based approach to a push based one. In this example, Donald Duck does not pull buns from Huey. He does not request buns. Rather, Donald is just waiting for buns that are delivered to him by his nephew.
 
 <center>
 <picture>
