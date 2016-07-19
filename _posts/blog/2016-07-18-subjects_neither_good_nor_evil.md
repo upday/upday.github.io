@@ -4,7 +4,7 @@ title: "Subjects - Neither Good nor Evil"
 modified:
 categories: blog
 author: tomek_polanski
-excerpt: Get to know the thread switching operations
+excerpt: Why are the Rx Subjects so often misunderstood?
 tags: [RxJava]
 image:
 date: 2016-07-18T13:00:55-01:00
