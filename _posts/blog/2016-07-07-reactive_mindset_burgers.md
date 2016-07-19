@@ -103,7 +103,7 @@ Observable.from(meatSource)
 
 ## Make a Reactive Burger
 
-Huey, Dewey and Louie create three ``Observable``s: bunObservable, meatObservable and the tomatoObservable. Donald will create the burgerObservable:
+Huey, Dewey and Louie create three ``Observable``s: ``bunObservable``, ``meatObservable`` and the ``tomatoObservable``. Donald will create the ``burgerObservable``:
 {% highlight java %}
 Observable<Burger> burgerObservable =
 	Observable.zip(bunObservable,
@@ -162,4 +162,4 @@ Observable.zip(bunObservable, meatObservable, tomatoObservable,
 
 ## Reactive Burger Conclusion
 
-Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or C# work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software.  
+Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or C# work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software. We, at upday, love it on Android! 
