@@ -7,7 +7,7 @@ categories: blog
 author: florina_muntenescu
 excerpt: What do Donald Duck and reactive programming have in common? Burgers! Check out why.
 tags: [Android, RxJava]
-date: 2016-07-16T15:39:55-04:00
+date: 2016-07-19T15:39:55-04:00
 ---
 Here's another way of explaining reactive programming: this time with Donald Duck and his nephews.
 
@@ -143,7 +143,7 @@ Overall, the burger making and consuming would look, in RxJava, like this:
 Observable.zip(bunObservable, meatObservable, tomatoObservable,
      	          (bun, meat, tomato) -> makeBurger(bun, meat, tomato))
 	  .subscribe(burger -> eatBurger(burger),
-		    error -> complain(error));
+		     error -> complain(error));
 {% endhighlight %}
 
 Mickey Mouse orders the burger in the dining area of the restaurant. By default, in ReactiveX, the event stream would be processed on the same thread. So, this means that the preparation of the burger would also happen in the dining area. But this should actually happen in the kitchen! This also allows Donald Duck to make more burgers while Mickey Mouse eats his burger - so this happens in parallel.
@@ -157,9 +157,9 @@ Observable.zip(bunObservable, meatObservable, tomatoObservable,
 	  .subscribeOn(Schedulers.computation())
 	  .observeOn(AndroidSchedulers.mainThread())
 	  .subscribe(burger -> eatBurger(burger),
-		    error -> complain(error));
+		     error -> complain(error));
 {% endhighlight %}
 
 ## Reactive Burger Conclusion
 
-Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or C# work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software. We, at upday, love it on Android! 
+Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or C# work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software. We, at upday, love it on Android!
