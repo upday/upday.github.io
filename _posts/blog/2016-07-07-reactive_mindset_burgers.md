@@ -75,7 +75,7 @@ When developing using ReactiveX you have to switch from a pull based approach to
 We don't have an exact set of data that we can operate on, but rather we operate on each emission of a stream. This means that if we want to work only on fresh meat, we cannot do:
 {% highlight java %}
 for(Meat meat: meatList){
-    if(isMeatGoneBad(meat)){
+    if(isMeatFresh(meat)){
         meatList.remove(meat);
     }
 }
@@ -84,7 +84,7 @@ for(Meat meat: meatList){
 because we don't have that ``meatList``. We have an ``Observable`` that emits meat pieces and from those, we are only interested in cooking the pieces that have not gone bad, the others need to be ``filter``ed out.
 {% highlight java %}
 Observable.from(meatSource)
-          .filter(meat -> isMeatGoneBad(meat))
+          .filter(meat -> isMeatFresh(meat))
 {% endhighlight %}
 
 Similar, when we want to cook the meat, we cannot just apply a function to a set of data, because we don't have that set of data.
@@ -97,7 +97,7 @@ for(Meat meat: meatList){
 But what we can do, is to apply a function to every emission of the filtered meat stream, by using the ``map`` operator.
 {% highlight java %}
 Observable.from(meatSource)
-          .filter(meat -> isMeatGoneBad(meat))
+          .filter(meat -> isMeatFresh(meat))
           .map(meat -> cook(meat));
 {% endhighlight %}
 
