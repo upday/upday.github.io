@@ -69,3 +69,12 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
+
+social:
+  twitter: UpdayDevs
+  github: upday
+
+inc:
+  sharing:
+    twitter: true
+  google_font: 'Droid+Sans:400,700'

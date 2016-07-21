@@ -1,12 +1,55 @@
 ---
 layout: page
-title: Latest Posts
-excerpt: "Here are all the latests posts."
-search_omit: true
 ---
+<div class="blog-cover" style="background-image:url(http://www.weareforeal.com/content/01-projects/samsung-upday-3d-cgi-characters-2016/main-02.jpg);">
 
-<ul class="post-list">
-{% for post in site.posts limit:10 %}
-  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time></span>{% if post.excerpt %} <span class="excerpt">{{ post.excerpt | remove: '\[ ... \]' | remove: '\( ... \)' | markdownify | strip_html | strip_newlines | escape_once }}</span>{% endif %}</a></article></li>
-{% endfor %}
-</ul>
+  <section>
+    <div class="container">
+      <img class="logo" src="/images/site-logo.svg" alt="Szczecin JUG">
+      <h1>{{ site.title }}</h1>
+      <!--{% if site.description %}<h3>{{ site.description }}</h3>{% endif %}-->
+
+      {% if site.social.twitter %}
+      <a href="https://twitter.com/{{ site.social.twitter }}" title="Follow on Twitter" target="_blank"><i class="icon icon-twitter"></i></a>
+      {% endif %}
+      {% if site.social.github %}
+      <a href="http://github.com/{{ site.social.github }}" title="Fork us on Github" target="_blank"><i class="icon icon-github"></i></a>
+      {% endif %}
+      <a href="/feed.xml" title="RSS Feed">
+        <i class="icon icon-rss"></i>
+      </a>
+    </div>
+  </section>
+</div>
+
+
+<article class="container">
+  {% for post in site.posts  limit: 10%}
+  {% unless post.draft %}
+  <section class="index">
+     {% if site.data.authors[post.author].avatar %}<img src="/images/{{ site.data.authors[post.author].avatar }}" class="avatar">{% endif %}
+    <div>
+      <h2 class="title"><a href="{{ post.url }}" rel="prefetch">{{ post.title }}</a></h2>
+      <p>{{ post.excerpt }}</p>
+      <div class="meta">
+        Written By <address>{{ site.data.authors[post.author].name }}</address> &mdash;
+        <time pubdate datetime="{{ post.date | date: "%Y-%d-%B" }}" title="{{ post.date | date: "%B %d, %Y" }}">{{ post.date | date: "%B %d, %Y" }}</time>
+      </div>
+    </div>
+    <hr>
+  </section>
+  {% endunless %}
+  {% endfor %}
+  <section class="pagination" style="text-align:center">
+    {% if paginator.previous_page %}
+    {% if paginator.previous_page == 1 %}
+    <a href="/" class="btn btn-outline">‹ Newer</a>
+    {% else %}
+    <a href="/page{{ paginator.previous_page }}" class="btn btn-outline">‹ Newer</a>
+    {% endif %}
+    {% endif %}
+    {% if paginator.next_page %}
+    <a href="/page{{ paginator.next_page }}" class="btn btn-outline">Older ›</a>
+    {% endif %}
+  </section>
+</article>
