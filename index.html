@@ -30,7 +30,8 @@ layout: page
      {% if site.data.authors[post.author].avatar %}<img src="/images/{{ site.data.authors[post.author].avatar }}" class="avatar">{% endif %}
     <div>
       <h2 class="title"><a href="{{ post.url }}" rel="prefetch">{{ post.title }}</a></h2>
-      <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }} <a href="{{ post.url }}" rel="prefetch">Read More</a></p>
+      {% capture excerpt_length %}{{ post.excerpt | size | minus: 100 }}{% endcapture %}
+      <p>{{ post.excerpt | remove: '<p>' | remove: '</p>' }} {% unless excerpt_length contains '-' %}<a href="{{ post.url }}" rel="prefetch">Read More</a>{% endunless %}</p>
       <div class="meta">
         Written By <address>{{ site.data.authors[post.author].name }}</address> &mdash;
         <time pubdate datetime="{{ post.date | date: "%Y-%d-%B" }}" title="{{ post.date | date: "%B %d, %Y" }}">{{ post.date | date: "%B %d, %Y" }}</time>
