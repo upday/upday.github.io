@@ -4,16 +4,13 @@ title: "RxJava: subscribeOn vs observeOn"
 modified:
 categories: blog
 author: tomek_polanski
-excerpt: Get to know the thread switching operations
+excerpt: Get to know the thread switching operations.
 tags: [RxJava]
 image:
 date: 2016-04-14T13:00:55-01:00
 ---
 
-
-## RxJava: subscribeOn vs observeOn
-
-One of the strongest aspects of RxJava is the simple way to schedule work on a desired thread using either ``subscribeOn`` or ``observeOn``. While they seem simple enough at a glance, understanding how they work is crucial to achieving your desired threading assignment.  
+One of the strongest aspects of RxJava is the simple way to schedule work on a desired thread using either ``subscribeOn`` or ``observeOn``. While they seem simple enough at a glance, understanding how they work is crucial to achieving your desired threading assignment.
 
 
 ### observeOn:

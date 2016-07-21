@@ -10,7 +10,6 @@ image:
 date: 2016-07-18T13:00:55-01:00
 ---
 
-
 I’ve heard plenty of mixed feelings about RxJava ``Subjects`` - some developers I’ve spoken to say they are evil, others say they are the best thing since sliced bacon.
 
 In my early days of using Rx, I thought they were awesome. I was able to create ``Observables`` without the fancy operators like ``fromCallable``, ``from`` or ``create``. In a <a href="http://futurice.com/blog/reactive-c-number-in-practice">blog post</a> from 2014, I even wrote
