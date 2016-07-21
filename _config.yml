@@ -9,6 +9,8 @@ url: https://upday.github.io
 #url: http://localhost:4000
 # Jekyll configuration
 
+excerpt_separator: <!-- more -->
+
 permalink:   /:categories/:title/
 markdown:    kramdown
 highlighter: rouge

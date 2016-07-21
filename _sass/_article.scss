@@ -95,8 +95,9 @@ article {
         margin:1.2em -4em 1.2em 0;
         padding:0 0 0 20px;
         width: 100%;
+        color:$accent;
 
-        p {
+        p, em {
             line-height:1.5;
             color:$accent;
             font-weight:600;
