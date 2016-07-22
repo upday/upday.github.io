@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "MVVM + RxJava: Common mistakes"
+title: "MVVM + RxJava: Common Mistakes"
 modified:
 categories: blog
 author: lucia_payo
@@ -76,24 +76,24 @@ We did exactly this and started receiving bug reports indicating a wrong end sta
 The best way to explain what was happening is with an example. So imagine that we initially have a data set with 5 items in the ViewPager and the actual position is 3.
 <center>
 <picture>
-<img src="/images/InitialState.png" width="1000">
+<img src="/images/blog/mvvm_rx_common_mistakes/InitialState.png" width="1000">
 </picture>
 </center>
 Now, the user performs an action and the final expected state is to have 9 elements in the ViewPager centered at position 7. All the RxJava events trigger after the user action, **we don't have any control over when things happen**, naïvely, we just sit there and hope that everything is setup correctly and, somehow, it comes together in the end. But it doesn't. Actually in some cases the position stream emits a 7 before the data set stream emits the 9 elements. The position event is captured by the fragment that tells the ViewPager to move to the position 7 but it only has 5 elements, how can it move to position 7? It can’t, so it simply ignores the command. It does not fail, it doesn't let you know in any way.
 <center>
 <picture>
-<img src="/images/PositionEmits.png" width="1000">
+<img src="/images/blog/mvvm_rx_common_mistakes/PositionEmits.png" width="1000">
 </picture>
 </center>
 Right after this the data set event comes, but it is too late already, even though the adapter is going to replace the data set the ViewPager is not going to be centered in the right position.
 <center>
 <picture>
-<img src="/images/DataSetEmits.png" width="1000">
+<img src="/images/blog/mvvm_rx_common_mistakes/DataSetEmits.png" width="1000">
 </picture>
 </center>
 Of course, this isn't always the case, sometimes the data set event will come first and everything will work as expected. This is due to the asynchronous nature of our architecture. The view model is doing the processing of the data in background threads so when the user action comes, the position and the data set will be processed with no guarantee of which will finish first.
 
-After all it wasn't such a great idea to expose two parallel streams with events. What should we do then? The answer is simple, **expose one stream per view that emits states instead of events**. Both the position and the data set should be wrapped up together so the ViewPager never receives one without the other. This is true for any view with intradependent state. You would never expose two separate streams for a TextView, one that sets the text and another one that emits the position of the letter that should be highlighted in bold, but for some reason it’s much easier to make this mistake with a ViewPager or lists.
+After all it wasn't such a great idea to expose two parallel streams with events. What should we do then? The answer is simple, **expose one stream per view that emits states instead of events**. Both the position and the data set should be wrapped up together so the ViewPager never receives one without the other. This is true for any view with intra-dependent state. You would never expose two separate streams for a TextView, one that sets the text and another one that emits the position of the letter that should be highlighted in bold, but for some reason it’s much easier to make this mistake with a ViewPager or lists.
 
 ## Everything goes through the view model
 
