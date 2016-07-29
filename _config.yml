@@ -6,7 +6,6 @@ description: Welcome! In our blog we share all the stuff that we - the tech dude
 logo: site-logo.svg
 search: true
 url: https://upday.github.io
-#url: http://localhost:4000
 # Jekyll configuration
 
 excerpt_separator: <!-- more -->
