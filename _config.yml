@@ -6,8 +6,9 @@ description: Welcome! In our blog we share all the stuff that we - the tech dude
 logo: site-logo.svg
 search: true
 url: https://upday.github.io
-#url: http://localhost:4000
 # Jekyll configuration
+
+excerpt_separator: <!-- more -->
 
 permalink:   /:categories/:title/
 markdown:    kramdown
@@ -69,3 +70,13 @@ owner:
     ad-client:
     ad-slot:
   bing-verify:
+
+social:
+  twitter: UpdayDevs
+  github: upday
+
+inc:
+  sharing:
+    twitter: true
+  google_font: 'Droid+Sans:400,700'
+  cover: /images/cover.jpg

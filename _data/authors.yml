@@ -20,7 +20,10 @@ florina_muntenescu:
   name: Florina Muntenescu
   web: http://www.upday.com
   email: florina@upday.com
-  bio: "Florina passionately works at upday as a Senior Android Developer. She has been writing code for more than 7 years, mostly for Android. Florina keeps a strong focus on clean code and UI/UX. Previous work covered payment solutions at payleven and navigation services at Garmin."
+  # bio is shown in blog post footer
+  bio: "Florina passionately works at upday as a Senior Android Developer."
+  # bio long will go to about page
+  bio_long: "Florina passionately works at upday as a Senior Android Developer. She has been writing code for more than 7 years, mostly for Android. Florina keeps a strong focus on clean code and UI/UX. Previous work covered payment solutions at payleven and navigation services at Garmin."
   avatar: authors/florina_muntenescu.png
   twitter: fmuntenescu
 
