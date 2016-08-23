@@ -39,7 +39,7 @@ With every new piece of meat that Donald gets, he first needs to make sure that 
 
 The next step is to make the burger. Donald needs to take the first bun given by Huey, together with the first piece of cooked meat and with the first slice of tomato given by Louie and then "zip" together the first burger.
 
-For the second burger, he will use the second bun from Huey, the second piece of cooked meat and the second slice of tomato. The processing time took by each of the nephews is different. Louie will be providing tomato slices faster than Dewey can cook the meat. As a result, Donald has to wait for it to be ready, in order to make the burger. Because he doesn't want to throw away any tomato slices, he will always use the first one on the row, given by Louie.
+For the second burger, he will use the second bun from Huey, the second piece of cooked meat and the second slice of tomato. The processing time took by each of the nephews is different. Louie will be providing tomato slices faster than the meat from Dewey is cooked. As a result, Donald has to wait for it to be ready, in order to make the burger. Because he doesn't want to throw away any tomato slices, he will always use the first one on the row, given by Louie.
 
 <center>
 <picture>
@@ -111,7 +111,7 @@ Observable<Burger> burgerObservable =
                   tomatoObservable,
                   (bun, meat, tomato) -> makeBurger(bun, meat, tomato));
 {% endhighlight %}
-The ``zip`` operator is the one that will one that will combine the emissions of each ``Observable``: a bun, a meat and a tomato slice. In order to do that, it needs to know how to make the burger using the three ingredients. This is defined in the ``makeBurger`` method.
+The ``zip`` operator is the one that will combine the emissions of each ``Observable``: a bun, a meat and a tomato slice. In order to do that, it needs to know how to make the burger using the three ingredients. This is defined in the ``makeBurger`` method.
 
 ## Mickey Mouse Gets His Burger
 
@@ -164,6 +164,8 @@ Observable.zip(bunObservable, meatObservable, tomatoObservable,
 
 Replace the burger joint with your own context; Huey, Dewey, and Louie with your own data sources; the buns, the meat and the tomato slices with your own model data. The concepts are still the same - streams of data that are fairly easy to manipulate and to compose, at the same time, being able to handle the working threads. The ReactiveX implementations of reactive programming in Java, JavaScript, Swift or C# work great for both backend and frontend and offer a paradigm that can be used when programming any event-driven software. We, at upday, love it on Android!
 
+
+Interested in checking out the code a bit more? Then take a look at this <a href="https://github.com/florina-muntenescu/ReactiveBurgers">ReactiveBurgers</a> project. 
 
 Image sources:
 <a href="http://www.disneyclips.com/imagesnewb6/images/donald-face.png">Donald Duck</a>
