@@ -80,3 +80,5 @@ inc:
     twitter: true
   google_font: 'Droid+Sans:400,700'
   cover: /images/cover.jpg
+  analytics:
+    google: true
