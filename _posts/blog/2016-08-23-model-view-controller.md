@@ -7,7 +7,7 @@ categories: blog
 author: florina_muntenescu
 excerpt: The Model-View-Controller pattern is one of the first ones to be applied in Android. Discover what it is, how it should be implemented and some of its advantages and disadvantages.
 tags: [Android, Architecture, MVC]
-date: 2016-07-23T15:39:55-04:00
+date: 2016-09-04T15:39:55-04:00
 ---
 
 A year ago, when the majority of the current Android team started working at upday, the application was far from being the robust, stable app that we wanted it to be. We tried to understand why our code was in such bad shape and we found two main culprits: continuous changing of the UI and the lack of an architecture that supported the flexibility that we needed. The app was already at its fourth redesign in six months. The design pattern chosen seemed to be Model-View-Controller but was then already a "mutant", far from how it should be.
