@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "Model-View-Controller in Android"
+title: "Model-View-Controller Pattern in Android"
 description: Discover what Model-View-Controller is, how it should be implemented and some of its ups and downs.
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: The Model-View-Controller pattern is one of the first ones to be applied in Android. Discover what it is, how it should be implemented and some of its ups and downs.
+excerpt: The Model-View-Controller pattern is one of the first ones to be applied in Android. Discover what it is, how it should be implemented and some of its advantages and disadvantages.
 tags: [Android, Architecture, MVC]
 date: 2016-07-23T15:39:55-04:00
 ---
@@ -29,12 +29,12 @@ In a world where the user interface logic tends to change more often than the bu
 </picture>
 </center>
 
-So, this means that both the Controller and the View depend on the Model: the first to update the data, the latter to get the data. But, most important for the desktop and Web devs at that time: the Model was separated and could be tested independently of the UI.
+So, this means that both the Controller and the View depend on the Model: the Controller to update the data, the View to get the data. But, most important for the desktop and Web devs at that time: the Model was separated and could be tested independently of the UI.
 Several variants of MVC appeared. The best-known ones are related to whether the Model is passive or is actively notifying that it has changed. Here are more details:
 
 ### Passive Model
 
-In a passive Model version, the Controller is the only class that manipulates the Model.
+In the Passive Model version, the Controller is the only class that manipulates the Model.
 Based on the user's actions, the Controller has to modify the Model. After the Model has been updated, the Controller will notify the View that it also needs to update. At that point, the View will request the data from the Model.
 
 <center>
@@ -46,7 +46,7 @@ Based on the user's actions, the Controller has to modify the Model. After the M
 
 ### Active Model
 
-For the cases when the Controller is not the only class that modifies the Model, the Model needs a way to notify the View, and any other classes, about updates. This is achieved with the help of the Observer pattern.
+For the cases when the Controller is not the only class that modifies the Model, the Model needs a way to notify the View, and other classes, about updates. This is achieved with the help of the Observer pattern.
 The Model contains a collection of observers that are interested in updates. The View implements the observer interface and registers as an observer to the Model.
 
 <center>
@@ -81,7 +81,7 @@ The easiest way of doing this, while focusing on testing, is to have a BaseView 
 
 ## Advantages
 
-The Model-View-Controller pattern highly supports the separation of concerns. This advantage not only does it increases the testability of the code but it also makes it easier to extend, allowing a fairly easy implementation of new features.
+The Model-View-Controller pattern highly supports the separation of concerns. This advantage not only increases the testability of the code but it also makes it easier to extend, allowing a fairly easy implementation of new features.
 
 The Model classes don't have any reference to Android classes and are therefore straightforward to unit test.
 The Controller doesn't extend or implement any Android classes and should have a reference to an interface class of the View. In this way, unit testing of the Controller is also possible.
@@ -100,7 +100,6 @@ Given that the View depends on both the Controller and the Model, changes in the
 ### Who Handles The UI Logic?
 
 According to the MVC pattern, the Controller updates the Model and the View gets the data to be displayed from the Model. But who decides on how to display the data? Is it the Model or the View?
-
 Consider the following example: we have a ``User``, with first name and last name. In the View we need to display the user name as "Lastname, Firstname" (e.g. "Doe, John").
 
 If the Model's role is to just provide the "raw" data, it means that the code in the View would be:
@@ -113,7 +112,7 @@ nameTextView.setText(lastName + ", " + firstName)
 
 So this means that it would be the View's responsibility of handling the UI logic. But this makes the UI logic impossible to unit test.
 
-The other approach is to have the Model exposing only the data that needs to be displayed, hiding any business logic from the View. But then, we end up with Models that handle both business and UI logic. It would be unit testable, but then the Model ends up, implicitly being dependent on the View.
+The other approach is to have the Model expose only the data that needs to be displayed, hiding any business logic from the View. But then, we end up with Models that handle both business and UI logic. It would be unit testable, but then the Model ends up, implicitly being dependent on the View.
 
 {% highlight java %}
 String name = userModel.getDisplayName();
@@ -124,4 +123,4 @@ nameTextView.setText(name);
 
 In the early days of Android the Model-View-Controller pattern seemed to have confused a lot of developers and led to code that was difficult, if not impossible to unit test.
 
-The dependence of the View from the Model and having logic in the View steered our code base to a state from which it was impossible to recover without refactoring completely the app. What was the new approach in architecture? Find out in a new blog post soon.
+The dependence of the View from the Model and having logic in the View steered our code-base to a state from which it was impossible to recover without refactoring completely the app. What was the new approach in architecture and why? Find out in a new blog post soon.
