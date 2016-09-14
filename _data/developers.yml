@@ -4,9 +4,6 @@
 - name: Benjamin Brandt
   github: benjaminbrandt
 
-- name: Roman Romanchuk
-  github: fatroom
-
 - name: Federico Palmieri
   github: fedestylah
 
@@ -35,9 +32,6 @@
 
 - name: Lennard Timm
   github: lenn4rd
-
-- name: Lucia Payo
-  github: luciapayo
 
 - name: Maciej Walkowiak
   github: maciejwalkowiak
@@ -76,11 +70,8 @@
 - name: Timo Ulich
   github: ulich
 
-- name: Will Nolan
-  github: will-nolan
-
 - name: Robert Bordo
   github: rbordo
-  
+
 - name: Pablo Quesada
   github: pabloqc
