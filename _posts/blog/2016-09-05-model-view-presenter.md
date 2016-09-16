@@ -14,7 +14,15 @@ The initial implementation of the upday app with the Model-View-Controller patte
 
 ## The Model-View-Presenter Pattern
 
-Deriving from Model-View-Controller, the MVP pattern solves the main disadvantages of MVC: the Presenter is the intermediary between the Model and the View, holding all the UI logic. Here are the roles of every component:
+Here are the roles of every component:
 
-* *Model* - the data layer, responsible for handling the business logic and communication with the network and database layers.
-* *View* -  
+* *Model* - the data layer. Is responsible for handling the business logic and communication with the network and database layers.
+* *View* -  the UI layer. Displays the data and notifies the Presenter about user actions.
+* *Presenter* -  retrieves the data from the Model, applies the UI logic and provides the View with the data to display.
+
+
+## Advantages
+
+Deriving from Model-View-Controller, the MVP pattern solves the main disadvantages of MVC: the Presenter is the intermediary between the Model and the View, holding all the UI logic.
+
+## Disadvantages
