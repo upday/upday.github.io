@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Model-View-ViewModel Pattern in Android"
-description: Our choice for the upday app: the Model-View-ViewModel pattern. Find out what it is, how we applied it in Android and why we consider it perfect for us.
+description: Our choice for the upday app - the Model-View-ViewModel pattern.
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: Our choice for the upday app: the Model-View-ViewModel pattern. Find out what it is, how we applied it in Android and why we consider it perfect for us.
+excerpt: Our choice for the upday app - the Model-View-ViewModel pattern. Find out what it is, how we applied it in Android and why we consider it perfect for us.
 tags: [Android, Architecture, MVVM]
 date: 2016-09-04T15:39:55-04:00
 ---
@@ -19,12 +19,16 @@ The main players in the MVVM pattern are:
 * The *ViewModel* - exposes streams of data relevant to the View
 * The *DataModel* - abstracts the data source. The ViewModel works with the DataModel to get and save the data.  
 
-At a first glance, MVVM seems very similar to the Model-View-Presenter pattern, because both of them do a great job in abstracting the view's state and behavior. But, if the Presentation Model abstracts a view independent from a specific user-interface platform, the MVVM pattern was created by Microsoft to simplify the *event driven* programming of user interfaces.
+At a first glance, MVVM seems very similar to the Model-View-Presenter pattern, because both of them do a great job in abstracting the view's state and behavior. The Presentation Model abstracts a view independent from a specific user-interface platform whereas the MVVM pattern was created by Microsoft to simplify the **event driven** programming of user interfaces.
 
-If, in the MVP pattern, the Presenter was telling the View directly what to display, in MVVM, *ViewModel exposes streams of events* to which the Views can bind to. Also, the Views notify the ViewModel about different actions. Thus, the MVVM pattern supports two-way data binding between the View and ViewModel and there is a many-to-one relationship between View and ViewModel. View has a reference to ViewModel but *ViewModel has no information about the View*.
+If, in the MVP pattern, the Presenter was telling the View directly what to display, in MVVM, **ViewModel exposes streams of events** to which the Views can bind to. Also, the Views notify the ViewModel about different actions. Thus, the MVVM pattern supports two-way data binding between the View and ViewModel and there is a many-to-one relationship between View and ViewModel. View has a reference to ViewModel but **ViewModel has no information about the View**.
 
-
-/////// architecture diagram image
+<center>
+<picture>
+	<a href="/images/blog/model_view_viewmodel/mvvm.png"><img src="/images/blog/model_view_viewmodel/mvvm.png" alt="Model-View-ViewModel Architecture"></a>
+	<figcaption>Model-View-ViewModel class structure</figcaption>
+</picture>
+</center>
 
 ## Model-View-ViewModel at upday
 
@@ -69,7 +73,6 @@ The View is the actual user interface in the app. It can be an `Activity`, a `Fr
         mSubscription.clear();
         super.onPause();
     }
-}
 {% endhighlight %}
 
 In case the MVVM View is a custom Android `View`, the binding is done in the constructor. To ensure that the subscription is not preserved, leading to possible memory leaks, the unbinding happens in `onDetachedFromWindow`.
@@ -77,9 +80,8 @@ In case the MVVM View is a custom Android `View`, the binding is done in the con
 {% highlight java %}
     private final CompositeSubscription mSubscription = new CompositeSubscription();
 
-    public MyView(Context context,
-									MyViewModel viewModel) {
-				....
+    public MyView(Context context, MyViewModel viewModel) {
+        ...
         mSubscription.add(mViewModel.getSomeData()
                          .observeOn(AndroidSchedulers.mainThread())
                          .subscribe(this::updateView,
@@ -120,6 +122,6 @@ We have also learnt how important separation of concerns is and that we should s
 
 ## Conclusion
 
-MVVM combines the advantages of separation of concerns, provided by MVP, while leveraging the advantages of data bindings. Therefore, the result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.
+MVVM combines the advantages of separation of concerns provided by MVP, while leveraging the advantages of data bindings. Therefore, the result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.
 
-After the design changes in the "infancy" of our app, we switched to MVVM in upday's "adolescence" - a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign and that we are close to calling upday a mature app.
+After the design changes in the "infancy" of our app, we switched to MVVM in upday's "adolescence" - a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign. Wee are finally close to being able to call upday a mature app.
