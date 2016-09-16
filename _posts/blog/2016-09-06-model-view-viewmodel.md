@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Model-View-ViewModel Pattern in Android"
+title: "Android Architecture Patterns Part 3:<br/>Model-View-ViewModel"
 description: Our choice for the upday app - the Model-View-ViewModel pattern.
 modified:
 categories: blog
@@ -108,20 +108,74 @@ The inversion of control pattern, heavily applied in our code, and the lack of a
 
 The ViewModel exposes streams of data to whoever needs to consume it. We see the Views and the unit tests as two different types of data consumers.
 The ViewModel is completely separated from the UI or any Android classes, therefore straightforward to unit test.
+
+Considering the following example where the ViewModel just exposes some data from the DataModel:
+
+{% highlight java %}
+public class ViewModel {
+    @NonNull
+    private final IDataModel mDataModel;
+
+    public ViewModel(@NonNull final IDataModel dataModel) {
+        mDataModel = dataModel;
+    }
+
+    @NonNull
+    public Observable<Data> getSomeData() {
+        return mDataModel.getSomeData();
+    }
+}
+{% endhighlight %}
+
+The tests for the ViewModel are easy to implement. With the help of Mockito, we are mocking the DataModel and we control the returned data for the methods used. Then, we make sure that when we subscribe to the `Observer` returned by `getSomeData()`, the expected data is emitted.  
+
+{% highlight java %}
+public class ViewModelTest {
+
+    @Mock
+    private IDataModel mDataModel;
+
+    private ViewModel mViewModel;
+
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+
+        mViewModel = new ViewModel(mDataModel);
+    }
+
+    @Test
+    public void testGetSomeData_emitsCorrectData() {
+        SomeData data = new SomeData;
+        Mockito.when(mDataModel.getSomeData()).thenReturn(Observable.just(data));
+        TestSubscriber<SomeData> testSubscriber = new TestSubscriber<>();
+
+        mViewModel.getSomeData().subscribe(testSubscriber);
+
+        testSubscriber.assertValue(data);
+    }
+}
+{% endhighlight %}
+
 If the ViewModel needs access to Android classes, we create wrappers that we call `Provider`s. For example, for resources we created a `IResourceProvider`, that exposes methods like `String getString(@StringRes final int id)`. The implementation of the `IResourceProvider` will contain a reference to the `Context` but, the ViewModel will only get a reference to a `IResourceProvider` injected.
 
 ### View
 
-Given that the logic in the UI is minimal, the Views are easy to test with Espresso. We are also using libraries like DaggerMock and MockWebServer to help us test the UI of our app.
+Given that the logic in the UI is minimal, the Views are easy to test with Espresso. We are also using libraries like DaggerMock and MockWebServer to improve the stability of our UI tests.
 
 ## Is MVVM The Right Solution?  
 
 We have been using MVVM together with RxJava for almost a year now. We have seen that since the View is just a consumer of the ViewModel, it was easy to just replace different UI elements, with minimal, or sometimes zero changes in other classes.
 
-We have also learnt how important separation of concerns is and that we should split the code more, creating small Views and small ViewModels that only have specific responsibilities. Like this, when our UI requirements changed once more, we could just replace some UI elements with new ones, with little changes in the Views that contain the small ones.  
+We have also learnt how important separation of concerns is and that we should split the code more, creating small Views and small ViewModels that only have specific responsibilities. The ViewModels are injected in the Views. This means that most of the times, we just add the Views in the XML UI, without doing any other changes. Therefore, when our UI requirements change again, we can easily replace some Views with new ones.
 
 ## Conclusion
 
 MVVM combines the advantages of separation of concerns provided by MVP, while leveraging the advantages of data bindings. Therefore, the result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.
 
 After the design changes in the "infancy" of our app, we switched to MVVM in upday's "adolescence" - a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign. We are finally close to being able to call upday a mature app.
+
+
+A simple example of the MVVM implementation can be found <a href="https://github.com/florina-muntenescu/DroidconMVVM">here</a>.
+
+A "Hello, World!" comparison between MVP and MVVM can be found <a href="https://github.com/florina-muntenescu/MVPvsMVVM">here</a>.
