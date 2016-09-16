@@ -124,4 +124,4 @@ We have also learnt how important separation of concerns is and that we should s
 
 MVVM combines the advantages of separation of concerns provided by MVP, while leveraging the advantages of data bindings. Therefore, the result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.
 
-After the design changes in the "infancy" of our app, we switched to MVVM in upday's "adolescence" - a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign. Wee are finally close to being able to call upday a mature app.
+After the design changes in the "infancy" of our app, we switched to MVVM in upday's "adolescence" - a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign. We are finally close to being able to call upday a mature app.
