@@ -12,7 +12,7 @@ date: 2016-09-05T10:39:55-04:00
 
 In order to support developers in making good architecture choices, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> - a set of various implementations of the same application. For now, the samples contain different types of Model-View-Presenter implementations. I worked together with <a href="https://github.com/erikhellman">Erik Hellman</a> on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample.
 
-The aim of this article is to explain what MVP is, how we applied it in the Architecture Blueprints and most of all, what are its advantages and disadvantages.
+Find out what MVP is, how we applied it in the Architecture Blueprints and most of all, what are its advantages and disadvantages.
 
 ## The Model-View-Presenter Pattern
 
@@ -22,7 +22,7 @@ Here are the roles of every component:
 * **View** -  the UI layer. Displays the data and notifies the Presenter about user actions.
 * **Presenter** -  retrieves the data from the Model, applies the UI logic and manages the state of the View, by telling the View what to display and by reacting to user input notifications from the View.
 
-The implementation of the View is abstracted and the Presenter holds a reference to an interface of the View class. Presenters usually also tend to be abstracted and interfaces containing the contracts between the Views and the Presenters are created.
+The implementation of the View is abstracted and the Presenter holds a reference to an interface of the View class. Presenters usually tend to be abstracted also; interfaces containing the contracts between the Views and the Presenters are created.
 
 <center>
 <picture>
@@ -31,9 +31,49 @@ The implementation of the View is abstracted and the Presenter holds a reference
 </picture>
 </center>
 
-## The Model-View-Presenter Pattern & RxJava In Android
+## The Model-View-Presenter Pattern & RxJava In Android Architecture Blueprints
+
+The blueprint sample is a to-do application. It lets a user create, read, update and delete to-do tasks. The asynchronous operations are handled with the help of RxJava.
 
 ### Model
+
+The Model works with the remote and local data sources to get and save the data. This is where the business logic is handled. For example, when requesting the list of `Task`s, the Model would try to retrieve them from the local data source. If it is empty, it will query the network, save the response in the local data source and then return the list.
+
+The retrieval of tasks is done with the help of RxJava:
+
+{% highlight java %}
+public Observable<List<Task>> getTasks(){
+  ...
+}
+{% endhighlight %}
+
+The Model receives as parameters in the constructor **interfaces** for the local and remote data sources that are then mocked in the tests, with the help of Mockito. Since the Model does not contain any reference to Android classes, it is easy to unit test. For example, to test that `getTasks` requests data from the local source, we have the following test:
+
+{% highlight java %}
+@Mock
+private TasksDataSource mTasksRemoteDataSource;
+
+@Mock
+private TasksDataSource mTasksLocalDataSource;
+...
+
+@Test
+public void getTasks_requestsAllTasksFromLocalDataSource() {
+    // Given that the local data source has data available
+    setTasksAvailable(mTasksLocalDataSource, TASKS);
+    // And the remote data source does not have any data available
+    setTasksNotAvailable(mTasksRemoteDataSource);
+
+    // When tasks are requested from the tasks repository
+    TestSubscriber<List<Task>> testSubscriber = new TestSubscriber<>();
+    mTasksRepository.getTasks().subscribe(testSubscriber);
+
+    // Then tasks are loaded from the local data source
+    verify(mTasksLocalDataSource).getTasks();
+    testSubscriber.assertValue(TASKS);
+}
+{% endhighlight %}
+
 
 ### View
 
