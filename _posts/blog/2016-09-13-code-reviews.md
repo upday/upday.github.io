@@ -69,7 +69,7 @@ This behavior is bad because creative people have the habit to question rules if
 
 Feedback should be stated like this: _At some point we decided to approach things like this like that because we were convinced that's better because of reason X and Y. Don't you agree? Shall we re-evaluate?_
 
-Usually the matter is settled now. The author will probably accept the suggestion because the reviewer acted in a consulting role and took the author seriously by asking for his opinion.
+Usually the matter then resolves itself. The author will probably accept the suggestion because the reviewer acted in a consulting role and took the author seriously by asking for his opinion.
 
 The author will likely feel not so pained by the rule, and decide to follow it. If not, a healthy discussion arises that might change something for the better for the whole team.
 
