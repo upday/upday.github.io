@@ -31,7 +31,7 @@ Let's start with the assumption that every reviewer has the same intent - which 
 When this is the main __intent__, different approaches to code reviews can only be different __strategies__ to achieve the same goal.
 
 
-The following strategies/behavioral advice can help to achieve this goal and at the same time improve the team spirit and culture.
+The following advice can help to achieve this goal and at the same time improve the team spirit and culture.
 
 
 ## Consult - Don't Preach
@@ -43,7 +43,7 @@ By the way, using _please_ to soften a harsh sentence doesn't help. You already 
 Even more, given as a command, even if correct, the advice won't be accepted wholeheartedly and the team morale is damaged.
 
 
-If the reviewer would have invested just a little more time and watched the way they communicated: the author might have been very thankful and might have accepted all advise with a smile.
+If the reviewer had invested just a little more time and watched the way they communicated: the author might have been very thankful and might have accepted all advice with a smile.
 
 
 The effort is well invested if one takes a break from time to time and makes sure the mindset is tuned, communication style is respectful and reflects the intention to help.
@@ -61,7 +61,7 @@ Letting the topic lie for a week can also help. Often times you realize that con
 
 Rules and processes kill __creativity__. You want to give as much freedom to everyone as possible without hurting someone else (that's part of the German constitution by the way [Article 2.1 _Every person shall have the right to free development ... insofar as he does not violate the rights of others ..._]).
 
-Developers develop processes and methods. They align on conventions. Sometimes other developers violate them; often even deliberately. How to handle those violations?
+Developers construct processes and methods. They align on conventions. Sometimes other developers violate them; often even deliberately. How to handle those violations?
 
 Often when the reviewer changes from consultant to finger-pointing judge (and hangman) who points at the wiki in which he documented the rule three years ago (without ever discussing it properly); the tone gets rough. _Catch some breath, adjust your mindset..._.
 
@@ -103,7 +103,7 @@ Be aware of the fact that written word always strongly underlies interpretation.
 
 Be aware of social, cultural and language barriers.
 
-As a single, simple and practical piece of advise: structure your code, comments and commits in a way that helps the reviewer understand what you are doing.
+As a single, simple and practical piece of advice: structure your code, comments and commits in a way that helps the reviewer understand what you are doing.
 
 
 ## Summing up
