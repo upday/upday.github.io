@@ -99,7 +99,7 @@ About how to handle and accept critical feedback; not only about how to give suc
 
 In general you can adopt everything said; try to trust the reviewer, assume positive intent.
 
-Be aware of the fact that written word always strongly underlies interpretation.
+Be aware of the fact that the written word always invites interpretation.
 
 Be aware of social, cultural and language barriers.
 
