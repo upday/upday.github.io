@@ -1,28 +1,28 @@
 ---
 layout: post
 title: "Android Architecture Patterns Part 2:</br>Model-View-Presenter"
-description: What MVP is, how to implement it in Android with the help of Google's Android Architecture Blueprints.
+description: What MVP is and how to implement it in Android with the help of Google's Android Architecture Blueprints.
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: The MVP pattern became one of the most popular patterns in Android in the last couple of years. Let's see what MVP is and how we applied it in the Google's Android Architecture Blueprints.
+excerpt: The MVP pattern became one of the most popular patterns in Android in the last couple of years. Let's see what MVP is and how we applied it in Google's Android Architecture Blueprints.
 tags: [Android, Architecture, MVP]
 date: 2016-09-05T10:39:55-04:00
 ---
 
-In order to support developers in making good architecture choices, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> - a set of various implementations of the same application. For now, the samples contain different types of Model-View-Presenter implementations. I worked together with <a href="https://github.com/erikhellman">Erik Hellman</a> on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample.
+In order to support developers in making good architecture choices, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> - a set of various implementations of the same application. For now, the samples contain different types of Model-View-Presenter implementations. <a href="https://github.com/erikhellman">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample.
 
-Read more to find out what MVP is, how we applied it in the Architecture Blueprints and most of all, what are its advantages and disadvantages.
+Read more to find out what MVP is, how we applied it in the Architecture Blueprints and most of all, what its advantages and disadvantages are.
 
 ## The Model-View-Presenter Pattern
 
 Here are the roles of every component:
 
-* **Model** - the data layer. Is responsible for handling the business logic and communication with the network and database layers.
+* **Model** - the data layer. Responsible for handling the business logic and communication with the network and database layers.
 * **View** -  the UI layer. Displays the data and notifies the Presenter about user actions.
 * **Presenter** -  retrieves the data from the Model, applies the UI logic and manages the state of the View, by telling the View what to display and by reacting to user input notifications from the View.
 
-The implementation of the View is abstracted and the Presenter holds a reference to an interface of the View class. Presenters usually tend to be abstracted also; interfaces containing the contracts between the Views and the Presenters are created.
+Since the View and the Presenter work closely together, they need to have a reference to one another. To make the Presenter unit testable with JUnit, the View is abstracted and an interface for it used. The relationship between the Presenter and its corresponding View is defined in a `Contract` interface class, making the code more readable and the connection between the two easier to understand.
 
 <center>
 <picture>
@@ -33,7 +33,7 @@ The implementation of the View is abstracted and the Presenter holds a reference
 
 ## The Model-View-Presenter Pattern & RxJava In Android Architecture Blueprints
 
-The blueprint sample is a to-do application. It lets a user create, read, update and delete to-do tasks. The asynchronous operations are handled with the help of RxJava.
+The blueprint sample is a  <a href="https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification">”To Do” application</a>. It lets a user create, read, update and delete “To Do” tasks. The asynchronous operations are handled with the help of RxJava.
 
 ### Model
 
@@ -47,7 +47,7 @@ public Observable<List<Task>> getTasks(){
 }
 {% endhighlight %}
 
-The Model receives as parameters in the constructor **interfaces of the local and remote data sources** that are then mocked in the tests, with the help of Mockito. Since the Model does not contain any reference to Android classes, it is easy to unit test. For example, to test that `getTasks` requests data from the local source, we implemented the following test:
+The Model receives as parameters in the constructor **interfaces of the local and remote data sources**, making the Model completely independent from any Android classes and thus easy to unit test with JUnit. For example, to test that `getTasks` requests data from the local source, we implemented the following test:
 
 {% highlight java %}
 @Mock
@@ -88,7 +88,7 @@ public interface BaseView<T> {
 }
 {% endhighlight %}
 
-The View notifies the Presenter that it's ready to be updated by calling the `subscribe` method of the Presenter in `onResume`. The View calls `presenter.unsubscribe()` in `onPause` to tell the Presenter that it's no longer interested in being updated.
+The View notifies the Presenter that it is ready to be updated by calling the `subscribe` method of the Presenter in `onResume`. The View calls `presenter.unsubscribe()` in `onPause` to tell the Presenter that it is no longer interested in being updated.
 If the implementation of the View is an Android custom view, then the `subscribe` and `unsubscribe` methods have to be called on `onAttachedToWindow` and `onDetachedFromWindow`.
 User actions, like button clicks, will trigger corresponding methods in the Presenter, this being the one that decides what should happen next.
 
@@ -139,7 +139,7 @@ public interface BasePresenter {
 }
 {% endhighlight %}
 
-When the `subscribe` method is called, the Presenter starts requesting the data from the Model, then it applies the UI logic to the received data and sets it to the View. For example, in the `StatisticsPresenter`, all tasks are requested from the `TaskRepository` then the retrieved tasks will be used to compute the number of active and completed tasks. These numbers will be used as parameters for the `showStatistics(int numberOfActiveTasks, int numberOfCompletedTasks)` method of the View.
+When the `subscribe` method is called, the Presenter starts requesting the data from the Model, then it applies the UI logic to the received data and sets it to the View. For example, in the `StatisticsPresenter`, all tasks are requested from the `TaskRepository` - then the retrieved tasks are used to compute the number of active and completed tasks. These numbers will be used as parameters for the `showStatistics(int numberOfActiveTasks, int numberOfCompletedTasks)` method of the View.
 
 A unit test to check that indeed the `showStatistics` method is called with the correct values is easy to implement. We are mocking the `TaskRepository` and the `StatisticsContract.View` and give the mocked objects as parameters to the constructor of a `StatisticsPresenter` object. The test implementation is:
 
@@ -158,10 +158,10 @@ public void loadNonEmptyTasksFromRepository_CallViewToDisplay() {
 }
 {% endhighlight %}
 
-The role of the `unsubscribe` method is to clear all the subscriptions of the Presenter, avoiding memory leaks.
+The role of the `unsubscribe` method is to clear all the subscriptions of the Presenter, thus avoiding memory leaks.
 
-Apart from `subscribe` and `unsubscribe`, each Presenter exposes other methods, corresponding to the user actions in the View. For example, the `AddEditTaskPresenter`, adds methods like `createTask`, that would be called when the user presses the button that creates a new task. This ensures that all the user actions and consequently all the UI logic go through the Presenter and then can be unit tested.
+Apart from `subscribe` and `unsubscribe`, each Presenter exposes other methods, corresponding to the user actions in the View. For example, the `AddEditTaskPresenter`, adds methods like `createTask`, that would be called when the user presses the button that creates a new task. This ensures that all the user actions - and consequently all the UI logic - go through the Presenter and thereby can be unit tested.
 
 ## Conclusion
 
-The <a href="https://upday.github.io/blog/model-view-controller/">Model-View-Controller pattern</a> has two main disadvantages: the View has a reference to both the Controller and the Model; and does not provide only one class to handle the UI logic, this responsibility being shared between the Controller and the View or the Model. The Model-View-Presenter pattern fixes both of these issues by breaking the connection that the View has with the Model and creating only **one class that handles** everything related to **the presentation of the View** - the Presenter. A class that is easy to unit test.
+The <a href="https://upday.github.io/blog/model-view-controller/">Model-View-Controller pattern</a> has two main disadvantages: firstly, the View has a reference to both the Controller and the Model; and secondly, it does not limit the handling of UI logic to a single class, this responsibility being shared between the Controller and the View or the Model. The Model-View-Presenter pattern solves both of these issues by breaking the connection that the View has with the Model and creating only **one class that handles** everything related to **the presentation of the View** - the Presenter: a single class that is easy to unit test.
