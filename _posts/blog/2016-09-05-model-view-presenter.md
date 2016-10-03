@@ -10,9 +10,7 @@ tags: [Android, Architecture, MVP]
 date: 2016-09-05T10:39:55-04:00
 ---
 
-In order to support developers in making good architecture choices, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> - a set of various implementations of the same application. For now, the samples contain different types of Model-View-Presenter implementations. <a href="https://github.com/erikhellman">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample.
-
-Read more to find out what MVP is, how we applied it in the Architecture Blueprints and most of all, what its advantages and disadvantages are.
+It's about time we developers start thinking on how we can apply good architecture patterns in our Android apps. To help with this, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a>, where <a href="https://github.com/erikhellman">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample. Let's have a look at how we applied it and the pros and cons of this approach.
 
 ## The Model-View-Presenter Pattern
 
@@ -20,7 +18,7 @@ Here are the roles of every component:
 
 * **Model** - the data layer. Responsible for handling the business logic and communication with the network and database layers.
 * **View** -  the UI layer. Displays the data and notifies the Presenter about user actions.
-* **Presenter** -  retrieves the data from the Model, applies the UI logic and manages the state of the View, by telling the View what to display and by reacting to user input notifications from the View.
+* **Presenter** -  retrieves the data from the Model, applies the UI logic and manages the state of the View, decides what to display and reacts to user input notifications from the View.
 
 Since the View and the Presenter work closely together, they need to have a reference to one another. To make the Presenter unit testable with JUnit, the View is abstracted and an interface for it used. The relationship between the Presenter and its corresponding View is defined in a `Contract` interface class, making the code more readable and the connection between the two easier to understand.
 
@@ -31,9 +29,9 @@ Since the View and the Presenter work closely together, they need to have a refe
 </picture>
 </center>
 
-## The Model-View-Presenter Pattern & RxJava In Android Architecture Blueprints
+## The Model-View-Presenter Pattern & RxJava in Android Architecture Blueprints
 
-The blueprint sample is a  <a href="https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification">”To Do” application</a>. It lets a user create, read, update and delete “To Do” tasks. The asynchronous operations are handled with the help of RxJava.
+The blueprint sample is a  <a href="https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification">”To Do” application</a>. It lets a user create, read, update and delete “To Do” tasks, as well as apply filters to the displayed list of tasks. RxJava is used to move off the main thread and be able to handle asynchronous operations.
 
 ### Model
 
@@ -126,6 +124,7 @@ public void Tasks_ShowsNonEmptyMessage() throws Exception {
 ### Presenter
 
 The Presenter and its corresponding View are created by the Activity. References to the View and to the `TaskRepository` - the Model - are given to the constructor of the Presenter. In the implementation of the constructor, the Presenter will call the `setPresenter` method of the View.
+This can be simplified when using a dependency injection framework that allows the injection of the Presenters in the corresponding views, reducing the coupling of the classes. The implementation of the ToDo-MVP with Dagger is covered in <a href="https://github.com/googlesamples/android-architecture">another sample</a>.
 
 All Presenters implement the same BasePresenter interface.
 
@@ -162,6 +161,13 @@ The role of the `unsubscribe` method is to clear all the subscriptions of the Pr
 
 Apart from `subscribe` and `unsubscribe`, each Presenter exposes other methods, corresponding to the user actions in the View. For example, the `AddEditTaskPresenter`, adds methods like `createTask`, that would be called when the user presses the button that creates a new task. This ensures that all the user actions - and consequently all the UI logic - go through the Presenter and thereby can be unit tested.
 
+## Disadvantages of Model-View-Presenter Pattern
+
+The Model-View-Presenter pattern brings with it a very good separation of concerns. While this is for sure a pro, when developing a small app or a prototype, this can seem like an overhead. To decrease the number of interfaces used, some developers remove the `Contract` interface class, and the interface for the Presenter.
+One of the pitfalls of MVP appears when moving the UI logic to the Presenter: this becomes now an all-knowing class, with thousands of lines of code. To solve this, split the code even more and remember to create classes that have only one responsibility and are unit testable.
+
 ## Conclusion
 
 The <a href="https://upday.github.io/blog/model-view-controller/">Model-View-Controller pattern</a> has two main disadvantages: firstly, the View has a reference to both the Controller and the Model; and secondly, it does not limit the handling of UI logic to a single class, this responsibility being shared between the Controller and the View or the Model. The Model-View-Presenter pattern solves both of these issues by breaking the connection that the View has with the Model and creating only **one class that handles** everything related to **the presentation of the View** - the Presenter: a single class that is easy to unit test.
+
+What if we want an event-based architecture, where the View can react on changes? Stay tuned for the next patterns sampled in the <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> to see how could this be implemented. 
