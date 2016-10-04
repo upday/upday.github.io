@@ -11,7 +11,7 @@ search_omit: true
 </ul>
 
 ## About us
-Upday is a start-up based in the heart of Europe’s most exciting city, Berlin. Used by millions of users in several European countries, upday is pre-installed on the -1 homescreen page of Samsung’s flagship devices.
+Upday is a start-up based in the heart of Europe’s most exciting city, Berlin. Used by millions of users in several European countries, upday is embedded into the launcher of Samsung’s flagship devices.
 
 We are a passionate, diverse and international team, always striving to improve, curious, motivated and keen to go the extra mile. We have a strong culture of collegiality and an extraordinary team spirit where we are not afraid to celebrate success from individual, team to company achievements, anniversaries, birthdays, weddings/babies–you name it, we celebrate it.
 
