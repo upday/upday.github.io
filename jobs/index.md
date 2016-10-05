@@ -1,6 +1,6 @@
 ---
 layout: static
-title: Open positions
+title: Open Positions
 excerpt: "We want You!"
 search_omit: true
 ---
