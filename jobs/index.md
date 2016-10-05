@@ -22,4 +22,5 @@ We are a passionate, diverse and international team, always striving to improve,
 * We provide personal growing support: from blog posts to tech talks and knowledge sharing (http://upday.github.io/)
 * We conduct [hackathon/hack-week](http://upday.github.io/blog/hack-week/) every now and then, we are willing to make experiments and constantly try to grow
 * Celebrations are highly active at upday: be it company anniversary, birthdays, weddings/babies–you name it, we celebrate it
+* upday is made up of 110 “updudes” from over 30 different countries and we’re still growing. This is why we are looking for you!
 * Competitive salary and unlimited contract and many more benefits
