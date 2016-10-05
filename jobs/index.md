@@ -4,9 +4,9 @@ title: Open positions
 excerpt: "We want You!"
 search_omit: true
 ---
-<ul class="post-list">
+<ul>
 {% for post in site.categories.jobs %}
-  <li><article><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></article></li>
+  <li><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></li>
 {% endfor %}
 </ul>
 
