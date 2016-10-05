@@ -15,7 +15,7 @@ Upday is a start-up based in the heart of Europe’s most exciting city, Berlin.
 
 We are a passionate, diverse and international team, always striving to improve, curious, motivated and keen to go the extra mile. We have an extraordinary team spirit where we are not afraid to celebrate success from individual, team to company achievements, anniversaries, birthdays, weddings/babies–you name it, we celebrate it.
 
-** Some reasons why you wanna work with us**
+** Some reasons why you wanna work with us **
 
 * It’s an opportunity to work with passionate, curious people with a constant strive to improve and go the extra mile
 * We have a strong culture of collegiality and an extraordinary team spirit that we are happy to share with you and are proud of
