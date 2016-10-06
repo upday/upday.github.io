@@ -24,7 +24,7 @@ layout: page
 
 
 <article class="container">
-  {% for post in site.posts  %}
+  {% for post in site.categories.blog  %}
   {% unless post.draft %}
   <section class="index">
      {% if site.data.authors[post.author].avatar %}<img src="/images/{{ site.data.authors[post.author].avatar }}" class="avatar">{% endif %}
