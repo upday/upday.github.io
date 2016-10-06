@@ -43,3 +43,11 @@ henning_gross:
   bio: "Henning leads the technical team at upday as Director Engineering."
   bio_long: "Henning leads the technical team at upday as Director Engineering. He is still passionate about code and tries to work as operational as possible for someone in a management position, even if at times, it can be painful for the team."
   avatar: authors/henning_gross.jpg
+
+robert_bordo:
+  name: Robert Bordo
+  web: http://www.upday.com
+  email: robert@upday.com
+  bio: "Robert works as a hands-on Dev Lead at upday."
+  bio_long: "Robert works as a hands-on Dev Lead at upday. His goal is to enable and support the developers in order to focus on what they like to do most: Writing code. Also he tries to keep up-to-date with current technology trends to still deliver ideas and quality code."
+  avatar: authors/robert_bordo.png
