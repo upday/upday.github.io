@@ -18,7 +18,7 @@ We are a passionate, diverse and international team, always striving to improve,
 ** Some reasons why you wanna work with us **
 
 * It’s an opportunity to work with passionate, curious people with a constant strive to improve and go the extra mile
-* We have a strong culture of collegiality and an extraordinary team spirit that we are happy to share with you and are proud of
+* We have an extraordinary team spirit that we are happy to share with you and are proud of
 * We provide personal growing support: from blog posts to tech talks and knowledge sharing
 * We conduct [hackathon/hack-week](http://upday.github.io/blog/hack-week/) every now and then, we are willing to make experiments and constantly try to grow
 * Celebrations are highly active at upday: be it company anniversary, birthdays, weddings/babies–you name it, we celebrate it
