@@ -1,7 +1,7 @@
 ---
 layout: static
 title: Imprint
-excerpt: "So Simple is a responsive Jekyll theme for your words and images."
+excerpt: "Imprint of upday"
 modified: 2014-08-08T19:44:38.564948-04:00
 ---
 (Information pursuant to section 5 of German TeleMedia Act)
@@ -10,7 +10,7 @@ upday GmbH & Co. KG<br>
 Axel-Springer-Straße 65<br>
 10888 Berlin
 
-Represented by upday Management GmbH, which is represented by its managing directors („Geschäftsführer“) Peter Würtenberger und Daniel Keller
+Represented by upday Management GmbH, which is represented by its managing directors („Geschäftsführer“) Peter Würtenberger and Thomas Hirsch
 
 Contact:<br>
 Telephone: +49 (0)30 – 2591 72639<br>
