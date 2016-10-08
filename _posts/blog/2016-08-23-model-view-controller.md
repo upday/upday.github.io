@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Model-View-Controller Pattern in Android"
+title: "Android Architecture Patterns Part 1: Model-View-Controller"
 description: Discover what Model-View-Controller is, how it should be implemented and some of its ups and downs.
 modified:
 categories: blog
