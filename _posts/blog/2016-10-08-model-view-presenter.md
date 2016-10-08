@@ -7,10 +7,10 @@ categories: blog
 author: florina_muntenescu
 excerpt: The MVP pattern became one of the most popular patterns in Android in the last couple of years. Let's see what MVP is and how we applied it in Google's Android Architecture Blueprints.
 tags: [Android, Architecture, MVP]
-date: 2016-09-05T10:39:55-04:00
+date: 2016-10-08T00:39:55-04:00
 ---
 
-It's about time we developers start thinking on how we can apply good architecture patterns in our Android apps. To help with this, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a>, where <a href="https://github.com/erikhellman">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample. Let's have a look at how we applied it and the pros and cons of this approach.
+It's about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a>, where <a href="https://github.com/erikhellman">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/">MVP & RxJava</a> sample. Let's have a look at how we applied it and the pros and cons of this approach.
 
 ## The Model-View-Presenter Pattern
 
@@ -164,10 +164,11 @@ Apart from `subscribe` and `unsubscribe`, each Presenter exposes other methods, 
 ## Disadvantages of Model-View-Presenter Pattern
 
 The Model-View-Presenter pattern brings with it a very good separation of concerns. While this is for sure a pro, when developing a small app or a prototype, this can seem like an overhead. To decrease the number of interfaces used, some developers remove the `Contract` interface class, and the interface for the Presenter.
+
 One of the pitfalls of MVP appears when moving the UI logic to the Presenter: this becomes now an all-knowing class, with thousands of lines of code. To solve this, split the code even more and remember to create classes that have only one responsibility and are unit testable.
 
 ## Conclusion
 
 The <a href="https://upday.github.io/blog/model-view-controller/">Model-View-Controller pattern</a> has two main disadvantages: firstly, the View has a reference to both the Controller and the Model; and secondly, it does not limit the handling of UI logic to a single class, this responsibility being shared between the Controller and the View or the Model. The Model-View-Presenter pattern solves both of these issues by breaking the connection that the View has with the Model and creating only **one class that handles** everything related to **the presentation of the View** - the Presenter: a single class that is easy to unit test.
 
-What if we want an event-based architecture, where the View can react on changes? Stay tuned for the next patterns sampled in the <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> to see how could this be implemented. 
+What if we want an event-based architecture, where the View reacts on changes? Stay tuned for the next patterns sampled in the <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> to see how this can be implemented.
