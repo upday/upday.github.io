@@ -1,26 +1,36 @@
 ---
 layout: post
-title: "Understanding Vector Drawables"
-description: This is how vector drawables work and what their limitations are
+title: "Optimizing Vector Drawables"
+description: This is how vector drawables work and how to optimize them
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: Before you replace all your images with vector drawables, here's how they work and what issues you might have with them.
+excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here are three mistakes that you might be doing and how to fix them, right now. Because &#35;PERFMATTERS.
 tags: [Android, UI, Vector Drawables]
 image:
-date: 2016-06-27T15:39:55-04:00
+date: 2016-10-08T00:39:55-04:00
 ---
 
-## Hurrah, Android Supports Vector Graphics!
+While some mobile platforms have been supporting vector graphics for a while, Android only began doing this natively starting with API Level 21 and with the help of the Support Library 23.2.0 for pre-Lollipop devices. By replacing you PNG image resources with VectorDrawables, your APK size decreases considerably and most of all, your images look good, independent of the resolution of the device used.
 
-While some mobile platforms have been supporting vector graphics for a while, Android only began doing this natively starting with API Level 21 and with the help of the Support Library 23.2.0 for pre-Lollipop devices. Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics. Using vector data instead of raster image data, the number of resources added to the project decreases, since now only one resource per resolution is needed, and therefore also the APK size. But, before you decide to replace absolutely every PNG in your app with a vector drawable, understand how they work, what limitations they have and how can you overcome some of them.
+When used incorrectly, VectorDrawables can affect the performance of your app, that's why we believe that it is important to first understand how VectorDrawables work. Here are three mistakes that you might be doing together with easy to implement solutions, to ensure that you are really improving the performance of your app, with the help of VectorDrawables.
 
-## How Vector Drawables Work
+## Understanding The Internals Of VectorDrawables
 
-Vector graphics use geometrical shapes to describe graphical elements. The vector graphics are rendered at runtime. The automatic rendering at pixel density gives smoothness to the graphics, regardless of the device capabilities. So your images won’t be downscaled or upscaled, looking stretched or pixelated but they will be always perfectly drawn for your screen size. Although the XML file containing the vector drawable is usually smaller than the PNG version, the vector drawables come with a computational overhead at runtime, which may be an issue for more complex graphical elements.
+Vector graphics use geometrical shapes to describe graphical elements. The vector graphics are rendered at runtime. The automatic rendering at pixel density gives smoothness to the graphics, regardless of the device capabilities. So your images won’t be downscaled or upscaled, looking stretched or pixelated but they will be always perfectly drawn for your screen size.
+Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics. Using vector data instead of raster image data, the number of resources added to the project decreases, since now only one resource per resolution is needed, and therefore also the APK size.
+
+Although the XML file containing the vector drawable is usually smaller than the PNG version, the vector drawables come with a computational overhead at runtime, which may be an issue for more complex graphical elements. When vector drawables are drawn for the first time, a cached bitmap is created in order to optimize the re-drawing performance. This cache is re-used as long as the width and the height of the image that needs to be drawn is the same. If a VectorDrawable is used for multiple sizes, a new Bitmap will be created every time and drawn.
+
+Compared to raster images, drawing VectorDrawables will take more time for the first drawing but then, as long as the size of the image doesn't change, the next drawings of VectorDrawables will take less than drawing raster images.
 
 
-## Limitations Of Vector Drawables
+## Multiple Sizes, Multiple Renderings
+
+Therefore, the best approach in this case is to create VectorDrawables for every size needed.
+
+In order to test this, we just allow our app to support both portrait and landscape orientation. Since the size of the view changes when changing the orientation, we can see that when rotating the device, drawing the vector drawable takes 15ms in portrait and 5ms in landscape, where the view is smaller.
+At the same time, when the image is just re-used by different views, we can see that drawing the vector drawable takes 15ms the first time - afterwards, drawing time is reduced to 0ms.  
 
 
 ### Maximum VectorDrawable Size Recommended
@@ -89,13 +99,6 @@ At the beginning, we considered this a valid way of measuring the render time. B
 
 
 
-
-### Multiple Sizes, Multiple Renderings
-
-When vector drawables are drawn for the first time, a cached bitmap is created in order to optimize the re-drawing performance. This cache is re-used as long as the width and the height of the image that needs to be drawn is the same. If a VectorDrawable is used for multiple sizes, a new Bitmap will be created every time and drawn. Therefore, the best approach in this case is to create VectorDrawables for every size needed.
-
-In order to test this, we just allow our app to support both portrait and landscape orientation. Since the size of the view changes when changing the orientation, we can see that when rotating the device, drawing the vector drawable takes 15ms in portrait and 5ms in landscape, where the view is smaller.
-At the same time, when the image is just re-used by different views, we can see that drawing the vector drawable takes 15ms the first time - afterwards, drawing time is reduced to 0ms.  
 
 
 ### Supported Tags
