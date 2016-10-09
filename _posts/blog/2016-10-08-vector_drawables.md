@@ -11,7 +11,7 @@ image:
 date: 2016-10-08T00:39:55-04:00
 ---
 
-## Hurrah, Android Supports Vector Graphics!
+## Android Supports Vector Graphics, Finally!
 
 While some mobile platforms have been supporting vector graphics for a while, Android only began doing this natively starting with API Level 21 and with the help of the Support Library 23.2.0 for pre-Lollipop devices. Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics. Using vector data instead of raster image data, the number of resources added to the project decreases, since now only one resource per resolution is needed, and therefore also the APK size. But, before you decide to replace absolutely every PNG in your app with a vector drawable, understand how they work, what limitations they have and how can you overcome some of them.
 

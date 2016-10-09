@@ -13,7 +13,9 @@ date: 2016-10-08T00:39:55-04:00
 
 While some mobile platforms have been supporting vector graphics for a while, Android only began doing this natively starting with API Level 21 and with the help of the Support Library 23.2.0 for pre-Lollipop devices. By replacing you PNG image resources with VectorDrawables, your APK size decreases considerably and most of all, your images look good, independent of the resolution of the device used.
 
-When used incorrectly, VectorDrawables can affect the performance of your app, that's why we believe that it is important to first understand how VectorDrawables work. Here are three mistakes that you might be doing together with easy to implement solutions, to ensure that you are really improving the performance of your app, with the help of VectorDrawables.
+The system will try to redraw your activity at every 16ms so it can reach the <a href="https://www.youtube.com/watch?v=CaMTIgxCSqU">60fps</a> target. So this means that the duration of every `onDraw` method is extremely important.
+
+When used incorrectly, VectorDrawables can affect the performance of your app, because the drawing can take a long time. Here are three mistakes that you might be doing together with easy to implement solutions, to ensure that you are really improving the performance of your app, with the help of VectorDrawables.
 
 ## Understanding The Internals Of VectorDrawables
 
@@ -27,36 +29,21 @@ Compared to raster images, drawing VectorDrawables will take more time for the f
 
 ## Multiple Sizes, Multiple Renderings
 
-Therefore, the best approach in this case is to create VectorDrawables for every size needed.
+Let's say that you need to display an image as 100x50dp when in portrait and 50x100dp when in landscape.
 
-In order to test this, we just allow our app to support both portrait and landscape orientation. Since the size of the view changes when changing the orientation, we can see that when rotating the device, drawing the vector drawable takes 15ms in portrait and 5ms in landscape, where the view is smaller.
+// image
+
+**VectorDrawables use a Bitmap cache that gets recreated when the size changes**, so for example when you rotate your device from portrait to landscape. This means that you end up spending time on rendering at every rotation. The best approach in this case is to **create VectorDrawables for portrait and landscape**. You will end up with two XML files instead of one, but the gain is the rendering time is more valuable.
+
+Let's test this! The size of the view changes when changing the orientation, we can see that when rotating the device, drawing the vector drawable takes 15ms in portrait and 5ms in landscape, where the view is smaller.
 At the same time, when the image is just re-used by different views, we can see that drawing the vector drawable takes 15ms the first time - afterwards, drawing time is reduced to 0ms.  
 
-
-### Maximum VectorDrawable Size Recommended
+## Maximum VectorDrawable Size Recommended
 
 Since the vector graphics are rendered at runtime, on the CPU, the initial loading and drawing of a vector drawable will be slower. This is why <a href="https://developer.android.com/studio/write/vector-asset-studio.html">Google recommends<a/> using them for images of max 200x200dp.
 
 We are curious developers here at <a href="https://play.google.com/store/apps/details?id=de.axelspringer.yana">upday<a/> so we wanted to find out what exactly does "slower" mean and what's the difference between drawing a vector drawable and a PNG? Given how much <a href="https://plus.google.com/explore/PERFMATTERS">#PERFMATTERS<a/> we wanted to make sure that we won't end up with a smaller APK but with a slower app.
-In order to actually check how long the rendering takes, we have measured it using several different test methods:
 
-###### 1. Using System.currentTimeMillis()
-
-We created a MeasurableImageView, that overrides the ``onDraw()`` method allowing to compute how long the ``super.onDraw()`` took.
-
-{% highlight java %}
-@Override
-protected void onDraw(final Canvas canvas) {
-    long startTime = System.currentTimeMillis();
-
-    super.onDraw(canvas);
-
-    long endTime = System.currentTimeMillis();
-    long duration = endTime - startTime;
-}
-{% endhighlight %}
-
-Then, we added our MeasurableImageView to a layout and changed the image source and the image size for our tests. We used a Samsung Galaxy S7 as a test device.
 
 **Test 1:** We set the image to match the size of the screen: **1440x1960px**. The vector drawable took **16ms** to draw, the PNG 0ms.
 <br/>
@@ -64,18 +51,6 @@ Then, we added our MeasurableImageView to a layout and changed the image source 
 
 The difference in rendering time is considerable.
 
-###### 2. Using TraceView
-
-Hoping to get clearer results, we decided to use TraceView. We modified the overridden ``onDraw`` method, calling ``Debug.startMethodTracing`` before the ``super.onDraw`` and stopped the tracing with ``Debug.stopMethodTracing`` immediately after.
-
-{% highlight java %}
-@Override
-protected void onDraw(final Canvas canvas) {
-    Debug.startMethodTracing("vd");
-    super.onDraw(canvas);
-    Debug.stopMethodTracing();
-}
-{% endhighlight %}
 
 We generated two traces: one after setting the vector drawable as image source and the other one after using a PNG. The interesting results come from analyzing the drawing time: ``VectorDrawable.draw`` took **22.669ms** real time, whereas ``BitmapDrawable.draw`` took only **0.180ms**.
 
@@ -93,29 +68,47 @@ We generated two traces: one after setting the vector drawable as image source a
 </picture>
 </center>
 
-###### 3. Using HierachyViewer
+## How We Tested
 
-At the beginning, we considered this a valid way of measuring the render time. But, after seeing <a href="https://twitter.com/queencodemonkey">Huyen Tue Dao<a/>'s talk at Droidcon Berlin 2016 about <a href="https://www.youtube.com/watch?v=gwqQT5NrhUg">loving lean layout<a/>, where she mentions several times not to rely on the numbers from the HierarchyViewer, we decided skip this.
+In order to actually check how long the rendering takes, we have measured it using several different test methods:
+
+### 1. Using System.currentTimeMillis()
+
+We created a MeasurableImageView, that overrides the ``onDraw()`` method allowing to compute how long the ``super.onDraw()`` took.
+
+{% highlight java %}
+@Override
+protected void onDraw(final Canvas canvas) {
+    long startTime = System.currentTimeMillis();
+
+    super.onDraw(canvas);
+
+    long endTime = System.currentTimeMillis();
+    long duration = endTime - startTime;
+}
+{% endhighlight %}
+
+Then, we added our MeasurableImageView to a layout and changed the image source and the image size for our tests. We used a Samsung Galaxy S7 as a test device.
+
+
+### 2. Using TraceView
+
+Hoping to get clearer results, we decided to use TraceView. We modified the overridden ``onDraw`` method, calling ``Debug.startMethodTracing`` before the ``super.onDraw`` and stopped the tracing with ``Debug.stopMethodTracing`` immediately after.
+
+{% highlight java %}
+@Override
+protected void onDraw(final Canvas canvas) {
+    Debug.startMethodTracing("vd");
+    super.onDraw(canvas);
+    Debug.stopMethodTracing();
+}
+{% endhighlight %}
 
 
 
 
 
-### Supported Tags
-
-Another limitation of vector drawables are the tags. Not all VectorDrawable XML tags are supported for Android 5.0 and higher, just a limited set:
-
-<center>
-<picture>
-	<img src="/images/blog/vector_drawables/tags_support.png" alt="VectorDrawables tags supported">
-	<figcaption>Supported tags. Image from Android developer pages. </figcaption>
-</picture>
-</center>
-
-But, the Support Library 23.2.0 and higher offers full support for VectorDrawable XML elements.
-
-
-### Resource References In VectorDrawable XML
+## Resource References In VectorDrawable XML
 
 In case you want to reference other resources in the VectorDrawable XML, you can do it like this:
 
@@ -123,7 +116,7 @@ In case you want to reference other resources in the VectorDrawable XML, you can
 android:fillColor="@color/colorPrimary"
 {% endhighlight %}
 
-Be aware that only Android 5.0 and higher supports dynamic attributes.
+Be aware that only **Android 5.0 and higher supports dynamic attributes**.
 Setting this will result in black areas instead of your desired color on pre-API level 21 devices.
 
 <center>
@@ -136,15 +129,12 @@ Setting this will result in black areas instead of your desired color on pre-API
 
 To change the color of your vector drawable dynamically, the solution is simple: tint your images.  
 
-{% highlight XML %}
-android:tint="@color/colorAccent"
+{% highlight java %}
+drawable.setColorFilter(color, PorterDuff.Mode.SRC_IN);
 {% endhighlight %}
 
 Just make sure that your VectorDrawable is black for the path that needs to be drawn and transparent for the rest. Otherwise, you might end up with unexpected colors.
 
-### Vector Drawable Preview in Android Studio Looks Skewed
-
-The vector drawable preview in both the import preview and in the file preview can look skewed. But don't be scared, chances are it might look good when the app is run on the device. So, make sure your check them on the device first and only change them if needed.
 
 ## Conclusion
 
