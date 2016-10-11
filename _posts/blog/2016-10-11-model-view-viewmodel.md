@@ -7,7 +7,7 @@ categories: blog
 author: florina_muntenescu
 excerpt: Our choice for the upday app - the Model-View-ViewModel pattern. Find out what it is, how we applied it in Android and why we consider it perfect for us.
 tags: [Android, Architecture, MVVM]
-date: 2016-09-04T15:39:55-04:00
+date: 2016-10-11T15:39:55-04:00
 ---
 After four different designs in the first six months of the development of the upday app, we learned one important lesson: we need an architecture pattern that allows fast reaction to design changes! The solution we chose in the end was Model-View-ViewModel. Discover with me what MVVM is; how we are applying it at upday and what makes it so perfect for us.
 
@@ -19,7 +19,7 @@ The main players in the MVVM pattern are:
 * The *ViewModel* - exposes streams of data relevant to the View
 * The *DataModel* - abstracts the data source. The ViewModel works with the DataModel to get and save the data.  
 
-At a first glance, MVVM seems very similar to the Model-View-Presenter pattern, because both of them do a great job in abstracting the view's state and behavior. The Presentation Model abstracts a View independent from a specific user-interface platform, whereas the MVVM pattern was created to simplify the **event driven** programming of user interfaces.
+At a first glance, MVVM seems very similar to the <a href="https://upday.github.io/blog/model-view-presenter/">Model-View-Presenter pattern</a>, because both of them do a great job in abstracting the view's state and behavior. The Presentation Model abstracts a View independent from a specific user-interface platform, whereas the MVVM pattern was created to simplify the **event driven** programming of user interfaces.
 
 If the MVP pattern meant that the Presenter was telling the View directly what to display, in MVVM, **ViewModel exposes streams of events** to which the Views can bind to. Like this, the ViewModel does not need to hold a reference to the View anymore, like the Presenter is. This also means that all the interfaces that the MVP pattern requires, are now dropped.
 
@@ -77,7 +77,7 @@ The View is the actual user interface in the app. It can be an `Activity`, a `Fr
     }
 {% endhighlight %}
 
-If the MVVM View is a custom Android `View`, the binding is done in the constructor. To ensure that the subscription is not preserved, leading to possible memory leaks, the unbinding happens in `onDetachedFromWindow`.
+If the MVVM View is a custom Android `View`, the binding is done in the constructor. To ensure that the subscription is not preserved, leading to <a href="https://medium.com/square-corner-blog/android-leak-pattern-subscriptions-in-views-18f0860aa74c#.7i9swoco0">possible memory leaks</a>, the unbinding happens in `onDetachedFromWindow`.
 
 {% highlight java %}
     private final CompositeSubscription mSubscription = new CompositeSubscription();
@@ -173,7 +173,7 @@ We have also learned how important separation of concerns is and that we should 
 
 ## Conclusion
 
-MVVM combines the advantages of separation of concerns provided by MVP, while leveraging the advantages of data bindings. The result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.
+MVVM combines the advantages of separation of concerns provided by <a href="https://upday.github.io/blog/model-view-presenter/">MVP</a>, while leveraging the advantages of data bindings. The result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.
 
 After the design changes during the "infancy" of our app, we switched to MVVM in upday's "adolescence" - a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign. We are finally close to being able to call upday a mature app.
 
