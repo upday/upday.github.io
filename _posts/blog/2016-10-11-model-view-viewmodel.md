@@ -52,7 +52,7 @@ We learned two things about the ViewModel the hard way:
 
 * We should make sure that every action of the user goes through the ViewModel and that any possible logic of the View is moved in the ViewModel.
 
-We wrote about these two topics in a blog post about <a href="https://upday.github.io/mvvm_rx_common_mistakes">common mistakes in MVVM + RxJava</a>.  
+We wrote about these two topics in a blog post about <a href="https://upday.github.io/blog/mvvm_rx_common_mistakes">common mistakes in MVVM + RxJava</a>.  
 
 ### View
 
@@ -159,7 +159,7 @@ public class ViewModelTest {
 
 If the ViewModel needs access to Android classes, we create wrappers that we call `Provider`s. For example, for Android resources we created a `IResourceProvider`, that exposes methods like `String getString(@StringRes final int id)`. The implementation of the `IResourceProvider` will contain a reference to the `Context` but, the ViewModel will only refer to an `IResourceProvider` injected.
 
-As we have mentioned above, and in our <a href="https://upday.github.io/mvvm_rx_common_mistakes">common mistakes</a> blog post, we are creating model objects to hold the state of the data. This also allows a higher degree of testability and control of the data that is emitted by the ViewModel.  
+As we have mentioned above, and in our <a href="https://upday.github.io/blog/mvvm_rx_common_mistakes">common mistakes</a> blog post, we are creating model objects to hold the state of the data. This also allows a higher degree of testability and control of the data that is emitted by the ViewModel.  
 
 ### View
 
