@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Model-View-Controller Pattern in Android"
+title: "Android Architecture Patterns Part 1: Model-View-Controller"
 description: Discover what Model-View-Controller is, how it should be implemented and some of its ups and downs.
 modified:
 categories: blog
@@ -123,4 +123,4 @@ nameTextView.setText(name);
 
 In the early days of Android the Model-View-Controller pattern seemed to have confused a lot of developers and led to code that was difficult, if not impossible to unit test.
 
-The dependence of the View from the Model and having logic in the View steered our code-base to a state from which it was impossible to recover without refactoring completely the app. What was the new approach in architecture and why? Find out in a new blog post soon.
+The dependence of the View from the Model and having logic in the View steered our code-base to a state from which it was impossible to recover without refactoring completely the app. What was the new approach in architecture and why? Find out in by reading <a href="https://upday.github.io/blog/model-view-presenter/">this blog post</a>.
