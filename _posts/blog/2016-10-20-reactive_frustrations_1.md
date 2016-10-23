@@ -1,13 +1,13 @@
 ---
 layout: post
-title: "Reactive Frustrations Part 1"
+title: "Reactive Frustrations"
 modified:
 categories: blog
 author: tomek_polanski
-excerpt: See what frustrations you will encounter while using RxJava.
+excerpt: See what frustrations you will encounter while using RxJava. Documentation, anonymous classes, forgetting to subscribe, are just some we've dealt with while using RxJava. Here's how we handled them.
 tags: [RxJava]
 image:
-date: 2016-10-20T13:00:55-01:00
+date: 2016-10-24T13:00:55-01:00
 ---
 
 Most of us, who use Rx in daily projects, really enjoy it. That’s why we and so many others talk and write about Rx. Most material out there about Rx is aimed towards new adopters, to encourage them to give it a try. 
@@ -22,7 +22,7 @@ In this post, I would like to share some of our frustrations that we’ve encoun
 When you are new to Rx, the first thing that you will do is to read the documentation. 
 In RxJava you will encounter this kind of documentation:
 
-“Converts an `Observable` that emits `Observables` into an `Observable` that emits the items emitted by the most recently emitted of those `Observables`.”
+> Converts an `Observable` that emits `Observables` into an `Observable` that emits the items emitted by the most recently emitted of those `Observables`.
 
 This is the description of `switchOnNext`. It is completely accurate. 
 For an experienced Rx developer, it is helpful. Unfortunately, a new adopter might be really confused. 
@@ -47,7 +47,7 @@ button.setOnClickListener(new View.OnClickListener() {
 
 Before Rx, we didn’t need so many of them, but now almost every operator in RxJava requires a function. 
 
-Do yourself a favour and use either Retrolambda, Kotlin or Jack (when it’s ready):
+Do yourself a favour and use either <a href="https://github.com/orfjackal/retrolambda">Retrolambda</a>, <a href="https://kotlinlang.org/">Kotlin</a> or <a href="https://source.android.com/source/jack.html">Jack</a> (when it’s ready):
 
 
 {% highlight java %}
