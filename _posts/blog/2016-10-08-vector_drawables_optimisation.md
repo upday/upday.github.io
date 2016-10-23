@@ -20,7 +20,16 @@ When used incorrectly, VectorDrawables can affect the performance of your app, b
 ## Understanding The Internals Of VectorDrawables
 
 Vector graphics use geometrical shapes to describe graphical elements. The vector graphics are rendered at runtime. The automatic rendering at pixel density gives smoothness to the graphics, regardless of the device capabilities. So your images won’t be downscaled or upscaled, looking stretched or pixelated but they will be always perfectly drawn for your screen size.
-Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics. Using vector data instead of raster image data, the number of resources added to the project decreases, since now only one resource per resolution is needed, and therefore also the APK size.
+Vector drawables allow the representation of images (e.g. icons, UI elements) based on XML vector graphics.
+
+<center>
+<picture>
+	<a href="/images/blog/vector_drawables/vector_drawables_vs_png.png"><img src="/images/blog/vector_drawables/vector_drawables_vs_png.png" alt="VectorDrawable vs PNG"></a>
+	<figcaption>Using a VectorDrawable vs using a small PNG image</figcaption>
+</picture>
+</center>
+
+Using vector data instead of raster image data, the number of resources added to the project decreases, since now only one resource per resolution is needed, and therefore also the APK size.
 
 Although the XML file containing the vector drawable is usually smaller than the PNG version, the vector drawables come with a computational overhead at runtime, which may be an issue for more complex graphical elements. When vector drawables are drawn for the first time, a cached bitmap is created in order to optimize the re-drawing performance. This cache is re-used as long as the width and the height of the image that needs to be drawn is the same. If a VectorDrawable is used for multiple sizes, a new Bitmap will be created every time and drawn.
 
