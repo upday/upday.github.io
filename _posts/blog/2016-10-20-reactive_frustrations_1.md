@@ -5,7 +5,7 @@ modified:
 categories: blog
 author: tomek_polanski
 excerpt: See what frustrations you will encounter while using RxJava. Documentation, anonymous classes, forgetting to subscribe, are just some we've dealt with while using RxJava. Here's how we handled them.
-tags: [RxJava, AndroidDev, android] 
+tags: [RxJava, AndroidDev, Android] 
 image:
 date: 2016-10-24T00:00:55-01:00
 ---
