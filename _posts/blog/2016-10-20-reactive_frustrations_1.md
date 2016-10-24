@@ -135,7 +135,7 @@ Observable.concat(firstStream, secondStream)
 
 We know that something is not right as the `firstStream` will never complete and there is something wrong with this code.
 
-Using those naming conventions with `Observables` and `Flowables` helps writing and reading the code, but they should not be used in conjunction with other the Rx types like `Single`, `Completable`, and `Maybe`.
+Using those naming conventions with `Observables` and `Flowables` helps writing and reading the code, but they should not be used with other Rx types like `Single`, `Completable`, and `Maybe`.
 
 
 ### `...map` operators
