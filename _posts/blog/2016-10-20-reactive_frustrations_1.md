@@ -5,7 +5,7 @@ modified:
 categories: blog
 author: tomek_polanski
 excerpt: See what frustrations you will encounter while using RxJava. Documentation, anonymous classes, forgetting to subscribe, are just some we've dealt with while using RxJava. Here's how we handled them.
-tags: [RxJava, AndroidDev, Android] 
+tags: [RxJava, Android] 
 image:
 date: 2016-10-24T00:00:55-01:00
 ---
@@ -135,7 +135,7 @@ Observable.concat(firstStream, secondStream)
 
 We know that something is not right as the `firstStream` will never complete and there is something wrong with this code.
 
-Using those naming conventions with `Observables` and `Flowables` helps writing and reading the code, but they should not be used with other Rx types like `Single`, `Completable`, and `Maybe`.
+Using these naming conventions with `Observables` and `Flowables` improve code clarity, but they should not be used with other Rx types like `Single`, `Completable`, and `Maybe`.
 
 
 ### `...map` operators
