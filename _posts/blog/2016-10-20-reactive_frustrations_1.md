@@ -5,7 +5,7 @@ modified:
 categories: blog
 author: tomek_polanski
 excerpt: See what frustrations you will encounter while using RxJava. Documentation, anonymous classes, forgetting to subscribe, are just some we've dealt with while using RxJava. Here's how we handled them.
-tags: [RxJava]
+tags: [RxJava, Android] 
 image:
 date: 2016-10-24T00:00:55-01:00
 ---
@@ -135,7 +135,7 @@ Observable.concat(firstStream, secondStream)
 
 We know that something is not right as the `firstStream` will never complete and there is something wrong with this code.
 
-Using those naming conventions with `Observables` and `Flowables` helps to write and read the code, but they should be used in conjunction with the Rx types: `Single`, `Completable`, and `Maybe`.
+Using these naming conventions with `Observables` and `Flowables` improve code clarity, but they should not be used with other Rx types like `Single`, `Completable`, and `Maybe`.
 
 
 ### `...map` operators
@@ -151,7 +151,7 @@ The role of the announcer is to introduce speakers and to invite them on the sta
 
 `flatMap`
 
-In the case of flatMap, whenever the announcer decides, she invites a speaker on the stage. That means that she can allow multiple speakers on the stage, at the same time, resulting in a really noisy conference.
+In the case of `flatMap`, whenever the announcer decides, she invites a speaker on the stage. That means that she can allow multiple speakers on the stage, at the same time, resulting in a really noisy conference.
 
 `switchMap`
 
@@ -159,7 +159,7 @@ The announcer could be a bit impatient. Whenever she chooses to invite a speaker
 
 `concatMap`
 
-With concatMap, the announcer is fair - she might want to invite a new speaker while the previous talk hasn’t finished, but she won’t. She will wait for the current one to finish, even if that speaker takes too long, and then will invite the next one. Again, only one speech at a time.
+With `concatMap`, the announcer is fair - she might want to invite a new speaker while the previous talk hasn’t finished, but she won’t. She will wait for the current one to finish, even if that speaker takes too long, and then will invite the next one. Again, only one speech at a time.
 
 <br />
 
