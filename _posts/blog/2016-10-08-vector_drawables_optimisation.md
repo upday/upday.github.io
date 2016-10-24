@@ -56,12 +56,12 @@ In the same time, when the image is just re-used by different views, we can see 
 
 ## Maximum VectorDrawable Size Recommended
 
-Since the vector graphics are rendered at runtime, on the CPU, the initial loading and drawing of a vector drawable will be slower. This is why <a href="https://developer.android.com/studio/write/vector-asset-studio.html">Google recommends<a/> using them for images of max 200x200dp.
+Since the vector graphics are rendered at runtime, on the CPU, the initial loading and drawing of a vector drawable will be slower. This is why <a href="https://developer.android.com/studio/write/vector-asset-studio.html">Google recommends<a/> using them for images of **maximum 200 x 200 dp**.
 
 <center>
 <picture>
 	<a href="/images/blog/vector_drawables/android_doc.png"><img src="/images/blog/vector_drawables/android_doc.png" alt="Android documentation"></a>
-	<figcaption>Android documentation says max 200 x 200 dp</figcaption>
+	<figcaption><a href="https://developer.android.com/studio/write/vector-asset-studio.html">Android documentation</a> says max 200 x 200 dp</figcaption>
 </picture>
 </center>
 
@@ -75,13 +75,18 @@ The difference in rendering time is considerable.
 
 ## Do You Really Need a VectorDrawable?
 
+The VectorDrawable rendering duration is influenced by the size of the image, and by its **complexity**. If the drawable contains complicated paths then it will take longer to draw. So, before you import a new SVG in AndroidStudio keep in mind the following things:
+
+* Can you replace the vector graphic with a **shape**? Shapes are rendered much faster than VectorDrawables and raster images.
+* Can you **simplify** the image? Does that image that you're about to import contain some path just for the background? Then maybe you can just set a background color to the `ImageView` that will contain the VectorDrawable. Can you split the image in smaller parts and maybe replace some of those parts with shapes?
+* Is your VectorDrawable is really complex, big, and with complicated paths? Then it's just better to **use a raster image**. The size of the APK will grow, but the performance of your app won't be decreased by the VectorDrawable render time. Instead of using PNG files, start using <a href="https://developers.google.com/speed/webp/">WebP images</a>. The quality will be similar to the PNGs but the size of the image is reduced.
 
 ## How We Tested
 
 To check how long the rendering of an image takes, meant that we needed to measure how long it takes to draw it. So we created a `MeasurableImageView` class that extends `ImageView`. We are overriding the ``onDraw()`` method allowing us to compute how long the ``super.onDraw()`` takes.
 We used a Samsung Galaxy S7 as a test device. We ran the app several times, computing an average of the values for different scenarios.
 
-### 1. Using System.nanoTime()
+#### 1. Using System.nanoTime()
 
 Before and after the `ImageView.onDraw` method call, we got the system time. Then, we just deducted the start time from the end time, to get the duration.
 
@@ -98,7 +103,7 @@ protected void onDraw(final Canvas canvas) {
 {% endhighlight %}
 
 
-### 2. Using TraceView
+#### 2. Using TraceView
 
 Hoping to get clearer results, we decided to use TraceView. We called ``Debug.startMethodTracing`` before the ``super.onDraw`` and stopped the tracing with ``Debug.stopMethodTracing`` immediately after.
 
@@ -121,7 +126,7 @@ Then we analyzed the generated traces, looking for the time took to run ``Vector
 </picture>
 </center>
 
-*Note:* keep in mind that you won't get exactly the same values, every time when your image is rendered. The values that you get should just be used as general reference points. The rendering duration depends also on the power of your CPU so make sure you use the mostly used device by your users.
+**Note:** keep in mind that you won't get exactly the same values, every time when your image is rendered. You should use these numbers just as general reference points. If you're close to 16ms, then it's really necessary to optimize the performance! The rendering duration depends also on the power of your CPU so make sure you use the mostly used devices by your users.
 
 ## Conclusion
 
@@ -129,7 +134,7 @@ Then we analyzed the generated traces, looking for the time took to run ``Vector
 
 Check out the project used for testing VectorDrawables in this <a href="https://github.com/florina-muntenescu/vectordrawable-vs-png">GitHub repo</a>.
 
-If you want to learn more about vector drawables, here are some interesting resources:
+If you want to learn more about VectorDrawables, here are some interesting resources:
 
 <a href="https://developer.android.com/studio/write/vector-asset-studio.html">Adding multi-density vector graphics in Android Studio<a/>
 <br/>
