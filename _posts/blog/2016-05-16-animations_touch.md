@@ -6,7 +6,7 @@ modified:
 categories: blog
 author: florina_muntenescu
 excerpt: Did you ever had problems with touch events on views after they were animated? Here's why.
-tags: [Android, Animations, Touch Events]
+tags: [Android, Animations, Touch Events, UI]
 image:
 date: 2016-05-20T15:39:55-04:00
 ---
