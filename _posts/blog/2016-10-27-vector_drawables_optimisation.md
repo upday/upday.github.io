@@ -49,7 +49,7 @@ Let's say that you need to display an image that needs to fill the height of the
 **VectorDrawables use a Bitmap cache that gets recreated when the size changes**, so in our case, when you rotate your device from portrait to landscape. After the first rendering, the cached bitmap will be used. This means that you end up spending a lot of time on the first rendering of the VectorDrawable, at every rotation of the screen.
 But, if the image that you are drawing is the same size, both in portrait and in landscape, then the bitmap cache will not be invalidated and it will be reused.
 
-Let's test this! The size of the view changes when changing the orientation. When rotating the device, drawing the vector drawable takes, in average, 15.50ms in portrait and 7.80ms in landscape, where the view is smaller.
+Let's test this! The size of the view changes when changing the orientation from 1440x2240px in portrait to 2560x1152px in landscape. When rotating the device, drawing the vector drawable takes, in average, 15.50ms in portrait and 7.80ms in landscape, where the view is smaller.
 When the image size doesn't change with rotation, but it's always 800x800px, we can see that drawing the vector drawable takes 7.50ms the first time - afterwards, drawing time is reduced to 0.15ms.  
 
 If you're using two different resources for portrait and for landscape, even if they are the same size, the image will take longer to render every time you rotate the device.
