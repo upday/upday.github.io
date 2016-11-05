@@ -5,7 +5,7 @@ description: This is how vector drawables work and how to optimize them.
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here's how VectorDrawables work and how you should be using them. Because &#35;PERFMATTERS.
+excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here's how VectorDrawables work and how they should be used. Because &#35;PERFMATTERS.
 tags: [Android, UI, Vector Drawables, perfmatters]
 image:
 date: 2016-10-27T00:39:55-04:00
