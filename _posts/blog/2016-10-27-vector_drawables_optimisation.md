@@ -5,7 +5,7 @@ description: This is how vector drawables work and how to optimize them.
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here are three mistakes that you might be making and how to fix them, right now. Because &#35;PERFMATTERS.
+excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here's how VectorDrawables work and how they should be used. Because &#35;PERFMATTERS.
 tags: [Android, UI, Vector Drawables, perfmatters]
 image:
 date: 2016-10-27T00:39:55-04:00
@@ -15,7 +15,7 @@ While some mobile platforms have been supporting vector graphics for a while, An
 
 The system will try to redraw your Activity every 16ms so it can reach the <a href="https://www.youtube.com/watch?v=CaMTIgxCSqU">60fps</a> target. So this means that the duration of every `onDraw` method is extremely important.
 
-When used incorrectly, VectorDrawables can affect the performance of your app, because the drawing can take a long time. Here are three pitfalls that can be easily avoided, to ensure that you are really improving the performance of your app, with the help of VectorDrawables.
+When used incorrectly, VectorDrawables can affect the performance of your app, because the drawing can take a long time. Here is how VectorDrawables work to ensure that you are really improving the performance of your app, with the help of VectorDrawables.
 
 ## Understanding The Internals Of VectorDrawables
 
@@ -36,7 +36,7 @@ Compared to raster images, drawing VectorDrawables will take more time for the f
 
 ## Multiple Sizes, Multiple Renderings
 
-Let's say that you need to display an image that needs to fill the height of the screen but keep the aspect ratio when rotating the device from portrait to landscape.
+Let's say that you need to display an image that needs to fill the height of the screen but keep the aspect ratio when rotating the device from portrait to landscape. So the size of the image is different from portrait to landscape.
 
 <center>
 <picture>
@@ -46,11 +46,15 @@ Let's say that you need to display an image that needs to fill the height of the
 </picture>
 </center>
 
-**VectorDrawables use a Bitmap cache that gets recreated when the size changes**, so for example when you rotate your device from portrait to landscape. After the first rendering, the cached bitmap will be used. This means that you end up spending a lot of time on the first rendering of the VectorDrawable, at every rotation of the screen.
-The best approach, in this case,is to **create one VectorDrawable for portrait and one for landscape**. Like this, time will be spent only for the first rendering of the two images and the corresponding bitmap caches will be used from there on for every rotation.
+**VectorDrawables use a Bitmap cache that gets recreated when the size changes**, so in our case, when you rotate your device from portrait to landscape. After the first rendering, the cached bitmap will be used. This means that you end up spending a lot of time on the first rendering of the VectorDrawable, at every rotation of the screen.
+But, if the image that you are drawing is the same size, both in portrait and in landscape, then the bitmap cache will not be invalidated and it will be reused.
 
-Let's test this! The size of the view changes when changing the orientation. When rotating the device, drawing the vector drawable takes, in average, 15.50ms in portrait and 7.80ms in landscape, where the view is smaller.
-In the same time, when the image is just re-used by different views, we can see that drawing the vector drawable takes 15.50ms the first time - afterwards, drawing time is reduced to 0.15ms.  
+Let's test this!
+<br/>
+**Test 1:** The size of the view changes when changing the orientation from 1440x2240px in portrait to 2560x1152px in landscape. When rotating the device, drawing the vector drawable takes, in average, 15.50ms in portrait and 7.80ms in landscape, where the view is smaller.
+<br/>
+**Test 2:** The image size doesn't change with rotation, it's always 800x800px. We can see that drawing the vector drawable takes 7.50ms the first time - afterwards, drawing time is reduced to 0.15ms.  
+**Test 3:** Using two different resources for portrait and for landscape, even if they are the same size. The images will take longer to render every time you rotate the device.
 
 ## Maximum VectorDrawable Size Recommended
 
@@ -129,7 +133,7 @@ Then we analyzed the generated traces, looking at the execution time of ``Vector
 
 ## Conclusion
 
-<a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html">VectorDrawables<a/> are the best way of minimizing the number of image resources and reducing your APK size. But before you start replacing all your PNGs, keep in mind that the first time the image is drawn, it will take longer. Considerably longer! The rest of the issues to take into account with vector drawables are minor and easy to overcome, compared to the advantages that you get when using them.
+<a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html">VectorDrawables<a/> are the best way of minimizing the number of image resources and reducing your APK size. But before you start replacing all your PNGs, keep in mind that the first time the image is drawn, it will take longer, if the size of the image is different, between portrait and landscape. Use VectorDrawables mostly for icons and other images that are max 200x200dp, only when using shapes is not possible. If your image is very complex, consider WebP images.
 
 Check out the project used for testing VectorDrawables in this <a href="https://github.com/florina-muntenescu/vectordrawable-vs-png">GitHub repo</a>.
 
