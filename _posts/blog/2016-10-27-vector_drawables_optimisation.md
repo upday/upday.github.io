@@ -5,7 +5,7 @@ description: This is how vector drawables work and how to optimize them.
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here are three mistakes that you might be making and how to fix them, right now. Because &#35;PERFMATTERS.
+excerpt: You have replaced all image resources in your app with VectorDrawables - your APK is smaller and your images look better. But are you really using them correctly? Here's how VectorDrawables work and how you should be using them. Because &#35;PERFMATTERS.
 tags: [Android, UI, Vector Drawables, perfmatters]
 image:
 date: 2016-10-27T00:39:55-04:00
@@ -49,10 +49,12 @@ Let's say that you need to display an image that needs to fill the height of the
 **VectorDrawables use a Bitmap cache that gets recreated when the size changes**, so in our case, when you rotate your device from portrait to landscape. After the first rendering, the cached bitmap will be used. This means that you end up spending a lot of time on the first rendering of the VectorDrawable, at every rotation of the screen.
 But, if the image that you are drawing is the same size, both in portrait and in landscape, then the bitmap cache will not be invalidated and it will be reused.
 
-Let's test this! The size of the view changes when changing the orientation from 1440x2240px in portrait to 2560x1152px in landscape. When rotating the device, drawing the vector drawable takes, in average, 15.50ms in portrait and 7.80ms in landscape, where the view is smaller.
-When the image size doesn't change with rotation, but it's always 800x800px, we can see that drawing the vector drawable takes 7.50ms the first time - afterwards, drawing time is reduced to 0.15ms.  
-
-If you're using two different resources for portrait and for landscape, even if they are the same size, the image will take longer to render every time you rotate the device.
+Let's test this!
+<br/>
+**Test 1:** The size of the view changes when changing the orientation from 1440x2240px in portrait to 2560x1152px in landscape. When rotating the device, drawing the vector drawable takes, in average, 15.50ms in portrait and 7.80ms in landscape, where the view is smaller.
+<br/>
+**Test 2:** The image size doesn't change with rotation, it's always 800x800px. We can see that drawing the vector drawable takes 7.50ms the first time - afterwards, drawing time is reduced to 0.15ms.  
+**Test 3:** Using two different resources for portrait and for landscape, even if they are the same size. The images will take longer to render every time you rotate the device.
 
 ## Maximum VectorDrawable Size Recommended
 
@@ -131,7 +133,7 @@ Then we analyzed the generated traces, looking at the execution time of ``Vector
 
 ## Conclusion
 
-<a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html">VectorDrawables<a/> are the best way of minimizing the number of image resources and reducing your APK size. But before you start replacing all your PNGs, keep in mind that the first time the image is drawn, it will take longer. Considerably longer! The rest of the issues to take into account with vector drawables are minor and easy to overcome, compared to the advantages that you get when using them.
+<a href="https://developer.android.com/reference/android/graphics/drawable/VectorDrawable.html">VectorDrawables<a/> are the best way of minimizing the number of image resources and reducing your APK size. But before you start replacing all your PNGs, keep in mind that the first time the image is drawn, it will take longer, if the size of the image is different, between portrait and landscape. Use VectorDrawables mostly for icons and other images that are max 200x200dp, only when using shapes is not possible. If your image is very complex, consider WebP images.
 
 Check out the project used for testing VectorDrawables in this <a href="https://github.com/florina-muntenescu/vectordrawable-vs-png">GitHub repo</a>.
 
