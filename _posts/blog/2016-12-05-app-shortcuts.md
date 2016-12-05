@@ -7,7 +7,7 @@ categories: blog
 author: kavya_hebbani
 excerpt: App Shortcuts introduced in Android N provides quick access points to your app. Let's take a look at how to implement this in detail.
 tags: [Android N, Android UI]
-image: /images/blog/app_shortcuts/image_main.jpg
+image:
 date: 2016-11-16T00:39:55-04:00
 ---
 Android N introduced many new powerful features out of which I would like to talk about a simple, yet very useful one: <a href="https://developer.android.com/preview/shortcuts.html">App Shortcuts</a>. Available from Android API version 25, App shortcuts help users to perform a specific action within the app, from outside the app.
@@ -24,7 +24,7 @@ Performing a long-tap on the app’s launcher icon will display the list of App 
 Android provides two types of App shortcuts:
 
 #### 1. Static Shortcuts:
-Static shortcuts are published when the app is installed, hence they remain constant throughout the app. Static shortcuts are immutable which means that their icons, description and the Intent it launches cannot be changed without updating to a new version of the app.
+Static shortcuts are **published when the app is installed**, hence they remain constant throughout the app. Static shortcuts are immutable which means that their icons, description and the Intent it launches cannot be changed without updating to a new version of the app.
 
 Static shortcuts are used for generic actions of the app that remain persistent over the lifetime of your app’s current version.
 
@@ -133,11 +133,12 @@ When the user launches the app via a shortcut and then decides to press back but
     <intent
       android:action="android.intent.action.VIEW"
       android:targetPackage="com.example.shortcuts"
-      android:targetClass="com.example.shortcuts.MainActivity" />
+      android:targetClass="com.example.shortcuts.MainActivity"/>
     <intent
       android:action="android.intent.action.VIEW"
       android:targetPackage="com.example.shortcuts"
-      android:targetClass="com.example.shortcuts.CartActivity" />  </shortcut>
+      android:targetClass="com.example.shortcuts.CartActivity"/>
+</shortcut>
 {% endhighlight %}
 
 The first Intent will always have <a href="https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_NEW_TASK">`FLAG_ACTIVITY_NEW_TASK`</a> and <a href="https://developer.android.com/reference/android/content/Intent.html#FLAG_ACTIVITY_CLEAR_TASK">`FLAG_ACTIVITY_CLEAR_TASK`</a> set. This means that the existing activities will be destroyed when a Static shortcut is launched.
@@ -161,7 +162,7 @@ Typically, `FLAG_ACTIVITY_CLEAR_TASK` is defined so that the new target Activity
 
 #### Best practices:
 
-* Use at most 4 App shortcuts, including static and dynamic ones, for a better user experience.
+* Use **at most 4 App shortcuts**, including static and dynamic ones, for a better user experience.
 
 * Disable the Dynamic shortcuts that are no longer valid using <a href="https://developer.android.com/reference/android/content/pm/ShortcutManager.html#disableShortcuts%28java.util.List%3Cjava.lang.String%3E,%20java.lang.CharSequence%29">disableShortcuts(shortcut, errorMessage).</a> If the user has already pinned the shortcuts on the home screen, then the error message will be displayed.
 
@@ -169,11 +170,11 @@ Typically, `FLAG_ACTIVITY_CLEAR_TASK` is defined so that the new target Activity
 
 * Use <a href="https://medium.com/upday-devs/optimizing-the-performance-of-vector-drawables-680a4c456286#.pi61nqwkc">vector drawables</a> for icons, so that they are scaled for different dimensions automatically. Except if you are using avatars, use PNG and provide image for all dimensions.
 
-* Keep the descriptions short, specific and meaningful. Do not exceed 10 characters for short description and 25 characters for long description.
+* Keep the descriptions **short, specific and meaningful.** Do not exceed 10 characters for short description and 25 characters for long description.
 
-* Dynamic shortcuts by default appear on top of the Static ones. The order of Dynamic shortcuts can be changed by changing the ‘Rank’ of the shortcut using <a href="https://developer.android.com/reference/android/content/pm/ShortcutInfo.Builder.html#setRank%28int%29">ShortcutInfo.Builder().setRank().</a>
+* Dynamic shortcuts by default appear on top of the Static ones. **The order** of Dynamic shortcuts can be changed by changing the ‘Rank’ of the shortcut using <a href="https://developer.android.com/reference/android/content/pm/ShortcutInfo.Builder.html#setRank%28int%29">ShortcutInfo.Builder().setRank().</a>
 
-* When the system locale changes, update the icon’s description. Keep in mind that Android 7.0 supports <a href="https://developer.android.com/about/versions/nougat/android-7.0.html#multi-locale_languages">multi-locale.</a>
+* When the system **locale changes**, update the icon’s description. Keep in mind that Android 7.0 supports <a href="https://developer.android.com/about/versions/nougat/android-7.0.html#multi-locale_languages">multi-locale.</a>
 
 #### Testing:
 To test App shortcuts you would need Android version 7.1, with supported launcher(like the Nexus or Pixel launcher). A preview image can be easily setup on a rooted device or you can use an emulator, as described in detail <a href="https://developer.android.com/preview/download.html">here.</a>
