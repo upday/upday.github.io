@@ -23,21 +23,21 @@ Performing a long-tap on the app’s launcher icon will display the list of App 
 
 Android provides two types of App shortcuts:
 
-#### 1. Static Shortcuts:
+#### 1. Static Shortcuts
 Static shortcuts are **published when the app is installed**, hence they remain constant throughout the app. Static shortcuts are immutable which means that their icons, description and the Intent it launches cannot be changed without updating to a new version of the app.
 
 Static shortcuts are used for generic actions of the app that remain persistent over the lifetime of your app’s current version.
 
 Examples: scan a QR code, view shopping cart, start a new game.
 
-#### 2. Dynamic Shortcuts:
+#### 2. Dynamic Shortcuts
 Dynamic shortcuts are created, updated and removed during run-time of your app.
 
 Dynamic shortcuts are used to provide specific, context-sensitive actions within your app, that could change with the user or based on user’s interactions within the app.
 
 Examples: translate from a specific language, call a specific person, go to a specific channel on YouTube.
 
-#### Implementing App Shortcuts
+## Implementing App Shortcuts
 
 #### Static Shortcuts
 To define Static shortcuts, create a resource file under ‘res/xml’ with an arbitrary name, say ‘shortcuts.xml’ and define all the app’s shortcuts with their icons, description and the Intent that it should launch within the app.
@@ -160,7 +160,7 @@ ShortcutInfo shortcut = new ShortcutInfo.Builder(this, "cartId")
 
 Typically, `FLAG_ACTIVITY_CLEAR_TASK` is defined so that the new target Activity is brought to front.
 
-#### Best practices:
+## Best practices
 
 * Use **at most 4 App shortcuts**, including static and dynamic ones, for a better user experience.
 
@@ -176,8 +176,8 @@ Typically, `FLAG_ACTIVITY_CLEAR_TASK` is defined so that the new target Activity
 
 * When the system **locale changes**, update the icon’s description. Keep in mind that Android 7.0 supports <a href="https://developer.android.com/about/versions/nougat/android-7.0.html#multi-locale_languages">multi-locale.</a>
 
-#### Testing:
+## Testing
 To test App shortcuts you would need Android version 7.1, with supported launcher(like the Nexus or Pixel launcher). A preview image can be easily setup on a rooted device or you can use an emulator, as described in detail <a href="https://developer.android.com/preview/download.html">here.</a>
 
-#### TL;DR
+## TL;DR
 To conclude, App shortcuts are a great way to provide quick and easy access to the app’s common and recommended points within the app. Reducing the number of taps is always something the user will love about your app. Users are excited about Android N and its time to make the most of it and let the heavy users of your app enjoy the cool new features. The complete source code can be found in my <a href="https://github.com/kavyaShreeHS/App-Shortcuts">GitHub repository.</a>
