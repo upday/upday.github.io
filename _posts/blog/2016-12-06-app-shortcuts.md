@@ -8,7 +8,7 @@ author: kavya_hebbani
 excerpt: App Shortcuts introduced in Android N provides quick access points to your app. Let's take a look at how to implement this in detail.
 tags: [Android N, Android UI]
 image:
-date: 2016-11-16T00:39:55-04:00
+date: 2016-12-06T00:39:55-04:00
 ---
 Android N introduced many new powerful features out of which I would like to talk about a simple, yet very useful one: <a href="https://developer.android.com/preview/shortcuts.html">App Shortcuts</a>. Available from Android API version 25, App shortcuts help users to perform a specific action within the app, from outside the app.
 
