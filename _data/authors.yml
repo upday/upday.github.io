@@ -51,3 +51,11 @@ robert_bordo:
   bio: "Robert works as a hands-on Dev Lead at upday."
   bio_long: "Robert works as a hands-on Dev Lead at upday. His goal is to enable and support the developers in order to focus on what they like to do most: Writing code. Also he tries to keep up-to-date with current technology trends to still deliver ideas and quality code."
   avatar: authors/robert_bordo.png
+
+kavya_hebbani:
+  name: Kavya Hebbanni
+  web: http://www.upday.com
+  email: kavya@upday.com
+  bio: "Kavya works at upday as an Android Developer."
+  bio_long: "Kavya works at upday as an Android Developer. She loves clean UI/UX and is a reactive programming enthusiast."
+  avatar: authors/kavya_hebbani.jpg
