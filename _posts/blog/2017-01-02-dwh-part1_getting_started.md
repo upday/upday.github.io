@@ -5,14 +5,14 @@ description:
 modified:
 categories: blog
 author: tino_noack
-excerpt: We would like to share our first approach towards a custom data warehouse solution. This is based on the kinds and the amount of data we have to process. We describe DWH components and identify tools which can be applied for implementation. We also introduce a data lake as a more 'Big-Data-friendly' but provisional solution.
+excerpt: We would like to share our first approach towards a custom data warehouse solution. This is based on the amount and type of data that needs processing. We describe DWH components and identify tools which can be applied for implementation. We also introduce a data lake as a more 'Big-Data-friendly' but provisional solution.
 tags: [Data, DWH, Data Warehouse, Big Data, Data Platform, Data Lake]
 image:
-date: 2016-12-22T00:00:00-04:00
+date: 2017-01-02T00:00:00-04:00
 ---
 
-This is part one of a <a href="../dwh-01">series of articles</a> in which we would like to share our journey with you and our experiences towards a custom data warehouse solution.
-Part one starts with a brief introduction to upday including the kinds of data we work with and a description of our working environment. Furthermore, we come up with a
+This is part one of a <a href="../dwh-01">series of articles</a> in which we would like to share our journey and our experiences towards a custom data warehouse solution.
+Part one starts with a brief introduction to upday including the types of data we work with and a description of our working environment. Furthermore, we come up with a
 tentative definition of a data warehouse (DWH), describe components regarding our use case, and identify tools which can be applied for implementation. Finally, we introduce
 a data lake as a more 'Big-Data-friendly' but provisional solution.
 
@@ -20,7 +20,7 @@ a data lake as a more 'Big-Data-friendly' but provisional solution.
 
 upday is a news app which aggregates content from thousands of sources including trusted brands and bloggers into a unique and simple format. It is available in a variety of
 European countries in a wide range of languages. upday is designed to be an intelligent news aggregator which learns about the reading habits and preferences of each unique user.
-For that reason, we have to cope with a huge volume of incoming data from a vast number of sources. For example, we handle the following kinds of data:
+For that reason, we have to cope with a huge volume of incoming data from a vast number of sources. For example, we handle the following types of data:
 
 1. **_Content metadata_** such as information about the content type, the publisher, and the publishing date is amongst others used for maintaining the publisher relationship.
    Content metadata is semi-structured but also contains unstructured data such as a title, a description, and the content itself e.g. in text form.
@@ -66,7 +66,7 @@ with domain expertise to guide us the first steps.
 In collaboration with the consultant, we identified basic components of a DWH for our use case: _sources_, _staging area_, _DWH core_, and _data mart_. The points and diagram below
 describe these components:
 
-1. **Sources**: We already introduced three kinds of data in the first section but we did not mention the data sources. The content metadata, in agreement with the content publisher,
+1. **Sources**: We already introduced three types of data in the first section but we did not mention the data sources. The content metadata, in agreement with the content publisher,
    is usually directly extracted from the publisher's source and stored into Elasticsearch. Data about user preferences is provided by our own in-app service and stored into a
    PostgreSQL database. User behavior data is both collected by our own in-app service and by a third party service. User behavior data is then stored into an S3 bucket.
 2. **Staging area**: The staging area is the first destination of all the data. It contains data which was extracted from the sources and might be incomplete and unadjusted. This
