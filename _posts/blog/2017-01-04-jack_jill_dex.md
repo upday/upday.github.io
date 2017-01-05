@@ -15,15 +15,14 @@ All Android code lines dream about one thing — to one day be part of a dex
 ## The App Module And His Friends
 The main character in our story is our __application module__ (the one in _\<project_dir>/app_). But usually the application module hangs out with some friends — the library __.jar dependencies__, his bigger brothers — the __.aar dependencies__, and possibly even some __library modules__.
 
+The application module and the library module each contain their own .java source code, resource file and <a href="https://www.guardsquare.com/en/proguard">_proguard-rules.pro_</a>. The .aar dependency incorporates the .class bytecode files, together with the resource files and the _proguard.txt_ file. The .jar dependency contains the .class files. All of these files need to be compiled to one (or more) dex file(s), and then afterwards packaged in an APK and run on an Android device.
+
 <center>
 <picture>
 	<a href="/images/blog/jack_jill_dex"><img src="/images/blog/jack_jill_dex/characters.png" alt="App module, library module, .aar and .jar dependencies"></a>
 	<figcaption>App Module and his friends: the library module, the .aar and .jar dependencies</figcaption>
 </picture>
 </center>
-
-
-The application module and the library module each contain their own .java source code, resource file and <a href="https://www.guardsquare.com/en/proguard">_proguard-rules.pro_</a>. The .aar dependency incorporates the .class bytecode files, together with the resource files and the _proguard.txt_ file. The .jar dependency contains the .class files. All of these files need to be compiled to one (or more) dex file(s), and then afterwards packaged in an APK and run on an Android device.
 
 ## Target: The Dex File
 Dex files are <a href="https://source.android.com/devices/tech/dalvik/dex-format.html">Dalvik executable files</a> for both <a href="https://source.android.com/devices/tech/dalvik/">ART and Dalvik</a> runtimes. They combine the power of our four protagonists creating the bytecode that runs on Android devices.
@@ -96,7 +95,7 @@ Jack brings our story to an end by putting together all the files, classes, meth
 <center>
 <picture>
 	<a href="/images/blog/jack_jill_dex"><img src="/images/blog/jack_jill_dex/jackjillbuild.png" alt="Typical Jack and Jill Application Build"></a>
-	<figcaption>Typical Jack and Jill Application Build</figcaption>
+	<figcaption><a href="https://android-developers.googleblog.com/2014/12/hello-world-meet-our-new-experimental.html">Typical Jack and Jill Application Build</a></figcaption>
 </picture>
 </center>
 
