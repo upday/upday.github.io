@@ -5,8 +5,8 @@ description:
 modified:
 categories: blog
 author: mari_kumlien
-excerpt: insights.....
-tags: [Insights, Experiments, Change, Lean, Agile]
+excerpt: To be agile, it’s vital to continuously improve. Improving requires change. Change is not easy: humans like habits and known patterns. We know what we have, but not what we get etc. ... Lean Change is a feedback-driven model that approach changes in small steps, evaluate the outcome and iterate. In this blog, we will tell you how we use insights and experiments for driving change.
+tags: [Insights, Experiments, Change, Managements, Lean, Agile, Feedback]
 image:
 date: 2017-01-10T00:00:00-04:00
 ---
@@ -17,12 +17,12 @@ How do we foster an organization where the changes are based on what is truly go
 ## Where Did We Start?
 I (Agile Coach at upday) joined a Lean Change Agent workshop together with Richard, one of our Data Scientists, and our CTO Andi. It was two day workshop held by Mike Weber and based on the book by Jason Little: <a href="http://leanchange.org/lean-change-management/">__Lean Change Management__</a>. It was an active workshop including lots of participation and interactions, with great tools and ideas about how to work with change in an organization.
 
-We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and whether or not our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management Cycle</a>.
+We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and whether or not our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management cycle</a> and it's a feedback-driven model for managing change.
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="Lean Change Management Cycle"></a>
-	<figcaption>Lean Change Management Cycle</figcaption>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="Lean Change Management cycle"></a>
+	<figcaption>Lean Change Management cycle</figcaption>
 </picture>
 </center>
 
@@ -33,7 +33,7 @@ Inspired by the stories shared to us during the workshop, as we came back to the
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/updudes.jpg" alt="App module, library module, .aar and .jar dependencies"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/updudes.jpg" alt="updudes in action at the insights corner" width="250"></a>
 	<figcaption>updudes in action at the insights corner</figcaption>
 </picture>
 </center>
@@ -47,7 +47,7 @@ We started to get a bit frustrated about all the things we wanted to do, but jus
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Process.jpg" alt="A first draft of the insights process"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Process.jpg" alt="A first draft of the insights process" width="350"></a>
 	<figcaption>A first draft of the insights process</figcaption>
 </picture>
 </center>
@@ -63,7 +63,7 @@ You also have to decide how to measure the outcome; when the experiment is over 
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Experiment_Template.jpg" alt="Experiment template"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Experiment_Template.jpg" alt="Experiment template" width="350"></a>
 	<figcaption>Experiment template</figcaption>
 </picture>
 </center>
@@ -87,7 +87,7 @@ Along this journey, we learned a lot about ourselves and how to approach change 
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/board.jpg" alt="Current state of our insights board"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/board.jpg" alt="Current state of our insights board" width="350"></a>
 	<figcaption>Current state of our insights board</figcaption>
 </picture>
 </center>
