@@ -17,11 +17,11 @@ How do we foster an organization where the changes are based on what is truly go
 ## Where Did We Start?
 I (Agile Coach at upday) joined a Lean Change Agent workshop together with Richard, one of our Data Scientists, and our CTO Andi. It was two day workshop held by Mike Weber and based on the book by Jason Little: <a href="http://leanchange.org/lean-change-management/">__Lean Change Management__</a>. It was an active workshop including lots of participation and interactions, with great tools and ideas about how to work with change in an organization.
 
-We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and whether or not our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management cycle</a>.
+We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and whether or not our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management Cycle</a>.
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="App module, library module, .aar and .jar dependencies"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="Lean Change Management Cycle"></a>
 	<figcaption>Lean Change Management Cycle</figcaption>
 </picture>
 </center>
@@ -38,7 +38,7 @@ Inspired by the stories shared to us during the workshop, as we came back to the
 </picture>
 </center>
 
-Although we were quite overwhelmed by all the post-its, we felt that what we found there was not news to us. We more or less had a similar perception of how things were working in our organization. We were aware of what our problems were. The question was what to do with this knowledge. It’s quite amazing, we actually had a lot of collective experience, knowledge and feelings about our organization there on the wall and we could just use it to start changing things. 
+Although we were quite overwhelmed by all the post-its, we felt that what we found there was not news to us. We more or less had a similar perception of how things were working in our organization. We were aware of what our problems were. The question was what to do with this knowledge. It’s quite amazing, we actually had a lot of collective experience, knowledge and feelings about our organization there on the wall and we could just use it to start changing things.
 
 Unfortunately, it wasn’t that simple. We were often too busy with other things that we didn’t take enough time to spontaneously reflect, especially not in a small group. However, we strongly believe that working with insights and experiments is the right way to go and we need to create time for it and continuously improve how we approach change.
 
@@ -47,37 +47,37 @@ We started to get a bit frustrated about all the things we wanted to do, but jus
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Process.jpg" alt="App module, library module, .aar and .jar dependencies"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Process.jpg" alt="A first draft of the insights process"></a>
 	<figcaption>A first draft of the insights process</figcaption>
 </picture>
 </center>
 
 ## Iteration 2: Simplify
-The process looked quite good on paper and it did help us to get a clear, shared picture, but it was a bit too much. To actually make the Insights board something we all used, we had to simplify. So we did. We cleaned up the board, made some simple rules, made an effort to make it a regular habit to work in front of the board. It was a new start! Two updudes also assigned them self new roles; “Lord of the board” and “Master of cluster” with the responsibilities to make people gather around the board and help them use it.
+The process looked quite good on paper and it did help us to get a clear, shared picture, but it was a bit too much. To actually make the Insights board something we all used, we had to __simplify__. So we did. We cleaned up the board, made some simple rules, made an effort to make it a regular habit to work in front of the board. It was a new start! Two updudes also assigned themselves new roles; “Lord of the board” and “Master of cluster” with the responsibilities to make people gather around the board and help them use it.
 
 When creating an experiment, it is important to include a hypothesis; what outcome do you expect after running the experiment?
 
-“IF this is changed THEN it will lead to these characteristics.”
+ “__IF__ _this is changed_ __THEN__ _it will lead to these characteristics._”
 
 You also have to decide how to measure the outcome; when the experiment is over and you review it, how do you know if it succeeded or not? As a means to simplify, we introduced a template for creating experiments, which made it easier to get started (no reinventing the wheel). The template included all steps needed to create an experiment and how to review it.
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Experiment_Template.jpg" alt="App module, library module, .aar and .jar dependencies"></a>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Experiment_Template.jpg" alt="Experiment template"></a>
 	<figcaption>Experiment template</figcaption>
 </picture>
 </center>
 
 To make it more clear what an experiment could look like, here are a few examples of hypotheses from our experiments:
 
-“IF we change the team setup in the suggested way, THEN we gain productivity for delivering on focus areas and our happiness at work will increase.” (Read more about this topic here.)
-“IF team uses End-of-Day emails as daily standup, THEN it will fulfill the purpose of the standup and keep team concentration.”
+* “IF _we change the team setup in the suggested way,_ THEN _we gain productivity for delivering on focus areas and our happiness at work will increase._”
+* “IF _team uses End-of-Day emails as daily standup,_ THEN _it will fulfill the purpose of the standup and keep team concentration._”
 
 
 ## Iteration 3: Involve And Empower
-Gradually it spread how to use the insights board and how all updudes could get involved in changing upday. We made a collective effort to make the board alive and active and actually use the insights posted there.
+Gradually it spread how to use the insights board and how all updudes could get __involved__ in changing upday. We made a collective effort to make the board alive and active and actually use the insights posted there.
 
-It was a positive peer pressure; “join me, let’s spend some minutes at the insights board” after the weekly all-hands or by encouraging each other to use the insights board and create an experiment when something not working so well in the organization was addressed. The idea is to empower everyone to do something -  to own the possibility to change and shape our future!
+It was a positive peer pressure; “join me, let’s spend some minutes at the insights board” after the weekly all-hands or by encouraging each other to use the insights board and create an experiment when something not working so well in the organization was addressed. The idea is to __empower__ everyone to do something -  __to own the possibility to change and shape our future!__
 
 It’s important to note that an experiment could be around anything you believe should change in your organization; culture, processes, tools, roles. It could be something concerning the whole organization or just a few people. The key (again) is not to have people with fancy titles plan upfront at the computer, but to involve people affected by the change in designing it. Empower and encourage them to drive the change!
 
@@ -87,12 +87,12 @@ Along this journey, we learned a lot about ourselves and how to approach change 
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/board.jpg" alt="App module, library module, .aar and .jar dependencies"></a>
-	<figcaption>Current state of our insights board.</figcaption>
+	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/board.jpg" alt="Current state of our insights board"></a>
+	<figcaption>Current state of our insights board</figcaption>
 </picture>
 </center>
 
-Another thing that we learned is that it’s easy to lose focus after the experiment is done, but in order to see what works for you and for change to really happen, it’s important to focus on the review. Look at the metrics, evaluate the outcome, and decide on the next steps.  Persevere or pivot. This, and taking small steps, is two key ingredients to lean change management.
+Another thing that we learned is that it’s easy to lose focus after the experiment is done, but in order to see what works for you and for change to really happen, it’s important to focus on the review. Look at the metrics, evaluate the outcome, and decide on the next steps. __Persevere or pivot__. This, and taking small steps, is two key ingredients to lean change management.
 
 ## The Future
 We have approached our insights board in an iterative way. It is an experiment that will gradually evolve. How we use it and how it is designed will change step-by-step as we see what works for us and what doesn’t.
