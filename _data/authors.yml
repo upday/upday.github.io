@@ -67,3 +67,11 @@ tino_noack:
   bio: "Tino works at upday as a Software Engineer."
   bio_long: "Tino works at upday as a Software Engineer."
   avatar: authors/tino_noack.png
+
+  mari_kumlien:
+    name: Mari Kumlien
+    web: http://www.upday.com
+    email: mari@upday.com
+    bio: "Mari works as an Agile Coach at upday."
+    bio_long: "Mari works as an Agile Coach at upday dedicated to bring the best out of people and teams."
+    avatar: authors/mari_kumlien.png
