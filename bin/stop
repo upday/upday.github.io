@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Stops the running Jekyll Docker container
+
+source bin/functions.sh
+docker_installed
+
+echo "Stopping Jekyll container..."
+
+docker stop upday.github.io > /dev/null
+docker rm upday.github.io > /dev/null
