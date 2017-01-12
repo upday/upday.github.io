@@ -63,7 +63,7 @@ You also have to decide how to measure the outcome; when the experiment is over 
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Experiment_Template.jpg" alt="Experiment template" width="350"></a>
+	<a href="/images/blog/lean_change_insights_board/Experiment_Template.jpg"><img src="/images/blog/lean_change_insights_board/Experiment_Template.jpg" alt="Experiment template" width="350"></a>
 	<figcaption>Experiment template</figcaption>
 </picture>
 </center>
