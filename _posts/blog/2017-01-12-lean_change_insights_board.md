@@ -5,19 +5,19 @@ description:
 modified:
 categories: blog
 author: mari_kumlien
-excerpt: To be agile, it’s vital to continuously improve. Improving requires change. Change is not easy: humans like habits and known patterns. We know what we have, but not what we get etc. ... Lean Change is a feedback-driven model that approach changes in small steps, evaluate the outcome and iterate. In this blog, we will tell you how we use insights and experiments for driving change.
+excerpt: To be agile, it’s vital to continuously improve. Improving requires change. Change is not easy - humans like habits and known patterns. Lean Change approaches changes in small steps, where you evaluate the outcome and iterate. Find out how we use insights and experiments for driving change.
 tags: [Insights, Experiments, Change, Managements, Lean, Agile, Feedback]
 image:
-date: 2017-01-10T00:00:00-04:00
+date: 2017-01-12T00:00:00-04:00
 ---
 A new year comes with the feeling that now is the time to change things. How many of us started the year with a promise to change and a few days later, it was already broken? _Once a year, big-bang changes don’t work - it never did and never will._ Instead, change things when and where you feel the need to. At upday, we strive to continuously improve; how we work and what we deliver. This requires constant change.
 
 How do we foster an organization where the changes are based on what is truly going on in the organization and its surroundings? Where change is not driven by a few, but by anyone who sees the need for change? Where change is not planned upfront and executed top-down but as small steps involving people who are affected? Where we all take part in shaping the future of the organization we want to work in and where we can deliver excellence?
 
 ## Where Did We Start?
-I (Agile Coach at upday) joined a Lean Change Agent workshop together with Richard, one of our Data Scientists, and our CTO Andi. It was two day workshop held by Mike Weber and based on the book by Jason Little: <a href="http://leanchange.org/lean-change-management/">__Lean Change Management__</a>. It was an active workshop including lots of participation and interactions, with great tools and ideas about how to work with change in an organization.
+I (Agile Coach at upday) joined a Lean Change Agent workshop together with Richard, one of our Data Scientists, and our CTO Andi. It was a two day workshop held by Mike Weber and based on the book by Jason Little: <a href="http://leanchange.org/lean-change-management/">__Lean Change Management__</a>. It was an active workshop including lots of participation and interactions, with great tools and ideas about how to work with change in an organization.
 
-We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and whether or not our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management cycle</a> and it's a feedback-driven model for managing change.
+We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and if our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management cycle</a> and it's a feedback-driven model for managing change.
 
 <center>
 <picture>
@@ -59,7 +59,7 @@ When creating an experiment, it is important to include a hypothesis; what outco
 
  “__IF__ _this is changed_ __THEN__ _it will lead to these characteristics._”
 
-You also have to decide how to measure the outcome; when the experiment is over and you review it, how do you know if it succeeded or not? As a means to simplify, we introduced a template for creating experiments, which made it easier to get started (no reinventing the wheel). The template included all steps needed to create an experiment and how to review it.
+You also have to decide how to measure the outcome; when the experiment is over and you review it, how do you know if it succeeded or not? As a means to simplify, we introduced a template for creating experiments, which made it easier to get started. The template included all steps needed to create an experiment and how to review it.
 
 <center>
 <picture>
