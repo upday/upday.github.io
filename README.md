@@ -4,6 +4,8 @@
 
 The quickest way to get started is to spin up this blog in a Docker container running Jekyll. You only need the Docker Engine installed for your operating system. It's available [for Mac](https://www.docker.com/products/docker#/mac), [for Windows](https://www.docker.com/products/docker#windows), and [for Linux](https://www.docker.com/products/docker#linux). For detailed installation instructions, see the Docker site.
 
+See [`INSTALLATION.md`](INSTALLATION.md) for manual installation instructions without Docker.
+
 ## Running Jekyll locally
 
 Before you start writing your post, open a terminal, `cd` into the blog directory and execute
