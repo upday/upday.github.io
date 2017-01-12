@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Starts a Jekyll Docker container available on port 4000
+
+source bin/functions.sh
+docker_installed
+
+echo "Pulling newest container..."
+docker pull upday/upday.github.io > /dev/null
+
+echo "Starting Jekyll container..."
+docker run \
+  --name upday.github.io \
+  -d \
+  -p 4000:4000 \
+  -v $(pwd):/app \
+  upday/upday.github.io > /dev/null
+
+container_id=$(docker ps -q -f name=upday.github.io)
+
+if [[ $container_id ]]; then
+  echo "Started Jekyll container; you may now browse the blog at http://localhost:4000"
+fi
