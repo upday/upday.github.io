@@ -21,7 +21,7 @@ We were introduced to a way of approaching change by __collecting insights__ and
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="Lean Change Management cycle"></a>
+	<a href="/images/blog/lean_change_insights_board/LCM_cycle.png"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="Lean Change Management cycle"></a>
 	<figcaption>Lean Change Management cycle</figcaption>
 </picture>
 </center>
@@ -33,7 +33,7 @@ Inspired by the stories shared to us during the workshop, as we came back to the
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/updudes.jpg" alt="updudes in action at the insights corner" width="250"></a>
+	<a href="/images/blog/lean_change_insights_board/updudes.jpg"><img src="/images/blog/lean_change_insights_board/updudes.jpg" alt="updudes in action at the insights corner" width="250"></a>
 	<figcaption>updudes in action at the insights corner</figcaption>
 </picture>
 </center>
@@ -47,7 +47,7 @@ We started to get a bit frustrated about all the things we wanted to do, but jus
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/Process.jpg" alt="A first draft of the insights process" width="350"></a>
+	<a href="/images/blog/lean_change_insights_board/Process.jpg"><img src="/images/blog/lean_change_insights_board/Process.jpg" alt="A first draft of the insights process" width="350"></a>
 	<figcaption>A first draft of the insights process</figcaption>
 </picture>
 </center>
@@ -87,7 +87,7 @@ Along this journey, we learned a lot about ourselves and how to approach change 
 
 <center>
 <picture>
-	<a href="/images/blog/lean_change_insights_board"><img src="/images/blog/lean_change_insights_board/board.jpg" alt="Current state of our insights board" width="350"></a>
+	<a href="/images/blog/lean_change_insights_board/board.jpg"><img src="/images/blog/lean_change_insights_board/board.jpg" alt="Current state of our insights board" width="350"></a>
 	<figcaption>Current state of our insights board</figcaption>
 </picture>
 </center>
