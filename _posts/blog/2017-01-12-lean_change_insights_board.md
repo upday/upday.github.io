@@ -17,12 +17,12 @@ How do we foster an organization where the changes are based on what is truly go
 ## Where Did We Start?
 I (Agile Coach at upday) joined a Lean Change Agent workshop together with Richard, one of our Data Scientists, and our CTO Andi. It was a two day workshop held by Mike Weber and based on the book by Jason Little: <a href="http://leanchange.org/lean-change-management/">__Lean Change Management__</a>. It was an active workshop including lots of participation and interactions, with great tools and ideas about how to work with change in an organization.
 
-We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and if our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/">Lean Change Management cycle</a> and it's a feedback-driven model for managing change.
+We were introduced to a way of approaching change by __collecting insights__ and from these, create small __experiments__ that you __evaluate and learn__ from before you take the next step. The idea is that instead of planning the change upfront, to create small experiments based on your current understanding and insights gathered, and review these after a fixed time period. The word _experiment_ is important here since it emphasizes that until we have tried something out; verified our assumptions (hypotheses) based on predefined metrics, we don’t know whether it’s the right thing to do and if our change will be successful. Another key ingredient is to involve people affected by the change in designing the change. This is called the <a href="http://leanchange.org/resources/lcm/" target="blank">Lean Change Management cycle</a> and it's a feedback-driven model for managing change.
 
 <center>
 <picture>
 	<a href="/images/blog/lean_change_insights_board/LCM_cycle.png"><img src="/images/blog/lean_change_insights_board/LCM_cycle.png" alt="Lean Change Management cycle"></a>
-	<figcaption>Lean Change Management cycle</figcaption>
+	<a href="http://leanchange.org/resources/lcm/"><figcaption>Lean Change Management cycle</figcaption></a>
 </picture>
 </center>
 
@@ -43,7 +43,7 @@ Although we were quite overwhelmed by all the post-its, we felt that what we fou
 Unfortunately, it wasn’t that simple. We were often too busy with other things that we didn’t take enough time to spontaneously reflect, especially not in a small group. However, we strongly believe that working with insights and experiments is the right way to go and we need to create time for it and continuously improve how we approach change.
 
 ## Iteration 1: Introduce Structure
-We started to get a bit frustrated about all the things we wanted to do, but just didn’t manage to. At about the same time, we also realized that we needed to introduce more __structure to the board and the process__; how do we follow-up, what do we do with the insights and outcome of experiments, what about responsibilities? At this point, <a href="https://www.linkedin.com/in/jessicacriddle">Jessica Criddle</a> joined us as Agile Coach. She came with a fresh mind, new perspective and lots of energy. This helped a lot to light the spark again. We did a first draft of how the process could look.
+We started to get a bit frustrated about all the things we wanted to do, but just didn’t manage to. At about the same time, we also realized that we needed to introduce more __structure to the board and the process__; how do we follow-up, what do we do with the insights and outcome of experiments, what about responsibilities? At this point, <a href="https://www.linkedin.com/in/jessicacriddle" target="blank">Jessica Criddle</a> joined us as Agile Coach. She came with a fresh mind, new perspective and lots of energy. This helped a lot to light the spark again. We did a first draft of how the process could look.
 
 <center>
 <picture>
