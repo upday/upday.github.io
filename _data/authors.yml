@@ -75,3 +75,11 @@ mari_kumlien:
   bio: "Mari works as an Agile Coach at upday."
   bio_long: "Mari works as an Agile Coach at upday dedicated to bring the best out of people and teams."
   avatar: authors/mari_kumlien.png
+
+johannes_theilmann:
+  name: Johannes Theilmann
+  web: http://www.upday.com
+  email: johannes.theilmann@upday.com
+  bio: "Johannes works as an Product Owner at upday."
+  bio_long: "Johannes works as an Product Owner at upday telling stories about value."
+  avatar: authors/johannes_theilmann.png
