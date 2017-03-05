@@ -1,37 +1,22 @@
 - name: Anca Todirica
   github: AncaTodirica
 
-- name: Anna Karpiuk
-  github: AnnaKarpiuk
-
 - name: Benjamin Brandt
   github: benjaminbrandt
-
-- name: Federico Palmieri
-  github: fedestylah
 
 - name: Florina Muntenescu
   github: florina-muntenescu
   twitter: FMuntenescu
   slideshare: FlorinaMuntenescu
 
-- name: Henning Gross
-  github: gaffa
-
 - name: Paweł Polański
   github: jaggernod
-
-- name: Johannes Braun
-  github: johannesbraun
 
 - name: Josiane Milanez
   github: jomilanez
 
 - name: Kavya Hebbani
   github: kavyaShreeHS
-
-- name: Tomasz Kaszkowiak
-  github: ktomek
 
 - name: Lennard Timm
   github: lenn4rd
@@ -46,15 +31,9 @@
 - name: Tino Noack
   github: noacktino
 
-- name: Peter Tackage
-  github: peter-tackage
-
 - name: Peter Krauss
   github: pkrauss-asideas
   twitter: pkatberlin
-
-- name: Artur Roszczyk
-  github: sevos
 
 - name: Nicola Miotto
   github: sirnicolaz
@@ -65,16 +44,36 @@
 - name: Richard Lawrence
   github: sweatyrichard
 
-- name: Tomasz Polański
-  github: tomaszpolanski
-  twitter: tpolansk
-  slideshare: polanskitomasz
-
-- name: Timo Ulich
-  github: ulich
-
 - name: Robert Bordo
   github: rbordo
 
 - name: Pablo Quesada
   github: pabloqc
+
+- name: Johannes Theilmann
+  github: JTheilmann
+
+- name: Andreas Kranki
+  github: krnki
+
+- name: Christian Koch
+  github: chris146
+
+- name: Harald Dehelean
+  github: HarryDeal
+
+- name: Maddy Want
+  github: maduhlenne
+
+- name: Mari Kumlien
+  github: mkumlien
+
+- name: Rafaela Ruf
+  github: rafaelarufupday
+
+- name: Sophie Preußer
+  github: SophiePr
+
+- name: Srikanth Achanta
+  github: SrikanthAchanta
+
