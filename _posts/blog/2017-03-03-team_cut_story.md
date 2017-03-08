@@ -35,14 +35,14 @@ Acceptance Criteria:
 
 We already made several experiments with the team setup without really being able to measure the outcomes. We also realised that not all our needs are covered by the existing experiments. We decided to measure the success of teams <a href="https://youtu.be/Avs70dZ3Vlk?t=4m27s" target="blank">via following KPIs</a> (introduced by Martin Fowler DevOps state of report 2014):
 
-* <a link="http://kanbantool.com/kanban-library/analytics-and-metrics/kanban-definition-of-lead-time-and-cycle-time#.WHdWULbhDBJ" target="blank">Cycle time</a>
+* <a href="http://kanbantool.com/kanban-library/analytics-and-metrics/kanban-definition-of-lead-time-and-cycle-time#.WHdWULbhDBJ" target="blank">Cycle time</a>
 	* How often do we deploy to production?
 	* How much time does it take for a feature from done to production?
-* <a link="http://www.slideshare.net/management30/the-happiness-of-workers/7-Engagement_probablycorrelates_with_satisfactionand_happinessBut" target="blank">Team happiness</a>
+* <a href="http://www.slideshare.net/management30/the-happiness-of-workers/7-Engagement_probablycorrelates_with_satisfactionand_happinessBut" target="blank">Team happiness</a>
 
 
 It’s also interesting to visualise the amount of meetings we have, to see how effectively we communicate and how much ‘focus time’ is left for each sprint.
 
-In the next article about team cut we will follow up on our latest <a link="http://upday.github.io/blog/lean_change_insights_board/">experiment</a> (running for 3 months) - particularly on the initialisation of the team work and how exactly we measure our experiment KPIs.
+In the next article about team cut we will follow up on our latest <a href="http://upday.github.io/blog/lean_change_insights_board/" target="blank">experiment</a> (running for 3 months) - particularly on the initialisation of the team work and how exactly we measure our experiment KPIs.
 
 What are your experiences in terms of team cuts and measuring team performance?
