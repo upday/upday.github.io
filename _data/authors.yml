@@ -84,3 +84,12 @@ johannes_theilmann:
   bio_long: "Johannes works as a Product Owner at upday telling stories about value."
   avatar: authors/johannes_theilmann.png
   twitter: pynx
+
+maddy_want:
+  name: Madeleine Want
+  web: http://www.upday.com
+  email: madeleine@upday.com
+  bio: "Maddy is the Product Owner for the Data & Advertising Platform at upday."
+  bio_long: "Maddy is the Product Owner for the Data & Advertising Platform at upday. She believes products should treat users as individuals."
+  avatar: authors/maddy_want.png
+  twitter: tralallama
