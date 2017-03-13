@@ -40,3 +40,7 @@ It took me quite a few talks with crooked beginnings to find what works for me. 
 ---
 
 How are your intros? How do you deal with your initial nervousness? How do you try to connect with the audience? I would love to learn more from your experiences.
+
+----
+
+## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
