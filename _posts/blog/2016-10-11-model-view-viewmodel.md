@@ -181,3 +181,7 @@ After the design changes during the "infancy" of our app, we switched to MVVM in
 A simple example of the MVVM implementation can be found <a href="https://github.com/florina-muntenescu/DroidconMVVM">here</a>.
 
 A "Hello, World!" comparison between MVP and MVVM can be found <a href="https://github.com/florina-muntenescu/MVPvsMVVM">here</a>.
+
+----
+
+## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
