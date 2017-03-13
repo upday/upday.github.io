@@ -64,4 +64,4 @@ Have you ever used blank slides in a talk? I would love to know more about your 
 
 ----
 
-Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
+## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
