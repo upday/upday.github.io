@@ -8,7 +8,7 @@ author: florina_muntenescu
 excerpt: Public speaking allowed me to get to know myself, what works for me and what not. Here's what I learned about intros.
 tags: [Public speaking, Speaking]
 image:
-date: 2017-03-08T00:39:55-04:00
+date: 2017-03-14T00:39:55-04:00
 ---
 
 Public speaking pushed me out of a lot of my comfort zones. I got to learn not only about the content I was presenting and about the delivery, but also about myself. I found out how I react in certain situations, what feels genuine and what doesn’t, and what I should work on more.
