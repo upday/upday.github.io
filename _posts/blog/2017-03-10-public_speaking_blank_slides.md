@@ -5,7 +5,7 @@ description:
 modified:
 categories: blog
 author: florina_muntenescu
-excerpt: My talk at the International Women’s Day event, organised by Women Techmakers gave me the chance to share my story about public speaking but also to try something new - using blank slides.
+excerpt: My talk at the International Women’s Day event, organised by Women Techmakers gave me the chance to share my story about public speaking and also to try something new - using blank slides.
 tags: [Product, Management, Data, Data Science, User, Feedback, ProductManagement]
 image:
 date: 2017-03-08T00:00:00-04:00
@@ -61,3 +61,7 @@ Usually in my tech talks, I tend to have one slide per idea. So I kept the same 
 
 <br/>
 Have you ever used blank slides in a talk? I would love to know more about your experience, the problem faced and the solutions you found.
+
+----
+
+Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
