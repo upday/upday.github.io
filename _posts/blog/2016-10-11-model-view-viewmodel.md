@@ -182,6 +182,8 @@ A simple example of the MVVM implementation can be found <a href="https://github
 
 A "Hello, World!" comparison between MVP and MVVM can be found <a href="https://github.com/florina-muntenescu/MVPvsMVVM">here</a>.
 
-----
-
-## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
+<center>
+<picture>
+	<a href="http://upday.github.io/jobs/"><img src="/images/jobs/we-are-hiring.png" alt="Jobs at upday" ></a>
+</picture>
+</center>

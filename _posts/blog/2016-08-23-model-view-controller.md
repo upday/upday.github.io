@@ -125,6 +125,8 @@ In the early days of Android the Model-View-Controller pattern seemed to have co
 
 The dependence of the View from the Model and having logic in the View steered our code-base to a state from which it was impossible to recover without refactoring completely the app. What was the new approach in architecture and why? Find out in by reading <a href="https://upday.github.io/blog/model-view-presenter/">this blog post</a>.
 
-----
-
-## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
+<center>
+<picture>
+	<a href="http://upday.github.io/jobs/"><img src="/images/jobs/we-are-hiring.png" alt="" ></a>
+</picture>
+</center>

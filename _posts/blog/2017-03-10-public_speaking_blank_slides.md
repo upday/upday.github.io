@@ -62,6 +62,8 @@ Usually in my tech talks, I tend to have one slide per idea. So I kept the same 
 <br/>
 Have you ever used blank slides in a talk? I would love to know more about your experience, the problem faced and the solutions you found.
 
-----
-
-## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
+<center>
+<picture>
+	<a href="http://upday.github.io/jobs/"><img src="/images/jobs/we-are-hiring.png" alt="Jobs at upday" ></a>
+</picture>
+</center>

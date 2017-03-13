@@ -173,6 +173,8 @@ The <a href="https://upday.github.io/blog/model-view-controller/">Model-View-Con
 
 What if we want an event-based architecture, where the View reacts on changes? Stay tuned for the next patterns sampled in the <a href="https://github.com/googlesamples/android-architecture">Android Architecture Blueprints</a> to see how this can be implemented. Until then, read about our <a href="https://upday.github.io/blog/model-view-viewmodel/">Model-View-ViewModel pattern</a> implementation in the upday app.
 
-----
-
-## Have you noticed? <a href="http://upday.github.io/jobs/" target="blank">upday is hiring!</a> Come work with us.
+<center>
+<picture>
+	<a href="http://upday.github.io/jobs/"><img src="/images/jobs/we-are-hiring.png" alt="Jobs at upday" ></a>
+</picture>
+</center>
