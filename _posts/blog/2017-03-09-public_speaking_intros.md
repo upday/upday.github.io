@@ -25,7 +25,7 @@ The <a href="https://www.ted.com/read/ted-talks-the-official-ted-guide-to-public
 
 I decided to embrace the emotions and share them with my audience, to use them as a way of creating a better connection with them.
 
-The theme of my latest talk was *"Telling Our Story"*. I started by telling the audience that it’s hard for me to share a personal story in front of strangers and that I want to get to know them a bit first. Then I said my name and what I do and I asked who else in the audience is like me, a developer, who is a QA, who’s a Product Manager and so on, trying to find out who my audience is. Once I knew them a bit, so we weren’t strangers anymore, I declared that I was ready to start sharing my story.
+The theme of my latest talk was *"Telling Our Story"*. I started by telling the audience that it’s hard for me to share a personal story in front of strangers and that I want to get to know them a bit first. Then I introduced myself and asked who else in the audience is like me, a developer, who is a QA, who’s a Product Manager and so on, trying to find out who my audience is. Once I knew them a bit, so we weren’t strangers anymore, I declared that I was ready to start sharing my story.
 
 #### This intro served several purposes:
 * **It allows the audience to identify with the speaker** — for most of us is hard to share personal details on stage.
