@@ -47,7 +47,7 @@ Usually in my tech talks, I tend to have one slide per idea. So I kept the same 
 * Like my rehearsal audience, they were **surprised** the first time when they saw the blank slide. They thought that there was a technical issue and the slide is not loading.
 * After the first blank slide everything was ok.
 
-## Blank Slides — Yay or Nay?
+## Blank slides — yay or nay?
 
 ### Yay!
 
