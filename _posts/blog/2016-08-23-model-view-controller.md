@@ -127,6 +127,6 @@ The dependence of the View from the Model and having logic in the View steered o
 
 <center>
 <picture>
-	<a href="http://upday.github.io/jobs/"><img src="/images/jobs/we-are-hiring.png" alt="" ></a>
+	<a href="http://upday.github.io/jobs/"><img src="/images/jobs/we-are-hiring.png" alt="Jobs at upday" ></a>
 </picture>
 </center>
