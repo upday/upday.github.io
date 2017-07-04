@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Holacracy - Whatˋs the fuzz about?"
+title: "Holacracy - Whatˋs the fuzz about? - Part 1"
 modified:
 categories: blog
 author: peter_krauss
