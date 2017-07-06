@@ -50,7 +50,7 @@ culture, **you are allowed to take your own decisions as long as you stick to th
 The provoking title of this section could suggest **Holacracy is not a hierarchical system** - far 
 from it! There is still someone (or even a group of people) that takes decisions for the whole company. Like a government 
 may decide to build an airport, but all the technical decisions are taken by someone 
-who actually knows how to construct a runway or a hangar (maybe a bad example for a Berlin based company :smiley:).
+who actually knows how to construct a runway or a hangar (maybe a bad example for a Berlin based company 😃).
 
 **The main purpose of the constitution is to provide Roles** _(who is accountable for what)_ **and Governance Processes** 
 _(fix or improve the roles)_.
