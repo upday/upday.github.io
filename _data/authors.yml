@@ -1,6 +1,15 @@
 # Authors
 
 peter_krauss:
+  name: Nicola Miotto
+  web: http://www.upday.com
+  email: nicola@upday.com
+  bio: "Nicola is a Software Engineer at upday."
+  bio_long: "Nicola joined upday at the very beginning as a Software Engineer. He does mainly Ruby, Python, Java (sig), ML. He did iOS. He likes the idea of writing about himself in third person, makes him feel very important."
+  avatar: authors/nicola_miotto.png
+  twitter: sirnicolaz
+
+peter_krauss:
   name: Peter Krauß
   web: http://www.upday.com
   email: peter.krauss@upday.com
