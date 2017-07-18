@@ -11,13 +11,14 @@ date: 2017-07-18T00:39:55-04:00
 ---
 In this blog post we will provide a few insights on the architecture of the _upday_ news app (both backend and frontend), focusing on the work that has been put on the resiliency and robustness of the componets around the __My News__ feature.
 
-## _upday_ & Samsung
+## upday & Samsung
 
 Before digging into the technicalities, it's worth to spend a few words on what _upday_ is and which responsabilities we have towards our stake holders.
 
 ### The App
 
-_upday_ is a fruit of a collaboration between [Axel Springer](https://en.wikipedia.org/wiki/Axel_Springer_SE) and [Samsung](https://en.wikipedia.org/wiki/Samsung). The end result is a news application for Android, pre-installed in the so-called "-1 screen" on most of the Samsung devices (S7, S8, A series etc).<br>
+_upday_ is a fruit of a collaboration between [Axel Springer](https://en.wikipedia.org/wiki/Axel_Springer_SE) and [Samsung](https://en.wikipedia.org/wiki/Samsung). The end result is a news application for Android, pre-installed as the default news-app on most of the Samsung devices (S7, S8, A series etc).<br>
+
 The one purpose of the application is to deliver relevant news content to the users. The goal is achieved by means of the two news streams that the app provides:
 
 * __Top News__: this section is an editorial curated news stream, whose titles and headlines are manually crafted by a team of editors (in each of the available countries). It's supposed to provide the user with all the relevant news of the moment, independently from taste and preferences.
