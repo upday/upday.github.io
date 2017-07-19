@@ -48,7 +48,7 @@ Given that the focus of this article is the availability of My News (the most tr
 The My News section in _upday_ is a potentially endless scrollable list of full screen cards, each displaying the content of a news. A sample:
 <br>
 <br>
-<img width="300" style="margin-left:25%" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/mynews_card.png" />
+<img width="300" style="margin-left:25%" src="/images/blog/upday_vs_murphy/mynews_card.png" />
 <br>
 <br>
 Using our terminology, a card is called a note and a whole stream of notes symphony. Each note has constraints about how to select an article for the symphony, so it basically defines a subset of all existing articles. A couple of examples: a note could be just about fresh main stream news, another note could identify all trending news.
@@ -60,7 +60,7 @@ Each note is built differently, some of them are even provided by specific micro
 Below a simplified version of the components involved in the delivery of My News
 <br>
 
-![My News architecture](https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/mynews_arch.jpg?2 "My News Architecute")
+![My News architecture](/images/blog/upday_vs_murphy/mynews_arch.jpg?2 "My News Architecute")
 
 Quick overview of the responsabilities:
 
@@ -85,7 +85,7 @@ We will see now what the failover mechanism in place for each of the surprises t
 ## Special Notes
 
 As mentioned already, special notes define article subsets that are computed using specific technology. Our collaborative filtering note is, for instance, generated leveraging Apache Mahout. It happens that these components slow down or break once in a while, given their computationally intensive tasks and dependencies.
-<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/chaos_special.jpg?s" /><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_vs_murphy/chaos_special.jpg?s" /><br/>
 
 __Mitigation__:
 
@@ -97,59 +97,51 @@ __Severity level: 4__
 
 Although it's quite a tough challenge to take down an Elasticsearch cluster, we still managed quite a few times to do it. Once AWS had networking issues and the whole cluster has been partitioned away from the Content Machine. This basically means that the Content Machine is isolated from our content storage.<br/>
 Mitigation:
-<img style="float: right; margin-top: 30px; margin-left: 10px; width: 350px" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/chaos_es.jpg?s"/><br/>
+<img style="float: right; margin-top: 30px; margin-left: 10px; width: 350px" src="/images/blog/upday_vs_murphy/chaos_es.jpg?s"/><br/>
 
 * __In memory cache, layer 1__: when content for a note is required, a bigger amount is fetched from Elasticsearch before continuing with the stream generation. From the whole pool of articles that matches the note criterias, only the needed ones are used. Essentially, other instances of the same notes are picked from the in memory pools.
 * __In memory cache, layer 2__: a bunch of periodic background jobs are collecting (from Elasticsearch) content for preference independent notes. These notes are then generated purely out of memory when the user requests a stream.
 * __In memory cache, layer 3__: a bunch of predefined symphonies is kept in memory as a final fallback, in case all the pools have been fully used or expired.
-<br/>
-<br/>
-<br/>
+
 __Severity level: 3-4__ (for at least 30 minutes. Degradation might become more noticeable after a longer time)
 
 ## Preference Provider
 By being an "online synchronous component" (the load is proportional to the traffic), sudden traffic spikes and slow autoscaling can make temporarily shake temporarily, with slow downs and unavailabilities.<br/>
-<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/chaos_pp.jpg"/><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_vs_murphy/chaos_pp.jpg"/><br/>
 
 __Mitigation__:
 
 * __Circuit breaker and content degradation__: the content machine will again open the circuit if the Preference Provider takes longer then a minimum amount of time to reply or becomes unavailable. In this case, a symphony with all preferences switched on is generated.
-
-<br>
 
 __Severity level: 3__
 
 ## Rabbit MQ
 
 The [RabbitMQ](https://www.rabbitmq.com/) cluster has been configured for high availability. Yet, it happened that a misconfiguration in the maximum open files on conjunction with a huge traffic slash, made the cluster partially go down and brain split during a wrong recovery (worst weekend ever for the the guys on call).<br/>
-<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/chaos_rabbit.jpg"/><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_vs_murphy/chaos_rabbit.jpg"/><br/>
 
 __Mitigation__:
 
 * __Switch to synchronous__: The My New Request proxy, upon recognizing the unavailability of the message queue service, will start calling the synchronous APIs of the Content Machine. The solution always gave us enough time to address the issue.
 
-<br>
-
 __Severity level: None__ (although the Content Machine might suffer under prolongued exposure to synchronous requests).
 
 ## Content Machine
 This component usually never fails, but when it fails, it fails epicly. It's usually when the on call engineer start getting cold sweats.<br/>
-<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/chaos_cm.jpg"/><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_vs_murphy/chaos_cm.jpg"/><br/>
 
 __Mitigation__:
 
 * __Default news__: the My News Request proxy keeps a cache of up-to-date default symphonies (fetched periodically from the content machine itself), that can be used during a prolongued outage of the content machine. These symphonies are not personalized.
-
-<br>
 
 __Severity level: 3__
 
 ## Full Failure
 
 Sometimes the more external components go down (API-Gateway, My News proxy) or maybe there are even prolongued failures of multiple internal services. In these cases, there is not much to do if not praying...
-<img style="margin: auto; margin-left: 25%; margin-top: 10px; margin-bottom: 10px;" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/chaos_all.jpg"/><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px; margin-bottom: 10px;" src="/images/blog/upday_vs_murphy/chaos_all.jpg"/><br/>
 ... it's not true. It's in these cases that the mother of all failovers kicks in. In order to give time to the ops to figure out the issue and fix it, the whole infrastructure is basically replaced. How? The solution below:
-<img width="390px;" style="margin: auto; margin-left: 25%; margin-top: 10px; margin-bottom: 10px;" src="https://raw.githubusercontent.com/sirnicolaz/upday.github.io/mynews-availability/images/blog/mynews_availability/failover.jpg"/><br/>
+<img width="390px;" style="margin: auto; margin-left: 25%; margin-top: 10px; margin-bottom: 10px;" src="/images/blog/upday_vs_murphy/failover.jpg"/><br/>
 The A record of the DNS pointing to the origin (namely the API Gateway) is replaced with the IP of __The Failover__.
 This component has been built keeping the complexity as low as possible and loaded with monitors and alarms. Its only purpose is to fetch a bunch of symphonies periodically to be delivered __as they are__ upon request. This usually gives us around 30 minutes to react and try to fix the issue, before most of the users start calling customer support.
 <br/>
