@@ -7,15 +7,15 @@ categories: blog
 author: robert_bordo
 excerpt: Doing good is fine, but talking about it is even better. How we motivated engineers to write blog posts.
 tags: [blogathon, hackathon, blog post, writing, blogging]
-image:
-date: 2017-07-19T01:00:00-04:00
+image: 
+date: 2017-07-20T01:00:00-04:00
 ---
 
 <left>
     <picture>
-        <a href="http://upday.github.io/jobs/"><img src="/images/blog/blogathon_2017/blogathon_2017_logo.png" 
+        <img src="/images/blog/blogathon_2017/blogathon_2017_logo.png" 
         width="10%" height="10%"
-        alt="Blogathon 2017 Logo" ></a>
+        alt="Blogathon 2017 Logo" >
     </picture>
 </left>
 
@@ -57,9 +57,9 @@ But no risk no fun, it’s only painful at the start and attending was optional 
 
 <left>
     <picture>
-        <a href="http://upday.github.io/jobs/"><img src="/images/blog/blogathon_2017/blogathon_2017_ideas_board.jpg" 
+        <img src="/images/blog/blogathon_2017/blogathon_2017_ideas_board.jpg" 
         width="50%" height="50%"
-        alt="Ideas Board" ></a>
+        alt="Ideas Board" >
     </picture>
 </left>
 
@@ -67,16 +67,16 @@ But no risk no fun, it’s only painful at the start and attending was optional 
 
 <left>
     <picture>
-        <a href="http://upday.github.io/jobs/"><img src="/images/blog/blogathon_2017/blogathon_2017_agenda.jpg" 
+        <img src="/images/blog/blogathon_2017/blogathon_2017_agenda.jpg" 
         width="50%" height="50%"
-        alt="Agenda" ></a>
+        alt="Agenda" >
     </picture>
 </left>
 
 ## And...?
 
 To make a long story short, our Blogathon was quite a success. **We ended up with 8 finished or nearly finished articles** covering topics 
-from tutorials to personal insights from our daily business. You will be able to read all of them in our [upday tech blog](http://upday.github.io/) 
+from tutorials to personal insights from our daily business. You will be able to read the best of them in our [upday tech blog](http://upday.github.io/) 
 during the next few weeks.
 
 To finally **publish** them, all articles have to pass a **quality gate**. 
@@ -89,7 +89,7 @@ These are the finishing steps to get a blog post out on the street:
 * let a **native speaker review** it
 * clone and create a branch on our blog repository
 * add your article (Markdown) 
-* optimise the **layout**, give it a **readable structure**, **emphasise** important passages and add keywords
+* optimise the **layout**, give it a **readable structure**, **emphasise** important passages and add **keywords**
 * give your article a **final review**
 * merge branch and publish it
 
