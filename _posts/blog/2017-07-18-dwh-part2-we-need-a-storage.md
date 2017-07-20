@@ -63,31 +63,32 @@ What else is on the market?
 
 
 
-Time Series DB
-handling time series data
-non time series data
-Graphite
+| Time Series DB | handling time series data | non time series data | Graphite |
+
 Relational DB
 referential integrity, transactions
 semi-structured data
+
 PostgreSQL
 Key Value Store
 semi-structured data, speed
 complex queries
+
 DynamoDB
 Document Store
 schema free
 aggregating
+
 Elasticsearch
 Wide Column Store
 storing large number of dynamic columns
-
-
 Hadoop
+
 Graph Database
 processing of graph structures
 indexing
 Neo4J
+
 Object Database
 storing objects
 speed
@@ -155,7 +156,7 @@ Consequently we did not investigate further. Maybe we would handle this issue di
 
 ## Finally
 
-We decided for Redshift in the end. I have to admit it wasn’t a too unbiased process, because more or less we wanted to try Redshift anyway. 
+We decided for Redshift in the end. I have to admit it hasn't been a too unbiased process, because more or less we wanted to try Redshift anyway. 
 
 Starting with Redshift is easy, but getting satisfying results, especially if the amount of data increases, takes longer. 
 Execution time and costs increase. You have to understand how Redshift works under the hood and you need to tune your tables accordingly. 
@@ -175,7 +176,12 @@ __Questions you should ask:__
 * How much data do I expect to store?
 * Do I need unlimited scalability?
 * What tools (BI) need to access my data?
+* How much can I spend on it?
+* How complicated is the maintenance? 
+* Do we have capacity and knowledge to master this technology? 
+* Do we need training?
 
 
+And there's nothing wrong with having more than one storage. I mean, a storage is not Highlander in the end.
 
 
