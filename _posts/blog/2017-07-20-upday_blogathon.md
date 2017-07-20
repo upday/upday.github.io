@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "upday Hackathon"
+title: "upday Blogathon 2017"
 description: Blogathon, an approach to motivate engineers to write blog posts.
 modified:
 categories: blog
