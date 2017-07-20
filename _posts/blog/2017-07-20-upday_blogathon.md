@@ -30,7 +30,7 @@ Last year we started our [upday tech blog](http://upday.github.io/) to attract m
 to get attention in the tech community. This worked out quite well. We received promising applications, 
 a few of us got invited as speakers to international conferences and we also organised well-received meetups. 
 Unfortunately, the driving force behind most of these activities left the company, hired by a much bigger player 
-(another proof our efforts bear fruit). Since then our blog has been more or less inactive.
+(another proof our efforts bear fruit). And Since then our blog has been more or less inactive.
 
 This needed to change. **But how can one convince people to invest time and energy into something they don’t really like or want to do?**
 
@@ -44,7 +44,7 @@ Others were just cool. And some, of course, just sucked.
 Our plan now was to “abuse” one of those Hackathons to generate blog posts. The idea of a **Blogathon** was born. 
 Okay, I know what you might be thinking right now.
 
-Anyway. Presenting this idea provoked mixed reactions. Everything from “cool” to “it sucks big time”. 
+Anyway, presenting this idea provoked mixed reactions. Everything from “cool” to “it sucks big time”. 
 But no risk no fun, it’s only painful at the start and attending was optional anyway.
 
 ### Timetable
@@ -87,18 +87,18 @@ These are the finishing steps to get a blog post out on the street:
 * **finish** your article to the point you are happy and proud of it
 * let one or two **peers review** it for clarity (this might be an iterative process)
 * let a **native speaker review** it
-* clone and create a branch on our blog repository
+* clone and create a branch of our blog repository
 * add your article (Markdown) 
 * optimise the **layout**, give it a **readable structure**, **emphasise** important passages and add **keywords**
 * give your article a **final review**
-* merge branch and publish it
+* merge the branch and publish it
 
 ## Conclusion
 
 **Everybody can write** and everybody should! Sharing thoughts or findings with others is rewarding. 
 It is more blessed to give than to receive. Writing also serves as a good reflection on what you have achieved. 
 It might also inspire others or merely put a smile on someone else’s face. Of course it requires work and time but it is also fun and satisfactory. 
-It’s not unlikely that you will actually help someone else with exactly the piece of information he or she were desperately looking for.
+It is not unlikely that you will actually help someone else with exactly the piece of information he or she were desperately looking for.
 
 **For us this Blogathon was a success.** As I mentioned before, only in the beginning it hurt, but just a little bit. 
 I’m convinced we are now motivated enough to produce blog posts more regularly and with the knowledge that *“I’m able to do it 
