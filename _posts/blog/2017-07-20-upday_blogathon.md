@@ -102,7 +102,7 @@ It is not unlikely that you will actually help someone else with exactly the pie
 
 **For us this Blogathon was a success.** As I mentioned before, only in the beginning it hurt, but just a little bit. 
 I’m convinced we are now motivated enough to produce blog posts more regularly and with the knowledge that *“I’m able to do it 
-because I already did”* and *“I do have something valuable to say”* gave a lot of drive and confidence to everyone involved. 
+because I already did”* and ["You Do Have Something To Say!"](http://upday.github.io/blog/tech-talks/) gave a lot of drive and confidence to everyone involved.
 
 We will have another Blogathon for sure sometime.
 
