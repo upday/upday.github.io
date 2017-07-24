@@ -7,7 +7,7 @@ categories: blog
 author: nicola_miotto
 excerpt: In this blog post we will provide a few insights on the architecture of the _upday_ news app, focusing on the work put on the resiliency and robustness of the componets around the My News feature.
 tags: [Resiliency, Architecture, Robustness, SLA]
-date: 2017-07-18T00:39:55-04:00
+date: 2017-07-24T00:39:55-04:00
 ---
 In this blog post we will provide a few insights on the architecture of the _upday_ news app (both backend and frontend), focusing on the work that has been put on the resiliency and robustness of the componets around the __My News__ feature.
 
