@@ -10,9 +10,6 @@
 - name: Josiane Milanez
   github: jomilanez
 
-- name: Kavya Hebbani
-  github: kavyaShreeHS
-
 - name: Lennard Timm
   github: lenn4rd
 
@@ -54,12 +51,6 @@
 - name: Christian Koch
   github: chris146
 
-- name: Harald Dehelean
-  github: HarryDeal
-
-- name: Mari Kumlien
-  github: mkumlien
-
 - name: Rafaela Ruf
   github: rafaelarufupday
 
@@ -68,4 +59,16 @@
 
 - name: Srikanth Achanta
   github: SrikanthAchanta
+
+- name: Viacheslav Iankovyi
+  github: lifedemons
+
+- name: Ahmed I. Khalil
+  github: R4md4c
+
+- name: Tushar Acharya
+  github: tushar-acharya
+
+- name: Oguzhan Yayla
+  github: oguzhan
 
