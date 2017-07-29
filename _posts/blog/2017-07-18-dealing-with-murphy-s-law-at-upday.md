@@ -29,7 +29,7 @@ The one purpose of the application is to deliver relevant news content to the us
 Collaborations with big players come always at a cost. For the engineering team at _upday_ this cost is the Service Level Agreement that we need to commit to.
 So, when a problem with the service occurs, it's categorized in a specific severity level that also defines then the actions to take. These are, in Layman's terms, the 4 severity levels of our SLA:
 
-* __Severity 4__: An Error affecting non-_upday_'s Services with little or no Users impact. More concisely: no one cares. It's hit once a single third-party picture wouldn't load, for instance.
+* __Severity 4__: An Error affecting non- _upday_ 's Services with little or no Users impact. More concisely: no one cares. It's hit once a single third-party picture wouldn't load, for instance.
 * __Severity 3__: Errors that causes degradation of the UX. Like when you receive a news about the next Justin Bieber concert although you explicitely stated that you like music.
 * __Severity 2__: Partial unavailability of the services. Reached, among the other cases, when Top News stop being delivered in one country. Editorial laziness could be a cause.
 * __Severity 1__: Full outage, across all features, across all countries. It's the blue screen of death of _upday_.
@@ -65,7 +65,7 @@ Below a simplified version of the components involved in the delivery of My News
 Quick overview of the responsabilities:
 
 * __CDN__: edge cache
-* __API Gateway__: performs authentication, SSL termination... and, most importantly, forwards each request to the right service. My News requests, specifically, are forwarded to the so-called _My news Requet Proxy_
+* __API Gateway__: performs authentication, SSL termination... and, most importantly, forwards each request to the right service. My News requests, specifically, are forwarded to the so-called _My news Request Proxy_
 * __My News Request Proxy__: exposes the public APIs and deals with the app needs
 * __Content Machine__: the core of the news stream creation. It leverages Elasticsearch to create some of the notes, Preference provider to retrieve user preferences and some other services to build specific special notes
 * __Preference Provider__: it's responsible of providing user defined preferences and other inferred features, helped by other data mining components (not shown for simplicity)
@@ -95,7 +95,7 @@ __Severity level: 4__
 
 ## Elasticsearch Cluster
 
-Although it's quite a tough challenge to take down an Elasticsearch cluster, we still managed quite a few times to do it. Once AWS had networking issues and the whole cluster has been partitioned away from the Content Machine. This basically means that the Content Machine is isolated from our content storage.<br/>
+Although it's quite a tough challenge to take down an Elasticsearch cluster, we still managed quite a few times to do it. AWS once had networking issues, hence the whole cluster has been partitioned away from the Content Machine. This basically means that the Content Machine is isolated from our content storage.<br/>
 Mitigation:
 <img style="float: right; margin-top: 30px; margin-left: 10px; width: 350px" src="/images/blog/upday_vs_murphy/chaos_es.jpg?s"/><br/>
 
