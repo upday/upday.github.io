@@ -5,7 +5,7 @@ modified:
 categories: blog
 author: maria_fernandez_pajares
 excerpt: Our journey through the world of backend architecture in a few words.
-tags: [architecture, microservices, backend]
+tags: [Architecture, Microservices, Backend]
 image:
 date: 2017-08-04T10:55:55+2
 ---
