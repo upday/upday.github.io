@@ -30,11 +30,11 @@ As a team of young developers who strive for challenges, we have evolved into ou
 
 Our Android app has two main parts: the _Top News section_ (news everyone needs to know about) and the _My News section_ (based on the user’s interests and their interactions with our app). We decided to keep them separated and independent, basing their communication only through messaging, taking this decision from the **SCS** (Self Contained Systems). So when there is any problem related with _Top News_, _My News_ is not affected and the other way around. This is how currently our architecture from a bird’s eye view (very high level overview) looks like:
 
-<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_architecture/upday_architecture.jpg"/><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_architecture/high-level_arch_overview.jpg"/><br/>
 
-And here is an overview of some components (microservices) developed with different technologies being part of these **Top News** and **My News systems**:
+And here is an overview of the components (microservices) developed with different technologies being part of **Top News System**:
 
-<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_architecture/upday_cloud_cosmos.jpg"/><br/>
+<img style="margin: auto; margin-left: 25%; margin-top: 10px;" src="/images/blog/upday_architecture/microservices_top_news_system"/><br/>
 
 
 ### Our learning and conclusions so far
