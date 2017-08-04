@@ -10,7 +10,7 @@ image:
 date: 2017-08-04T10:55:55+2
 ---
 
-I have always wanted to write about our journey through the world of backend architectures. As Mel Conway’s well predicted and nowadays is being proved his Conway’s law, a backend architecture is a reflection of the team setup. I have to admit he is not wrong at all. Actually he is mainly right. However, I think that with the time it may become the other way around whereby the architecture shapes the team instead of the team shaping the architecture.
+I have always wanted to write about our journey through the world of backend architectures. As Mel Conway’s well predicted with his Conway’s law: a backend architecture is a reflection of the team setup. I have to admit he is not wrong at all. Actually he is mainly right. However, I think that with the time it may become the other way around whereby the architecture shapes the team instead of the team shaping the architecture.
 
 ### Our firsts architectural steps
 
