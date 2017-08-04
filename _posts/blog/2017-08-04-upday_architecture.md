@@ -48,7 +48,7 @@ And here is an overview of the components (microservices) developed with differe
 
 - Although we have mastered Java 8 and Spring boot technologies better, we might move to other technologies if they fit our requirements or problems better.
 
-- Handle different type of data differ per service:
+- Handling different type of data differs per service:
     
     -  for score-based querying of full text search, Elasticsearch comes handy
     -  for getting statistics of open rates for our content team, using AWS Lambdas and DynamoDB fits much better
