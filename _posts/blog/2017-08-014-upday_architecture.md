@@ -12,7 +12,7 @@ date: 2017-08-14T10:55:55+2
 
 I have always wanted to write about our journey through the world of backend architecture and how it affected myself and our team setup. 
 
-An interpretation of [*Mel Conway* law](https://en.wikipedia.org/wiki/Conway%27s_law) could be: 
+An interpretation of [*Mel Conway's Law*](https://en.wikipedia.org/wiki/Conway%27s_law) could be: 
 
 >A backend architecture is a reflection of the team setup.
 
@@ -57,7 +57,7 @@ Or it may be that applying different technologies and trying new ones is what th
 ### Our architecture today
 
 As a team of young developers who strive for challenges, we have evolved into our current setup where we have better small services.
-**but we never create a new microservice for the sake of creating a microservice**, only when there are reasons to go for a new one.
+**But we never create a new microservice for the sake of creating a microservice**, only when there are reasons to go for a new one.
 And this seems to work quite well for both, our developers and our product.
 
 Our *Android* app we serve has two main parts: 
@@ -80,7 +80,7 @@ And here a more detailed overview of the (micro-) services - not always so *"sup
 
 *… which are not an universal truth and may not even for us last forever:*
 
-- Although we have mastered *Java 8* and *Spring Boot* technologies better so far, **we might move to other technologies if they fit our requirements or problems better.
+- Although we have mastered *Java 8* and *Spring Boot* technologies better so far, **we might move to other technologies if they fit our requirements or problems better.**
 
 - Handling different type of data differs per service:
     
