@@ -13,7 +13,7 @@ date: 2017-07-18T00:39:55-04:00
 
 > In the beginning we created a cluster. And the cluster was without form, and void; and nulls were upon the face of the storage.
 
-As we learned in our previous [post](../dwh-part1_getting_started), a data warehouse consists of several components. 
+As we learned in [part 1 of our series](../dwh-part1_getting_started), a data warehouse consists of several components. 
 The key component is the storage. All the others group around it. But how can one draw a decision which storage solution to take? What is out there anyway? 
 
 ## Preface
@@ -40,7 +40,7 @@ Usually they use tools like
 or 
 [Tableau](https://en.wikipedia.org/wiki/Tableau_Software)
 for generating reports. 
-And for analyses we have to pre-aggregate the data to make queries more performant and translate raw information into a digestible format.
+For analyses we have to pre-aggregate the data to make queries more performant and translate raw information into a digestible format.
 
 What else is on the market?
 
@@ -71,9 +71,11 @@ because we could re-load each information afterwards. This reduces costs (S3 is 
 Most of our infrastructure is hosted on Amazon Web Services (AWS). It would be handy to stay on this well known ground. 
 There must be something out there. And it is indeed. [Redshift](<https://aws.amazon.com/redshift>) is Amazon’s “data warehouse as a service” solution. 
 
+On Redshift's homepage you can read:
+
 _Amazon Redshift is a fast, fully managed data warehouse that makes it simple and cost-effective to analyze all your data using standard SQL and your existing Business Intelligence (BI) tools._
 
-Basically it is a column oriented database with good support for analytical functions able to handle petabytes of structured data by massively parallel query execution. Sounds good. 
+Basically it is a column oriented database with good support for analytical functions. It is able to handle Petabytes of structured data by massively parallel query execution. Sounds good. 
 Fulfills our requirements. Why not giving it a chance?
 
 __Pros:__
@@ -98,7 +100,9 @@ Redshift is not the only data warehouse as a service candidate. [Snowflake](http
 To be honest, we evaluated Snowflake a while ago. 
 A lot has changed since then, but let’s stick to the data we collected sometime in 2016.
 
-_From zero to petabytes, our elastic data warehouse architecture scales to any volume of data painlessly and inexpensively. 
+On Snowflake's homepage you can read:
+
+_From zero to Petabytes, our elastic data warehouse architecture scales to any volume of data painlessly and inexpensively. 
 No more painful decisions about what data you can afford to keep._
 
 __Pros:__
@@ -114,7 +118,7 @@ __Cons:__
 * nontransparent pricing policy
 * missing information about tooling (ETL)
 
-Snowflake created a database layer on top of S3 (a little bit like Amazon Athena did later). Unfortunately it wasn’t easy to really test Snowflake at that time. 
+Snowflake created a database layer on top of S3 (a little bit like Amazon Athena did later). Unfortunately it wasn’t easy to thoroughly test Snowflake at that time. 
 Consequently we did not investigate further. Maybe we would handle this issue differently today.
 
 ## Finally
