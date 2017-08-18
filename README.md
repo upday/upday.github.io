@@ -41,3 +41,9 @@ See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) h
 * if this is your first post, add your data to `authors.yml` and add your picture to `images` folder
 * Add your post in Markdown format to the `_posts/blog` directory, following this naming scheme: `YEAR-MONTH-DAY-title-of-your-post.md`
 * Check out the sample posts in `samples branch` for some tipps on formatting
+
+### Pull Request flow
+* check you post with (a spell checker like)[https://www.grammarly.com/] 
+* get a positive review from **one** updude
+* push it!
+
