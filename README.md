@@ -43,7 +43,6 @@ See a [live version of So Simple](http://mmistakes.github.io/so-simple-theme/) h
 * Check out the sample posts in `samples branch` for some tipps on formatting
 
 ### Pull Request flow
-* check you post with (a spell checker like)[https://www.grammarly.com/] 
+* check you post with a spell checker [like](https://www.grammarly.com/)
 * get a positive review from **one** updude
 * push it!
-
