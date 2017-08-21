@@ -10,18 +10,23 @@ image:
 date: 2017-08-14T10:55:55+2
 ---
 
-I have always wanted to write about our journey through the world of backend architecture and how it affected myself and our team setup. 
+I have always wanted to write about our journey through the world of backend architectures. I guess you as developer have been facing problems related with this topic in your team and projects and
+are aware of lot of magical and trendy solutions, but sometimes those do not fit so well to your current situation. 
 
-An interpretation of [*Mel Conway's Law*](https://en.wikipedia.org/wiki/Conway%27s_law) could be: 
+This topic has not been -and it is not yet- an easy one for us neither, but after facing many problems we are finding ourselves in this architecture world.
+Therefore I would like to share a bit of our experiences and learnings from it in upday. 
+
+### Conway's Law's reversion
+
+In conferences I have attended I have heard references to what could be interpreted from [*Mel Conway's Law*](https://en.wikipedia.org/wiki/Conway%27s_law):
 
 >A backend architecture is a reflection of the team setup.
 
-I have to admit he is not wrong. Actually he is mainly right. 
-However, in my experience **with time it may become the other way around:** 
+and in my opinion I agree totally with it but not only that, **with time it may become the other way around:** 
 
->Whereby the architecture shapes the teams instead of the teams shaping the architecture.
+>the architecture can end up shaping the teams instead of the teams shaping the architecture.
 
-Let me explain how I came to this conclusion.
+Let me dig a bit more in when we started to face this turn around and how we escaped from that:
 
 ### Our firsts architectural steps
 
@@ -41,6 +46,10 @@ We started splitting our backend team into feature teams. This was not an optima
 With this in mind, we started to step into the world of *microservices*, to make life easier for us developers (and of course more challenging, fun and efficient). 
 For sure there’s a difference in adding one small field to a 50,000-lines-of-code monster and touching 1,000 different unit and integration tests, than doing the same in a small service. 
 The reviewer will be the first one to be thankful for that.
+
+<sup>_First evolution's steps to go to a simpler and less errors prompt architecture and components' communication:_</sup>
+
+<img style="margin: auto; margin-left: 5%; margin-top: 10px;" src="/images/blog/upday_architecture/before_after.jpg"/><br/>
 
 ### Where to draw the technologies diversity line
 
@@ -80,9 +89,10 @@ And here a more detailed overview of the (micro-) services - not always so *"sup
 
 *… which are not an universal truth and may not even for us last forever:*
 
-- Although we have mastered *Java 8* and *Spring Boot* technologies better so far, **we might move to other technologies if they fit our requirements or problems better.**
+- Although we have mastered *Java 8* and *Spring Boot* technologies better so far, **we might move to other technologies if they fit our requirements or problems better.** But this learning has a big BUT: 
+  * we will go for a new technology as long as not one single developer masters the technology, or in that case, more than one other developer get involved and learn the technology of the project.
 
-- Handling different type of data differs per service:
+- Handling different types of data differs per service:
     
     -  for score-based querying of full text search, *Elasticsearch* comes handy
     -  for getting statistics of open rates for our content team, using *AWS Lambdas* and *DynamoDB* fits much better
