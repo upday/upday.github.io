@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Journey Towards a Custom Data Warehouse Solution <br/> Part 1 : Getting Started"
+title: "A Journey Towards a Custom Data Warehouse Solution <br/> Part 1: Getting Started"
 description:
 modified:
 categories: blog

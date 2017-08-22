@@ -15,6 +15,30 @@ $text: #21272d;
 $textmuted: #848484;
 $accent: #0191FF;
 
+/* Tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border:2px solid #000000;
+}
+
+th {
+  border:2px solid black;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 6px;
+  background-color: DodgerBlue;
+  color: white;
+}
+
+td {
+  border:1px solid #000000;
+  vertical-align: top;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 6px;
+
+}
 
 /* IMPORT CSS FILES */
 @import "bootstrap";
