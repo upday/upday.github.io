@@ -7,7 +7,7 @@ author: maria_fernandez_pajares
 excerpt: Our journey through the world of backend architecture in a few words.
 tags: [Architecture, Microservices, Backend]
 image:
-date: 2017-08-24T00:55:55+2
+date: 2017-08-23T00:55:55+2
 ---
 
 I have always wanted to write about our journey through the world of backend architectures. As a developer, you may have been facing problems related to this topic in your team or with your projects. 
