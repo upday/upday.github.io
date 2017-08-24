@@ -102,3 +102,13 @@ maddy_want:
   bio_long: "Maddy is the Product Owner for the Data & Advertising Platform at upday. She believes products should treat users as individuals."
   avatar: authors/maddy_want.png
   twitter: tralallama
+
+maria_fernandez_pajares:
+  name: María Fernández Pajares
+  web: http://www.upday.com
+  email: maria@upday.com
+  # bio is shown in blog post footer
+  bio: "María works at upday as Software Engineer."
+  # bio long will go to about page
+  bio_long: "María enjoys working at upday as a Software Engineer together with a very good team and in very challenging projects."
+  avatar: authors/maria_fernandez_pajares.png
