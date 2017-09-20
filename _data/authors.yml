@@ -112,3 +112,13 @@ maria_fernandez_pajares:
   # bio long will go to about page
   bio_long: "María enjoys working at upday as a Software Engineer together with a very good team and in very challenging projects."
   avatar: authors/maria_fernandez_pajares.png
+
+srikanth_achanta:
+  name: Srikanth Achanta
+  web: http://www.upday.com
+  email: srikanth@upday.com
+  # bio is shown in blog post footer
+  bio: "Srikanth works at upday as Director Technology."
+  # bio long will go to about page
+  bio_long: "Developing and managing the engineering team at upday. Responsible for Delivery and Quality of the technical team."
+  avatar: authors/srikanth_achanta.jpg

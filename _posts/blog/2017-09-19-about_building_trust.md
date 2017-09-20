@@ -4,13 +4,13 @@ title: "About Building Trust"
 modified:
 categories: blog
 author: srikanth_achanta
-excerpt: 
+excerpt: Trust is neither given nor taken, it’s built and maintained.
 tags: [trust, company, management]
 image:
 date: 2017-09-19T00:00:55+2
 ---
 
-Trust is the most precious resource in any organisation. For modern software organisations, which depends heavily on its employees for its success, trust becomes of paramount importance.
+Trust is the most precious resource in any organisation. For modern software organisations, which depend heavily on its employees for its success, trust becomes of paramount importance.
 
 When trust is a topic, it’s clear that there is a deficit of it. It is a dangerous state to be in and it mainly affects the company in two ways. Increased cost of operations (by many fold) and shrinking space for creativity/innovation. One hurts the business in the short-to-medium term and the other hurts in the long term.
 
@@ -35,7 +35,7 @@ The first step is to acknowledge it. There is no easy way out, everyone in the o
 
 Unless we change it, it’ll just be what it is.
 
-Trust is a bi-product of what you say and what you do. _So: work on improving in both these areas._
+Trust is a by-product of what you say and what you do. _So: work on improving in both these areas._
 
 **Over-communicate:** best way to address trust issues is to talk more, find ways to inform people about what is being worked on and what is not. If something troubles you, go talk to the concerned people and find out more. If there is something you disagree with, express your views constructively, rationally and respectfully.
 
