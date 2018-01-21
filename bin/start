@@ -12,6 +12,7 @@ docker pull upday/upday.github.io > /dev/null
 
 if [[ $container_id ]]; then
   echo "Started Jekyll container; you may now browse the blog at http://localhost:4000"
+  echo "Run bin/stop to stop the container"
   exit 0
 fi
 

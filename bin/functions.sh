@@ -11,3 +11,8 @@ docker_installed() {
     exit 1
   fi
 }
+
+shutdown() {
+  docker stop upday.github.io
+  docker rm upday.github.io
+}
